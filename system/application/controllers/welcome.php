@@ -1,5 +1,8 @@
 <?php
 
+/**
+*	
+*/
 class Welcome extends Controller {
 
 	function Welcome() {
@@ -13,25 +16,58 @@ class Welcome extends Controller {
 	
 	
 	function createUser(){
-		if($this->Users->usernameExists($_POST['username']))
+		$username = $_POST['username'];
+		
+		if($this->Users->usernameExists($username))
 			echo $_POST['username'].' is already taken! Please choose another login.';
 		else {
-			$this->Users->createUser($_POST['username'], $_POST['password']);
-			$data['username'] = $_POST['username'];
-			$data['password'] = $_POST['password'];
+			$this->Users->createFullUser($username, $_POST['password'], $_POST['phonenumber'], $_POST['provider_id'], $_POST['public_name']);
+			$data['username'] = $username;
+			$data['circles'] = $getCircles($username);
 			echo $this->load->view('home', $data);
 			}
 		}
 	
 	function login(){
-		if($this->Users->passwordMatches($_POST['username'], $_POST['password'])){
-			$data['username'] = $_POST['username'];
-			$data['password'] = $_POST['password'];
+		$username = $_POST['username'];
+		if($this->Users->usernameExists($username)){
+			if($this->Users->passwordMatches($username, $_POST['password'])){
+			$data['username'] = $username;
+			$data['circles'] = getCircles($username);
 			echo $this->load->view('home', $data);
 			}
+		}
 		else {
 			echo 'You\'re username did not match that password!';
 			}
+	}
+	
+	/**
+		returns an array of circles for the username passed in.  A function with the same name
+		is called on the Model, and the resulting data is packaged and returned in the following
+		format:
+		-circles
+			=circle1
+				=circle name
+				-circle members
+					=mem1
+					=mem2
+			=circle2...
+			=circle3...
+	*/
+	protected function getCircles($username){
+		$result = $this->Users->getCircles($username);
+		$rows = $result.row_array();
+		$cirlces;
+		$i = 0;
+		foreach($rows as $element){
+			$circle;
+			$circle['name'] = $element['name'];
+			$circle['members'] = $this->Users->getMemebers($element['id']);
+			$circles[$i] = $circle;
+			$i += 1;
+		}
+		return $circles;
 	}
 }
 
