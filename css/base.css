@@ -1,0 +1,62 @@
+html, body, h1, h2, h3, h4, h5, h6, p, form, div, table, td, th, tr {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	}
+	
+html {
+	background: url(/art/background.jpg);
+	background-repeat: repeat-x;
+	}
+	
+h1, h2, h3, h4, h5, h6, p {
+	font-family: Tahoma, Geneva, sans-serif;
+	color: #047243;
+	}
+	
+#root {
+	background: url(/art/whaletail.gif);
+	background-repeat: no-repeat;
+	margin-left: auto;
+	margin-right: auto;
+	width: 1100px;
+	height: 100%;
+	}
+	
+#backshade {
+	background: url(/art/backshade.png);
+	background-repeat: repeat-y;
+	position: relative;
+	left: -2px;
+	margin-left: auto;
+	margin-right: auto;
+	}
+	
+#panel {
+	background: url(/art/colors/white85.png);
+	position: relative;
+	left: 2px;
+	width: 1000px;
+	height: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	}
+	
+.divider {
+	background: url(/art/colors/darkgreen.gif);
+	}
+	
+#masthead {
+	height: 70px;
+	}
+	
+#logo {
+	position: relative;
+	top: 26px;
+	padding-left: 50px;
+	}
+	
+#sublogo {
+	position: relative;
+	top: 33 px;
+	}
