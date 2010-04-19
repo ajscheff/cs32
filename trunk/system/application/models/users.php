@@ -30,7 +30,9 @@ class Users extends Model {
 		$query = $this->db->get();
 		
 		$row = $query->row_array();
-		return ($password == $row['password']);
+		if(sizeof($row) == 1)
+			return ($password == $row['password']);
+		else return false;
 	}
     
 	function createUser($username, $password)

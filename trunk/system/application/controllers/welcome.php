@@ -8,11 +8,12 @@ class Welcome extends Controller {
 	function Welcome() {
 		parent::Controller();	
 		$this->load->model('Users');
-		}
+		
+	}
 	
 	function index() {
 		$this->load->view('login');
-		}
+	}
 	
 	
 	function createUser(){
@@ -25,8 +26,8 @@ class Welcome extends Controller {
 			$data['username'] = $username;
 			$data['circles'] = $getCircles($username);
 			echo $this->load->view('home', $data);
-			}
 		}
+	}
 	
 	function login(){
 		$username = $_POST['username'];
@@ -35,11 +36,25 @@ class Welcome extends Controller {
 			$data['username'] = $username;
 			$data['circles'] = getCircles($username);
 			echo $this->load->view('home', $data);
-			}
+		}
 		}
 		else {
 			echo 'You\'re username did not match that password!';
-			}
+		}
+	}
+	
+	function email(){
+		$this->load->library('email');
+
+		$this->email->from('test@ombtp.com', 'Test');
+		$this->email->to('andyscheff@gmail.com'); 
+		
+		$this->email->subject('Email Test');
+		$this->email->message('Testing the email class.');	
+		
+		$this->email->send();
+		
+		echo $this->email->print_debugger();
 	}
 	
 	/**
