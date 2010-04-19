@@ -49,7 +49,9 @@ $db['default']['cache_on'] = FALSE;
 $db['default']['cachedir'] = "";
 $db['default']['char_set'] = "utf8";
 $db['default']['dbcollat'] = "utf8_general_ci";
-$db['default']['port'] = 3307;
+if ($_SERVER['SERVER_ADDR'] != '209.20.72.32')
+	$db['default']['port'] = 3307;
+
 
 
 /* End of file database.php */
