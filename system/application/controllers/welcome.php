@@ -43,20 +43,6 @@ class Welcome extends Controller {
 		}
 	}
 	
-	function email(){
-		$this->load->library('email');
-
-		$this->email->from('test@ombtp.com', 'Test');
-		$this->email->to('andyscheff@gmail.com'); 
-		
-		$this->email->subject('Email Test');
-		$this->email->message('Testing the email class.');	
-		
-		$this->email->send();
-		
-		echo $this->email->print_debugger();
-	}
-	
 	/**
 		returns an array of circles for the username passed in.  A function with the same name
 		is called on the Model, and the resulting data is packaged and returned in the following
