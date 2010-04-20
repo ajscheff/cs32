@@ -33,4 +33,9 @@ class EmailHelper extends Controller {
 		$this->db->insert('email_test');
 		
 	}
+	
+	function test() {
+		$this->load->model('Users');
+		$this->Users->getPermissions(1, 1);
+	}
 }

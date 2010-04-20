@@ -43,6 +43,20 @@ class Welcome extends Controller {
 		}
 	}
 	
+	function sendEmail(){
+		$this->load->library('email');
+
+		$this->email->from('magartner@gmail.com', 'Your Name');
+		$this->email->to('marcus_gartner@brown.edu');
+
+		$this->email->subject('Email Test');
+		$this->email->message('Testing the email class.');
+
+		$this->email->send();
+
+		echo $this->email->print_debugger();
+	}
+	
 	/**
 		returns an array of circles for the username passed in.  A function with the same name
 		is called on the Model, and the resulting data is packaged and returned in the following
@@ -70,6 +84,7 @@ class Welcome extends Controller {
 		}
 		return $circles;
 	}
+	
 }
 
 /* End of file welcome.php */

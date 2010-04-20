@@ -41,6 +41,16 @@ class Users extends Model {
 		$this->db->set('password', $password);
 		$this->db->insert('users');
 	}
+	
+	function getPermissions($user_id, $circle_id) {
+		$this->db->select('privileges');
+		$this->db->from('users_circles');
+		$this->db->where('user_id', $user_id);
+		$this->db->where('circle_id', $circle_id);
+		$query = $this->db->get();
 		
+		echo $query->result()->privileges;
+	}
 
+	
 }
