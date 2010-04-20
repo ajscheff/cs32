@@ -31,6 +31,10 @@
 						<input type="password" name="password"/>
 						<input type="submit" value="Go!"/>
 						</form>
+						<form method="post" action="/~magartne/cs32/index.php/welcome/sendEmail">
+						Test Email:
+						<input type="submit" value="Send Test"/>
+						</form>
 					</div>
 			</div>
 			</div>
