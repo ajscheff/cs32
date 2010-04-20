@@ -49,7 +49,8 @@ class Users extends Model {
 		$this->db->where('circle_id', $circle_id);
 		$query = $this->db->get();
 		
-		echo $query->row_array()['privileges'];
+		$row = $query->row_array();
+		echo $row['privileges'];
 	}
 
 	
