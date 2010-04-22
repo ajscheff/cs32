@@ -14,7 +14,7 @@ class Cirlces extends Model {
 	}
 	
 	function circleExists($email){
-		$this->db->select('name');
+		$this->db->select();
 		$this->db->from('circles');
 		$this->db->where('email', $email);
 		$query = $this->db->get();
