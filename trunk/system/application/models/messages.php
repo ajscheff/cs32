@@ -34,21 +34,11 @@ class Messages extends Model {
 
 		$emailList = $this->Circles->getMemberEmails($circle_id);
 
-		$contact = $emailList[0];
-
-		echo $circle_email.'@ombtp.com';
-		echo $contact->phone_number.'@'.$contact->gateway;
-		echo $message;
-
-		$this->send($circle_email.'@ombtp.com', $contact->phone_number.'@'.$contact->gateway, $message);
-
-
-/*
 		if (strcmp($userPermissions, 'reply_all')) {
 			$emailList = $this->Circles->getMemberEmails($circle_id);
 			
 			foreach ($emailList as $contact) {
-				send($circle_email.'@ombtp.com', $contact->phone_number.'@'.$contact->gateway, $message);
+				$this->send($circle_email.'@ombtp.com', $contact->phone_number.'@'.$contact->gateway, $message);
 			}
 		}
 		else if (strcmp($userPermissions, 'reply_admins')) {
@@ -56,7 +46,7 @@ class Messages extends Model {
 		}
 		else {
 			//user has invalid permissions.  send notification?
-		}*/
+		}
 		// get list of receivers
 
 		// sends email out
