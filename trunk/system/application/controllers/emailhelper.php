@@ -14,7 +14,7 @@ class EmailHelper extends Controller {
 	
 		//$this->load->database();
 		//$this->load->model('Users');
-		//$this->load->model('Circles');
+		$this->load->model('Circles');
 		$this->load->model('Messages');
 
 		/*//get the phone number that the email was sent from
