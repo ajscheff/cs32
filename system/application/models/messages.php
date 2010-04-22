@@ -33,13 +33,13 @@ class Messages extends Model {
 		$userPermissions = $this->Circles->getPermissions($user_id, $circle_id);
 
 		$emailList = $this->Circles->getMemberEmails($circle_id);
+		
+		foreach ($emailList as $contact) {
+			$this->send($circle_email.'@ombtp.com', $contact->phone_number.'@'.$contact->gateway, $message);
+		}
 
 		if (strcmp($userPermissions, 'reply_all')) {
-			$emailList = $this->Circles->getMemberEmails($circle_id);
-			
-			foreach ($emailList as $contact) {
-				$this->send($circle_email.'@ombtp.com', $contact->phone_number.'@'.$contact->gateway, $message);
-			}
+
 		}
 		else if (strcmp($userPermissions, 'reply_admins')) {
 			$emailList = $this->Circles->getAdminEmails($circle_id);
