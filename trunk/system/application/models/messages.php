@@ -21,7 +21,7 @@ class Messages extends Model {
 		$this->email->send();
 	}
 	
-	function validEmailReceived($user_id, $circle_id, $message) {
+	function validEmailReceived($user_id, $circle_id, $circle_email, $message) {
 		// insert message into database
 		$this->db->set('text', $message);
 		$this->db->set('user_id', $user_id);
@@ -34,6 +34,10 @@ class Messages extends Model {
 
 		if (strcmp($userPermissions, 'reply_all')) {
 			$emailList = $this->Circles->getMemberEmails($circle_id);
+			
+			foreach ($emailList as $contact) {
+				send($circle_email.'@ombtp.com', $contact['phone_number'].'@'.$contact['gateway'], $message);
+			}
 		}
 		else if (strcmp($userPermissions, 'reply_admins') {
 			$emailList = $this->Circles->getAdminEmails($circle_id);

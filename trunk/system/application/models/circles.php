@@ -36,20 +36,25 @@ class Circles extends Model {
 	}
 
 	function getMemberEmails($circle_id) {
-		$this->db->select('*');
-		$this->db->from('users_circles');
-		//$this->db->join('users', 'users_circles.user_id = users.id');
-		//$this->db->join('providers', 'users.provider_id = providers.id', 'left');
-		//$this->db->where('users_circles.circle_id', 1);
+		$this->db->select('users.phone_number, providers.gateway');
+		$this->db->from('users');
+		$this->db->join('users_circles', 'users_circles.user_id = users.id');
+		$this->db->join('providers', 'users.provider_id = providers.id');
+		$this->db->where('users_circles.circle_id', $circle_id);
 
 		$query = $this->db->get();
-
-		$rows = $query->row_array();
-
-		print_r($rows);
+		return $query->result();
 	}
 
 	function getAdminEmails($circle_id) {
-
+		$this->db->select('users.phone_number, providers.gateway');
+		$this->db->from('users');
+		$this->db->join('users_circles', 'users_circles.user_id = users.id');
+		$this->db->join('providers', 'users.provider_id = providers.id');
+		$this->db->where('users_circles.circle_id', $circle_id);
+		$this->db->where('users_circles.admin', 1);
+		
+		$query = $this->db->get();
+		return $query->result();
 	}	
 }
