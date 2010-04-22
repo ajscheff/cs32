@@ -34,11 +34,11 @@ class Messages extends Model {
 
 		$emailList = $this->Circles->getMemberEmails($circle_id);
 
-		print_r($emailList[0]);
+		$contact = $emailList[0];
 
 		echo $circle_email.'@ombtp.com';
-		//echo $contact['phone_number'].'@'.$contact['gateway'];
-		//echo $message;
+		echo $contact->phone_number.'@'.$contact->gateway;
+		echo $message;
 
 /*
 		if (strcmp($userPermissions, 'reply_all')) {
