@@ -30,12 +30,11 @@ class Circles extends Model {
 		$this->db->where('circle_id', $circle_id);
 		$query = $this->db->get();
 
-		$row = $query->row_array();
-		if (empty($row)) return NULL;
-		else return $row['privileges'];
+		if (empty($query->result())) return NULL;
+		else return $query->result()[0]->privileges;
 	}
 
-	function getMemberEmails($circle_id) {
+	function getMembers($circle_id) {
 		$this->db->select('users.phone_number, providers.gateway');
 		$this->db->from('users');
 		$this->db->join('users_circles', 'users_circles.user_id = users.id');
@@ -46,7 +45,7 @@ class Circles extends Model {
 		return $query->result();
 	}
 
-	function getAdminEmails($circle_id) {
+	function getAdmins($circle_id) {
 		$this->db->select('users.phone_number, providers.gateway');
 		$this->db->from('users');
 		$this->db->join('users_circles', 'users_circles.user_id = users.id');

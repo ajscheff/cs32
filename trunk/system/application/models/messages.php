@@ -22,6 +22,7 @@ class Messages extends Model {
 	}
 	
 	function validEmailReceived($user_id, $circle_id, $circle_email, $message) {
+
 		// insert message into database
 		$this->db->set('text', $message);
 		$this->db->set('user_id', $user_id);
@@ -32,23 +33,21 @@ class Messages extends Model {
 
 		$userPermissions = $this->Circles->getPermissions($user_id, $circle_id);
 
-		$emailList = $this->Circles->getMemberEmails($circle_id);
-		
+
+
+		if (strcmp($userPermissions, 'reply_all')) {
+			$emailList = $this->Circles->getMembers($circle_id);
+		}
+		else if (strcmp($userPermissions, 'reply_admins')) {
+			$emailList = $this->Circles->getAdmins($circle_id);
+		}
+		else {
+			$emailList = array();
+			//user has invalid permissions.  send notification?
+		}
+
 		foreach ($emailList as $contact) {
 			$this->send($circle_email.'@ombtp.com', $contact->phone_number.'@'.$contact->gateway, $message);
 		}
-
-		if (strcmp($userPermissions, 'reply_all')) {
-
-		}
-		else if (strcmp($userPermissions, 'reply_admins')) {
-			$emailList = $this->Circles->getAdminEmails($circle_id);
-		}
-		else {
-			//user has invalid permissions.  send notification?
-		}
-		// get list of receivers
-
-		// sends email out
 	}
 }
