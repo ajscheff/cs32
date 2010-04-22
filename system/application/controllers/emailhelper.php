@@ -26,6 +26,20 @@ class EmailHelper extends Controller {
 	function receive(){
 	
 		$this->load->database();
+		$this->load->model('Users');
+		$this->load->model('Circles');
+
+		//get the phone number that the email was sent from
+		$number = substr($_POST['from'], 0, 10);
+
+		//if the phone number exists in our database
+		if ($this->Users->phoneExists($number) {
+
+			if 
+		}
+		else {
+			//phone doesn't exist, send reply?
+		}
 		
 		$this->db->set('to', $_POST['to']);
 		$this->db->set('from', $_POST['from']);
