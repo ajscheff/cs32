@@ -12,12 +12,12 @@ class EmailHelper extends Controller {
 	
 	function receive(){
 	
-		//$this->load->database();
-		//$this->load->model('Users');
+		$this->load->database();
+		$this->load->model('Users');
 		$this->load->model('Circles');
 		$this->load->model('Messages');
 
-		/*//get the phone number that the email was sent from
+		//get the phone number that the email was sent from
 		$numberFrom = substr($_POST['from'], 0, 10);
 		$email = explode('<', $_POST['to']);
 		$email = $email[1];
@@ -36,7 +36,7 @@ class EmailHelper extends Controller {
 		//if the phone number exists in our database
 		if ($user_id != 0) {
 			if($circle_id != 0) {
-				$this->Messages->validEmailReceived($user_id, $circle_id, 'aasdfasd');
+				$this->Messages->validEmailReceived($user_id, $circle_id, $_POST['text']);
 			}
 			else {
 				//circle doesn't exists.. send reply?
@@ -44,8 +44,7 @@ class EmailHelper extends Controller {
 		}
 		else {
 			//phone doesn't exist, send reply?
-		}*/
+		}
 
-		$this->Messages->validEmailReceived(1, 1, 'aasdfasd');
 	}
 }

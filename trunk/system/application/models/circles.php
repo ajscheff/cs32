@@ -6,8 +6,7 @@ class Cirlces extends Model {
 	var $content = '';
 	var $date    = '';
 
-	function Cirlces()
-	{
+	function Circles(){
 		// Call the Model constructor
 		parent::Model();
 		$this->load->database();
