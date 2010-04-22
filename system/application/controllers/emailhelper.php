@@ -46,9 +46,4 @@ class EmailHelper extends Controller {
 			//phone doesn't exist, send reply?
 		}
 	}
-	
-	function test() {
-		$this->load->model('Messages');
-		$this->Messages->send('hi@ombtp.com', 'andyscheff@gmail.com', 'hello');
-	}
 }
