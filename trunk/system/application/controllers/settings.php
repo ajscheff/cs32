@@ -3,10 +3,12 @@
 
 class Settings extends Controller {
 
+	function Settings(){
+		parent::Controller();
+		$this->load->model('Users');
+	}
 	function loadSettings($username){
-		$password = "thisisadummypassword";//$this->Users->getPassword($username);
 		$data['username'] = $username;
-		$data['password'] = $password;
 		echo $this->load->view('settings', $data);
 	}
 	
