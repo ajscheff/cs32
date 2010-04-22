@@ -31,6 +31,7 @@ class EmailHelper extends Controller {
 
 		//get the phone number that the email was sent from
 		$number = substr($_POST['from'], 0, 10);
+		$email = 
 
 		//if the phone number exists in our database
 		if ($this->Users->phoneExists($number) {
