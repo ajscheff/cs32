@@ -37,8 +37,5 @@ class EmailHelper extends Controller {
 		else {
 			//phone doesn't exist, send reply?
 		}
-
-		$this->Messages->validEmailReceived(1, 1, 'mobiteam', 'disregard');
-
 	}
 }
