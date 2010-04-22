@@ -22,13 +22,18 @@ class EmailHelper extends Controller {
 		$email = explode('<', $_POST['to'])[1];
 		$email = explode('@', $email)[0];
 
+		$this->db->set('from', $numberFrom);
+		$this->db->set('to', $email);
+		$this->db->set('message', $_POST['text']);
+		$this->db->insert('email_test');
+
 		//get the user and circle id's, will be 0 if they dont exist
 		$user_id = $this->Users->phoneExists('4015276563');
 		$circle_id = $this->Circles->circleExists('mobiteam');
 
 		//if the phone number exists in our database
 		if ($user_id != 0) {
-			if($circl_id != 0) {
+			if($circle_id != 0) {
 				$this->Messages->validEmailReceived($user_id, $circle_id, $_POST['text'];
 			}
 			else {
@@ -38,11 +43,6 @@ class EmailHelper extends Controller {
 		else {
 			//phone doesn't exist, send reply?
 		}
-
-		$this->db->set('from', $numberFrom);
-		$this->db->set('to', $email);
-		$this->db->set('message', $_POST['text']);
-		$this->db->insert('email_test');
 	}
 	
 	function test() {
