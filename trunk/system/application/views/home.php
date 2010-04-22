@@ -9,7 +9,7 @@
 						<a id="title" href="/index.php/welcome/index">mobi</a>
 						<p id="subtitle">mobile social networking</p>
 						<p id="userstatus">Hello, <?php echo $username ?>!</p>
-						<a id="settingsbutton" href="/index.php/settings/loadSettings">settings</a>
+						<?php echo'<a id="settingsbutton" href="/index.php/settings/loadSettings/'.$username.'">settings</a>';?>
 					</div>
 					<div class="divider" style="height: 3px; width: 100%;"/>
 					<table id="interactions">

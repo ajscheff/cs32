@@ -74,7 +74,7 @@ class Welcome extends Controller {
 			=circle2...
 			=circle3...
 	*/
-	protected function getCircles($username){
+/**	protected function getCircles($username){
 		$result;// = $this->Users->getCircles($username);
 		$rows = $result.row_array();
 		$cirlces;
@@ -88,6 +88,7 @@ class Welcome extends Controller {
 		}
 		return $circles;
 	}
+	*/
 	
 }
 

@@ -12,8 +12,8 @@ class Settings extends Controller {
 		echo $this->load->view('settings', $data);
 	}
 	
-	function changePassword(){
-		$username = $_POST['username'];
+	function changePassword($username){
+		$username = $username;
 		$oldPassword = $_POST['old_password'];
 		if($this->Users->passwordMatches($username, $oldPassword)){
 			$newPassword = $_POST['new_password'];
