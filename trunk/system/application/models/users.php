@@ -22,6 +22,16 @@ class Users extends Model {
 		$row = $query->row_array();
 		return !empty($row);
 	}
+
+	function phoneExists($phoneNumber){
+		$this->db->select('username');
+		$this->db->from('users');
+		$this->db->where('phone_number', $phoneNumber);
+		$query = $this->db->get();
+		
+		$row = $query->row_array();
+		return !empty($row);
+	}
 	
 	function passwordMatches($username, $password){
 		$this->db->select('password');
@@ -52,6 +62,4 @@ class Users extends Model {
 		$row = $query->row_array();
 		echo $row['privileges'];
 	}
-
-	
 }

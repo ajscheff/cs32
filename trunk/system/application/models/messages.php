@@ -30,6 +30,9 @@ class Messages extends Model {
 		$this->db->insert('messages');
 		
 		// get list of receivers
+
+
+		// sends email out
 		
 	}
 
