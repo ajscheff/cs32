@@ -39,7 +39,7 @@ class Circles extends Model {
 		$this->db->select('users.phone_number, providers.gateway');
 		$this->db->from('users');
 		$this->db->join('users_circles', 'users_circles.user_id = users.id');
-		$this->db->join('providers', 'users.provider_id = providers.id');
+		//$this->db->join('providers', 'users.provider_id = providers.id');
 		$this->db->where('users_circles.circle_id', $circle_id);
 
 		$query = $this->db->get();
