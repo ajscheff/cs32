@@ -29,7 +29,7 @@ class Messages extends Model {
 		$this->db->insert('messages');
 
 		$this->load->model('Circles');
-
+/*
 		$userPermissions = $this->Circles->getPermissions($user_id, $circle_id);
 
 		if (strcmp($userPermissions, 'reply_all')) {
@@ -47,6 +47,6 @@ class Messages extends Model {
 		}
 		// get list of receivers
 
-		// sends email out
+		// sends email out*/
 	}
 }
