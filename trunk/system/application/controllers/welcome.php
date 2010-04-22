@@ -47,18 +47,15 @@ class Welcome extends Controller {
 		}
 	}
 	
-	function sendEmail(){
-		$this->load->library('email');
-
-		$this->email->from('magartner@gmail.com', 'Your Name');
-		$this->email->to('marcus_gartner@brown.edu');
-
-		$this->email->subject('Email Test');
-		$this->email->message('Testing the email class.');
-
-		$this->email->send();
-
-		echo $this->email->print_debugger();
+	function quickTest(){
+		$this->db->select();
+		$this->db->from('users');
+		$this->db->where('username', 'ajscheff');
+		$query = $this->db->get();
+		
+		$row = $query->row_array();
+		if (!empty($row)) echo true;
+		else echo false;
 	}
 	
 	/**
