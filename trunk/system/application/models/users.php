@@ -21,17 +21,18 @@ class Users extends Model {
 		
 		$row = $query->row_array();
 		if (empty($row)) return 0;
-		else return $row[0]['id'];
+		else return $row['id'];
 	}
 
 	function phoneExists($phoneNumber){
-		$this->db->select('username');
+		$this->db->select('id');
 		$this->db->from('users');
 		$this->db->where('phone_number', $phoneNumber);
 		$query = $this->db->get();
 		
 		$row = $query->row_array();
-		return !empty($row);
+		if (empty($row)) return 0;
+		else return $row['id'];
 	}
 	
 	function passwordMatches($username, $password){
