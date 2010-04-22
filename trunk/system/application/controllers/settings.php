@@ -3,8 +3,7 @@
 
 class Settings extends Controller {
 
-	function loadSettings(){
-		$username = $_POST['username'];
+	function loadSettings($username){
 		$password = "thisisadummypassword";//$this->Users->getPassword($username);
 		$data['username'] = $username;
 		$data['password'] = $password;
@@ -14,13 +13,13 @@ class Settings extends Controller {
 	function changePassword(){
 		$username = $_POST['username'];
 		$oldPassword = $_POST['old_password'];
-		if($this->Users->passwordMatches($username, $oldPassword){
+		if($this->Users->passwordMatches($username, $oldPassword)){
 			$newPassword = $_POST['new_password'];
 			//code to change password in Model
-			return "password changed successfully";
+			echo "password changed successfully";
 		}
 		else{
-			return "password does not match. Please retry entering your password.";
+			echo "password does not match. Please retry entering your password.";
 		}
 	}
 	
