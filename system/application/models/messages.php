@@ -37,8 +37,8 @@ class Messages extends Model {
 		print_r($emailList[0]);
 
 		echo $circle_email.'@ombtp.com';
-		echo $contact['phone_number'].'@'.$contact['gateway'];
-		echo $message;
+		//echo $contact['phone_number'].'@'.$contact['gateway'];
+		//echo $message;
 
 /*
 		if (strcmp($userPermissions, 'reply_all')) {
