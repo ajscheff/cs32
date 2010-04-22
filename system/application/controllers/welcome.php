@@ -34,7 +34,7 @@ class Welcome extends Controller {
 		if($this->Users->usernameExists($username)){
 			if($this->Users->passwordMatches($username, $_POST['password'])){
 			$data['username'] = $username;
-			$data['circles'] = getCircles($username);
+			$data['circles'] = array(array("Friends", array("sboger", "ljabr")), array("Work", array("mgartner", "ascheff")));//getCircles($username);
 			echo $this->load->view('home', $data);
 		}
 		}
@@ -45,7 +45,7 @@ class Welcome extends Controller {
 	
 	function sendEmail(){
 		$this->load->library('email');
-
+tner
 		$this->email->from('magartner@gmail.com', 'Your Name');
 		$this->email->to('marcus_gartner@brown.edu');
 
@@ -71,14 +71,14 @@ class Welcome extends Controller {
 			=circle3...
 	*/
 	protected function getCircles($username){
-		$result = $this->Users->getCircles($username);
+		$result;// = $this->Users->getCircles($username);
 		$rows = $result.row_array();
 		$cirlces;
 		$i = 0;
 		foreach($rows as $element){
 			$circle;
 			$circle['name'] = $element['name'];
-			$circle['members'] = $this->Users->getMemebers($element['id']);
+			//$circle['members'] = $this->Users->getMemebers($element['id']);
 			$circles[$i] = $circle;
 			$i += 1;
 		}
