@@ -6,27 +6,37 @@
 			<div id="backshade">
 			<div id="panel">
 					<div id="masthead">
-						<a id="title" href="http://www.google.com">mobi</a>
-						<div id="logo"></div>
+						<a id="title" href="/index.php/welcome/index">mobi</a>
 						<p id="subtitle">mobile social networking</p>
+						<p id="userstatus">Hello, <?php echo $username ?>!</p>
+						<a id="settingsbutton" href="/index.php/settings/loadSettings">settings</a>
 					</div>
 					<div class="divider" style="height: 3px; width: 100%;"/>
 					<table id="interactions">
 					<tr>
 						<td id="circlelist">
 						<h4 style="margin-bottom: 10px;">Your circles:</h4>
-						<p id="selectedcircle" class="circle">mobi</p>
-						<p class="circle">mobi2</p>
-						<p class="circle">mobi3</p>
-						<p class="circle">mobi4</p>
-						
+							<?php foreach($circles as $circle) {
+								echo '<p class="circle">'.$circle['name'].'</p>';
+								}
+								?>
 						</td>
 						<td class="divider" style="width:3px; height=100%;"></td>
 						<td>
-
-						</td>
+							<h4>members:</h4>	
+							<?php foreach($circles[0]['members'] as $member) {
+								echo '<p class="member">'.$member.'</p>';
+								}
+							?>
+							<h4>recent message:<h4>
+							<?php foreach($circles[0]['messages'] as $message) {
+								echo '<p class="message">'.$message.'</p>';
+								}
+							?>
+							</td>
 					</tr>
 					</table>
+					<div id="whaleback"></div>
 			</div>
 			</div>
 			<div id="bottomshade"></div>
