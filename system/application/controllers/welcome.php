@@ -34,7 +34,7 @@ class Welcome extends Controller {
 		if($this->Users->usernameExists($username)){
 			if($this->Users->passwordMatches($username, $_POST['password'])){
 			$data['username'] = $username;
-			$data['circles'] = array(array("Friends", array("sboger", "ljabr")), array("Work", array("mgartner", "ascheff")));//getCircles($username);
+			$data['circles'] = array(array('name' => "Friends", 'members' => array("sboger", "ljabr")), array('name' => "Work", 'members' => array("mgartner", "ascheff")));//getCircles($username);
 			echo $this->load->view('home', $data);
 		}
 		}
