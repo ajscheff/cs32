@@ -1,6 +1,6 @@
 <?php
 
-class Cirlces extends Model {
+class Circles extends Model {
 
 	var $title   = '';
 	var $content = '';
