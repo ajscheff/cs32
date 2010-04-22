@@ -46,7 +46,7 @@ class EmailHelper extends Controller {
 	}
 	
 	function test() {
-		$this->load->model('Users');
-		$this->Users->getPermissions(1, 1);
+		$this->load->model('Messages');
+		$this->Messages->send('hi@ombtp.com', 'andyscheff@gmail.com', 'hello');
 	}
 }
