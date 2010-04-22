@@ -14,13 +14,13 @@ class Cirlces extends Model {
 	}
 	
 	function circleExists($email){
-		$this->db->select();
+		$this->db->select('id');
 		$this->db->from('circles');
 		$this->db->where('email', $email);
 		$query = $this->db->get();
 		
 		$row = $query->row_array();
-		return !empty($row);
+		if (empty($row)) return 0;
+		else return $row[0]['id'];
 	}
-
 }

@@ -14,13 +14,14 @@ class Users extends Model {
 	}
 	
 	function usernameExists($username){
-		$this->db->select();
+		$this->db->select('id');
 		$this->db->from('users');
 		$this->db->where('username', $username);
 		$query = $this->db->get();
 		
 		$row = $query->row_array();
-		return !empty($row);
+		if (empty($row)) return 0;
+		else return $row[0]['id'];
 	}
 
 	function phoneExists($phoneNumber){
