@@ -20,7 +20,7 @@ class Circles extends Model {
 		
 		$row = $query->row_array();
 
-		print_r($row);
+		echo $row['id'];
 
 		if (empty($row)) return 0;
 		else return $row[0]['id'];
