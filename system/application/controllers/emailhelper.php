@@ -18,18 +18,17 @@ class EmailHelper extends Controller {
 		$this->load->model('Messages');
 
 		//get the phone number that the email was sent from
-		$numberFrom = substr($_POST['from'], 1, 10);
-		$email = substr($_POST['to'], 0, strlen($_POST['to'])-10);
-		
-		$this->db->set('from', $numberFrom);
-		$this->db->set('to', $email);
-		$this->db->set('message', $_POST['text']);
-		$this->db->insert('email_test');
+		//$numberFrom = substr($_POST['from'], 1, 10);
+		//$email = substr($_POST['to'], 0, strlen($_POST['to'])-11);
 
 		//get the user and circle id's, will be 0 if they dont exist
 		$user_id = $this->Users->phoneExists('4015276563');
 		$circle_id = $this->Circles->circleExists('mobiteam');
 
+		echo $user_id;
+		echo $circle_id;
+
+		/*
 		//if the phone number exists in our database
 		if ($user_id != 0) {
 			if($circle_id != 0) {
@@ -41,7 +40,7 @@ class EmailHelper extends Controller {
 		}
 		else {
 			//phone doesn't exist, send reply?
-		}
+		}*/
 
 	}
 }
