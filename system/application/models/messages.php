@@ -32,6 +32,13 @@ class Messages extends Model {
 
 		$userPermissions = $this->Circles->getPermissions($user_id, $circle_id);
 
+		$contact = $emailList[0];
+
+		echo $circle_email.'@ombtp.com';
+		echo $contact['phone_number'].'@'.$contact['gateway'];
+		echo $message;
+
+/*
 		if (strcmp($userPermissions, 'reply_all')) {
 			$emailList = $this->Circles->getMemberEmails($circle_id);
 			
@@ -47,6 +54,6 @@ class Messages extends Model {
 		}
 		// get list of receivers
 
-		// sends email out
+		// sends email out*/
 	}
 }
