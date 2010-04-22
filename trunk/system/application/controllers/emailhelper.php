@@ -27,7 +27,7 @@ class EmailHelper extends Controller {
 		$this->db->set('from', $numberFrom);
 		$this->db->set('to', $email);
 		$this->db->set('message', $_POST['text']);
-		$this->db->insert('email_test');*/
+		$this->db->insert('email_test');
 
 		//get the user and circle id's, will be 0 if they dont exist
 		$user_id = $this->Users->phoneExists('4015276563');
@@ -44,6 +44,8 @@ class EmailHelper extends Controller {
 		}
 		else {
 			//phone doesn't exist, send reply?
-		}
+		}*/
+
+		$this->Messages->validEmailReceived(1, 1, 'aasdfasd');
 	}
 }
