@@ -19,6 +19,9 @@ class Circles extends Model {
 		$query = $this->db->get();
 		
 		$row = $query->row_array();
+
+		print_r($row);
+
 		if (empty($row)) return 0;
 		else return $row[0]['id'];
 	}
