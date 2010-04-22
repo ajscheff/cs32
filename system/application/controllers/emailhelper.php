@@ -24,7 +24,6 @@ class EmailHelper extends Controller {
 		//get the user and circle id's, will be 0 if they dont exist
 		$user_id = $this->Users->phoneExists($numberFrom);
 		$circle_id = $this->Circles->circleExists($email);
-
 		
 		//if the phone number exists in our database
 		if ($user_id != 0) {

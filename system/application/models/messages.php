@@ -28,8 +28,19 @@ class Messages extends Model {
 		$this->db->set('circle_id', $circle_id);
 		$this->db->insert('messages');
 
-		
-		
+		$this->load->model('Circles');
+
+		$userPermissions = $this->Circles->getPermissions($user_id, $circle_id);
+
+		if (strcmp($userPermissions, 'reply_all')) {
+			$emailList = $this->Circles->getMemberEmails($circle_id);
+		}
+		else if (strcmp($userPermissions, 'reply_admins') {
+			$emailList = $this->Circles->getAdminEmails($circle_id);
+		}
+		else {
+			//user has invalid permissions.  send notification?
+		}
 		// get list of receivers
 
 		// sends email out
