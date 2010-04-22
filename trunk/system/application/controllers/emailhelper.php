@@ -9,44 +9,35 @@ class EmailHelper extends Controller {
 		parent::Controller();		
 	}
 	
-	function send(){
-		$this->load->library('email');
-
-		$this->email->from('test@ombtp.com', 'Test');
-		$this->email->to('andyscheff@gmail.com'); 
-		
-		$this->email->subject('Email Test');
-		$this->email->message('Testing the email class.');	
-		
-		$this->email->send();
-		
-		echo $this->email->print_debugger();
-	}
 	
 	function receive(){
 	
 		$this->load->database();
 		$this->load->model('Users');
 		$this->load->model('Circles');
+		$this->load->model('Messages');
 
 		//get the phone number that the email was sent from
-		$number = substr($_POST['from'], 0, 10);
-		$email = '';
+		$numberFrom = substr($_POST['from'], 0, 10);
+		$email = explode('<', $_POST['to'])[1];
+		$email = explode('@', $email)[0];
+
+		//get the user and circle id's, will be 0 if they dont exist
+		$user_id = $this->Users->phoneExists($number);
+		$circle_id = $this->Circles->circleExists($email);
 
 		//if the phone number exists in our database
-		if ($this->Users->phoneExists($number) {
-
-			
+		if ($user_id != 0) {
+			if($circl_id != 0) {
+				$this->Messages->validEmailReceived($user_id, $circle_id, $_POST['text'];
+			}
+			else {
+				//circle doesn't exists.. send reply?
+			}
 		}
 		else {
 			//phone doesn't exist, send reply?
 		}
-		
-		$this->db->set('to', $_POST['to']);
-		$this->db->set('from', $_POST['from']);
-		$this->db->set('message', $_POST['text']);
-		$this->db->insert('email_test');
-		
 	}
 	
 	function test() {

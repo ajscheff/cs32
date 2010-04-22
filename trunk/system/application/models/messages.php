@@ -17,23 +17,21 @@ class Messages extends Model {
 	function send($from, $to, $message){
 		$this->email->from($from);
 		$this->email->to($to); 
-		//$this->email->subject('Email Test');
 		$this->email->message($message);	
 		$this->email->send();
 	}
 	
-	function validEmailReceived($user_id, $circle_id, $message, $time) {
+	function validEmailReceived($user_id, $circle_id, $message) {
 		// insert message into database
 		$this->db->set('text', $message);
 		$this->db->set('user_id', $user_id);
 		$this->db->set('circle_id', $circle_id);
 		$this->db->insert('messages');
+
+		
 		
 		// get list of receivers
 
-
 		// sends email out
-		
 	}
-
 }
