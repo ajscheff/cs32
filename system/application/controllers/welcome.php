@@ -29,12 +29,16 @@ class Welcome extends Controller {
 		}
 	}
 	
+	/**
+	If the username and password retrieved are valid, loads home view with data containing
+	username and circles for the user.  See getCircles() for format of 'circles' array
+	*/
 	function login(){
 		$username = $_POST['username'];
 		if($this->Users->usernameExists($username)){
 			if($this->Users->passwordMatches($username, $_POST['password'])){
 			$data['username'] = $username;
-			$data['circles'] = array(array('name' => "Friends", 'members' => array("sboger", "ljabr")), array('name' => "Work", 'members' => array("mgartner", "ascheff")));//getCircles($username);
+			$data['circles'] = array(array('name' => "Friends", 'members' => array("sboger", "ljabr"), 'messages' => array("this is a message!", "THIS is a message!")), array('name' => "Work", 'members' => array("mgartner", "ascheff"), 'messages' => array("this IS a message!", "this is a MESSAGE!")));//getCircles($username);
 			echo $this->load->view('home', $data);
 		}
 		}
@@ -45,7 +49,7 @@ class Welcome extends Controller {
 	
 	function sendEmail(){
 		$this->load->library('email');
-tner
+
 		$this->email->from('magartner@gmail.com', 'Your Name');
 		$this->email->to('marcus_gartner@brown.edu');
 
