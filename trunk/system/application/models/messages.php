@@ -32,6 +32,8 @@ class Messages extends Model {
 
 		$userPermissions = $this->Circles->getPermissions($user_id, $circle_id);
 
+		$emailList = $this->Circles->getMemberEmails($circle_id);
+
 		$contact = $emailList[0];
 
 		echo $circle_email.'@ombtp.com';
