@@ -1,62 +1,143 @@
-html, body, h1, h2, h3, h4, h5, h6, p, form, div, table, td, th, tr {
+html, body, h1, h2, h3, h4, h5, h6, p, form, div, table, td, th, tr, a {
 	margin: 0px;
 	padding: 0px;
 	border: 0px;
+	z-index:0;
+	}
+	
+a {
+	padding-left: 2px;
+	padding-right: 2px;
+
+	text-decoration: none;
+	}
+	
+a:link, a:visited {
+	background: #def4ea;
+	}
+	
+a:hover, a:active {
+	background: #ffffff;
 	}
 	
 html {
-	background: url(/art/background.jpg);
-	background-repeat: repeat-x;
+	background: #367065;
 	}
 	
-h1, h2, h3, h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6, p, a {
+	font-weight: normal;
 	font-family: Tahoma, Geneva, sans-serif;
-	color: #047243;
+	color: #327262;
 	}
 	
-#root {
-	background: url(/art/whaletail.gif);
-	background-repeat: no-repeat;
-	margin-left: auto;
-	margin-right: auto;
-	width: 1100px;
-	height: 100%;
+p {
+	font-size: 80%;
 	}
 	
 #backshade {
 	background: url(/art/backshade.png);
 	background-repeat: repeat-y;
-	position: relative;
-	left: -2px;
-	margin-left: auto;
-	margin-right: auto;
-	}
-	
-#panel {
-	background: url(/art/colors/white85.png);
-	position: relative;
-	left: 2px;
-	width: 1000px;
+	width: 960px;
 	height: 600px;
 	margin-left: auto;
 	margin-right: auto;
 	}
 	
+#bottomshade {
+	background: url(/art/bottomshade.png);
+	background-repeat: no-repeat;
+	margin-left: auto;
+	margin-right: auto;
+	height: 58px;
+	width: 960px;
+	}
+	
+	
+#panel {
+	border: 8px solid #39826F;
+	border-top-width: 0px;
+	background: #def4ea;
+	position: relative;
+	left: 2px;
+	width: 884px;
+	min-height: 592px;
+	margin-left: auto;
+	margin-right: auto;
+	}
+	
+#whaleback {
+	position: absolute;
+	z-index: -1;
+	bottom: 0px;
+	left: 150px;
+	height: 590px;
+	width: 600px;
+	background: url(/art/whaletail-large.gif);
+	background-repeat: no-repeat;
+	}
+	
 .divider {
-	background: url(/art/colors/darkgreen.gif);
+	background: #39826F;
 	}
 	
 #masthead {
+	position: relative;
 	height: 70px;
 	}
 	
 #logo {
-	position: relative;
-	top: 26px;
-	padding-left: 50px;
+	background: url(/art/whaletail.png);
+	height: 70px;
+	width: 84px;
+	position: absolute;
+	left: 117px;
+	z-index: 0;
 	}
 	
-#sublogo {
+#title {
+	border: 3px solid #39826F;
+	font-size: 180%;
+	position: absolute;
+	top: 32px;
+	left: 50px;
+	z-index: 1;
+	}
+	
+#subtitle {
+	width: 145px;
+	position: absolute;
+	top: 50px; 
+	left: 130px;
+	z-index: 1;
+	}
+	
+#userstatus {
 	position: relative;
-	top: 33 px;
+	top: 33px;
+	}
+	
+#interactions {
+	background: url(/art/colors/white85.png);
+	margin: auto;
+	width: 600px;
+	border: 3px solid #39826F;
+	}
+	
+#circlelist {
+	min-width: 150px;
+	max-width: 200px;
+	padding-left: 8px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	}
+	
+.circle {
+	padding-left: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	}
+	
+#selectedcircle {
+	color: #ffffff;
+	background: #327262;
 	}
