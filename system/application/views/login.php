@@ -6,7 +6,7 @@
 			<div id="backshade">
 			<div id="panel">
 					<div id="masthead">
-						<a id="title" href="http://www.google.com">mobi</a>
+						<a id="title" href="/index.php/welcome/index">mobi</a>
 						<p id="subtitle">mobile social networking</p>
 					</div>
 					<div class="divider" style="height: 3px; width: 100%;"/>
