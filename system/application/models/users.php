@@ -14,7 +14,7 @@ class Users extends Model {
 	}
 	
 	function usernameExists($username){
-		$this->db->select('username');
+		$this->db->select();
 		$this->db->from('users');
 		$this->db->where('username', $username);
 		$query = $this->db->get();

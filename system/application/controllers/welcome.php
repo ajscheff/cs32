@@ -47,17 +47,6 @@ class Welcome extends Controller {
 		}
 	}
 	
-	function quickTest(){
-		$this->db->select();
-		$this->db->from('users');
-		$this->db->where('username', 'ajscheff');
-		$query = $this->db->get();
-		
-		$row = $query->row_array();
-		if (!empty($row)) echo 'true';
-		else echo 'false';
-	}
-	
 	/**
 		returns an array of circles for the username passed in.  A function with the same name
 		is called on the Model, and the resulting data is packaged and returned in the following
