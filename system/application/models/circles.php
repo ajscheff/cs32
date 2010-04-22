@@ -13,10 +13,10 @@ class Cirlces extends Model {
 		$this->load->database();
 	}
 	
-	function circleExists(){
-		$this->db->select('username');
-		$this->db->from('users');
-		$this->db->where('username', $username);
+	function circleExists($email){
+		$this->db->select('name');
+		$this->db->from('circles');
+		$this->db->where('email', $email);
 		$query = $this->db->get();
 		
 		$row = $query->row_array();

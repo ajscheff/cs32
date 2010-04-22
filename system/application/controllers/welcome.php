@@ -54,8 +54,8 @@ class Welcome extends Controller {
 		$query = $this->db->get();
 		
 		$row = $query->row_array();
-		if (!empty($row)) echo true;
-		else echo false;
+		if (!empty($row)) echo 'true';
+		else echo 'false';
 	}
 	
 	/**
