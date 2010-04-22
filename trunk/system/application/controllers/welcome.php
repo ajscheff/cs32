@@ -46,13 +46,6 @@ class Welcome extends Controller {
 			echo 'You\'re username did not match that password!';
 		}
 	}
-
-	function quickTest(){
-		$this->load->model('Messages');
-
-		$this->Messages->validEmailReceived(1, 1, 'fasfasdasdfasdfsdfa');
-
-	}
 	
 	/**
 		returns an array of circles for the username passed in.  A function with the same name
