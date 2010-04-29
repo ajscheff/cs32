@@ -32,6 +32,7 @@ class EmailHelper extends Controller {
 
 		echo $user_id;
 		echo $circle_id;
+		echo 'dafksda';
 		
 		//if the phone number exists in our database
 		if ($user_id != 0) {
