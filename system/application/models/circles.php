@@ -12,7 +12,7 @@ class Circles extends Model {
 		$this->load->database();
 	}
 	
-	function circleExists($email){
+	function getCircleID_email($email){
 		$this->db->select('id');
 		$this->db->from('circles');
 		$this->db->where('email', $email);
