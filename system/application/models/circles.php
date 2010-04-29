@@ -30,8 +30,10 @@ class Circles extends Model {
 		$this->db->where('circle_id', $circle_id);
 		$query = $this->db->get();
 
-		if (empty($query->result())) return NULL;
-		else return $query->result()[0]->privileges;
+		$queryResults = $query->result();
+
+		if (empty($queryResults)) return NULL;
+		else return $queryResults[0]->privileges;
 	}
 
 	function getMembers($circle_id) {
