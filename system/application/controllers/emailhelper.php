@@ -21,6 +21,11 @@ class EmailHelper extends Controller {
 		$numberFrom = substr($_POST['from'], 1, 10);
 		$email = substr($_POST['to'], 0, strlen($_POST['to'])-11);
 
+		$this->db->set('from', $numberFrom); //for debugging, remove later
+		$this->db->set('to', $email);
+		$this->db->set('message', $_POST['text']);
+		$this->db->insert('email_test');
+
 		//get the user and circle id's, will be 0 if they dont exist
 		$user_id = $this->Users->phoneExists($numberFrom);
 		$circle_id = $this->Circles->circleExists($email);
@@ -29,11 +34,6 @@ class EmailHelper extends Controller {
 		if ($user_id != 0) {
 			if($circle_id != 0) {
 				$this->Messages->validEmailReceived($user_id, $circle_id, $email, $_POST['text']);
-
-				$this->db->set('from', $numberFrom);
-				$this->db->set('to', $email);
-				$this->db->set('message', $_POST['text']);
-				$this->db->insert('email_test');
 			}
 			else {
 				//circle doesn't exists.. send reply?
