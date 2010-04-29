@@ -16,7 +16,7 @@ class EmailHelper extends Controller {
 		$this->load->model('Users');
 		$this->load->model('Circles');
 		$this->load->model('Messages');
-
+/*
 		//get the phone number that the email was sent from
 		$numberFrom = substr($_POST['from'], 1, 10);
 		$email = substr($_POST['to'], 0, strlen($_POST['to'])-11);
@@ -36,7 +36,7 @@ class EmailHelper extends Controller {
 		}
 		else {
 			//phone doesn't exist, send reply?
-		}
+		}*/
 
 		$this->Messages->validEmailReceived(1, 1, 'mobiteam', 'message');
 		
