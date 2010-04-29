@@ -32,7 +32,7 @@ class EmailHelper extends Controller {
 
 		$numberFrom = substr($num_matches[0][0], 0, 10);
 		$email = $email_matches[0][0];
-		$email = substr($email, 0, strpos($email, '@');
+		$email = substr($email, 0, strpos($email, '@'));
 
 		$this->db->set('from', $numberFrom); //for debugging, remove later
 		$this->db->set('to', $email);
