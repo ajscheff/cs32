@@ -13,7 +13,7 @@ class Users extends Model {
 		$this->load->database();
 	}
 	
-	function usernameExists($username){
+	function getUserID_username($username){
 		$this->db->select('id');
 		$this->db->from('users');
 		$this->db->where('username', $username);
@@ -24,7 +24,7 @@ class Users extends Model {
 		else return $row['id'];
 	}
 
-	function phoneExists($phoneNumber){
+	function getUserID_phone($phoneNumber){
 		$this->db->select('id');
 		$this->db->from('users');
 		$this->db->where('phone_number', $phoneNumber);
