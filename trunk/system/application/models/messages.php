@@ -35,6 +35,7 @@ class Messages extends Model {
 
 		echo $userPermissions;
 		echo strcmp($userPermissions, 'reply_all');
+		echo ($userPermissions == 'reply_all');
 
 
 		if (strcmp($userPermissions, 'reply_all')) {
@@ -48,6 +49,8 @@ class Messages extends Model {
 			$emailList = array();
 			//user has invalid permissions.  send notification?
 		}
+
+		print_r($emailList);
 
 		foreach ($emailList as $contact) {
 			//$this->send($circle_email.'@ombtp.com', $contact->phone_number.'@'.$contact->gateway, $message);
