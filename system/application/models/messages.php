@@ -33,6 +33,8 @@ class Messages extends Model {
 
 		$userPermissions = $this->Circles->getPermissions($user_id, $circle_id);
 
+		echo $userPermissions;
+		echo strcmp($userPermissions, 'reply_all');
 
 
 		if (strcmp($userPermissions, 'reply_all')) {
@@ -48,7 +50,7 @@ class Messages extends Model {
 		}
 
 		foreach ($emailList as $contact) {
-			$this->send($circle_email.'@ombtp.com', $contact->phone_number.'@'.$contact->gateway, $message);
+			//$this->send($circle_email.'@ombtp.com', $contact->phone_number.'@'.$contact->gateway, $message);
 		}
 	}
 }
