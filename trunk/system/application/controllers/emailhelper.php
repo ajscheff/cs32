@@ -28,13 +28,12 @@ class EmailHelper extends Controller {
 		//if the phone number exists in our database
 		if ($user_id != 0) {
 			if($circle_id != 0) {
-				//$this->Messages->validEmailReceived($user_id, $circle_id, $email, $_POST['text']);
+				$this->Messages->validEmailReceived($user_id, $circle_id, $email, $_POST['text']);
 
-		$this->db->set('from', $numberFrom);
-		$this->db->set('to', $email);
-		$this->db->set('message', $_POST['text']);
-		$this->db->insert('email_test');
-
+				$this->db->set('from', $numberFrom);
+				$this->db->set('to', $email);
+				$this->db->set('message', $_POST['text']);
+				$this->db->insert('email_test');
 			}
 			else {
 				//circle doesn't exists.. send reply?
