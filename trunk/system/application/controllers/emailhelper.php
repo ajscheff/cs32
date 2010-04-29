@@ -23,8 +23,16 @@ class EmailHelper extends Controller {
 		$this->db->insert('email_test');
 
 		//get the phone number that the email was sent from
-		$numberFrom = substr($_POST['from'], 1, 10);
-		$email = substr($_POST['to'], 0, strlen($_POST['to'])-11);
+
+		$regex_pattern_num = "/[0-9]{10}@/";
+		preg_match_all($regex_pattern_num, $_POST['from'], $num_matches);
+
+		$regex_pattern_email = "/[a-zA-Z0-9]*@ombtp.com/";
+		preg_match_all($regex_pattern_email, $_POST['to'], $email_matches);
+
+		$numberFrom = substr($num_matches[0][0], 0, 10);
+		$email = $email_matches[0][0];
+		$email = substr($email, 0, strpos($email, '@');
 
 		$this->db->set('from', $numberFrom); //for debugging, remove later
 		$this->db->set('to', $email);
