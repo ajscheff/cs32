@@ -33,16 +33,12 @@ class Messages extends Model {
 
 		$userPermissions = $this->Circles->getPermissions($user_id, $circle_id);
 
-		echo $userPermissions;
-		echo strcmp($userPermissions, 'reply_all');
-		echo ($userPermissions == 'reply_all');
-
-
-		if (strcmp($userPermissions, 'reply_all')) {
+		if ($userPermissions == 'reply_all') {
 			echo 'reply all';
 			$emailList = $this->Circles->getMembers($circle_id);
 		}
-		else if (strcmp($userPermissions, 'reply_admins')) {
+		else if ($userPermissions == 'reply_admins')) {
+			echo 'reply admins';
 			$emailList = $this->Circles->getAdmins($circle_id);
 		}
 		else {
@@ -50,7 +46,13 @@ class Messages extends Model {
 			//user has invalid permissions.  send notification?
 		}
 
+		echo '\n';
+
 		print_r($emailList);
+
+		echo '\n';
+
+		echo $message;
 
 		foreach ($emailList as $contact) {
 			//$this->send($circle_email.'@ombtp.com', $contact->phone_number.'@'.$contact->gateway, $message);
