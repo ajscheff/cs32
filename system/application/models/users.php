@@ -13,6 +13,9 @@ class Users extends Model {
 		$this->load->database();
 	}
 	
+	/**
+	 * This method takes a username as a parameter
+	 */
 	function getUserID_username($username){
 		$this->db->select('id');
 		$this->db->from('users');
@@ -24,7 +27,7 @@ class Users extends Model {
 		else return $row['id'];
 	}
 
-	function getUserID_phone($phoneNumber){
+	function getUserID_phone($phone_number){
 		$this->db->select('id');
 		$this->db->from('users');
 		$this->db->where('phone_number', $phoneNumber);
@@ -47,10 +50,19 @@ class Users extends Model {
 		else return false;
 	}
     
-	function createUser($username, $password)
+	function createStubUser($phone_number, $provider_id)
 	{
+		$this->db->set('phone_number', $phone_number);
+		$this->db->set('provider_id', $provider_id);
+		$this->db->insert('users');
+	}
+	
+	function createFullUser($username, $password, $phone_number, $provider_id, $public_name) {
 		$this->db->set('username', $username);
 		$this->db->set('password', $password);
-		$this->db->insert('users');
+		$this->db->set('phone_number', $phone_number);
+		$this->db->set('provider_id', $provider_id);
+		$this->db->set('public_name', $public_name);
+		$this->db->insert('users');	
 	}
 }
