@@ -42,19 +42,24 @@ class EmailHelper extends Controller {
 		//get the user and circle id's, will be 0 if they dont exist
 		$user_id = $this->Users->getUserID_phone($numberFrom);
 		$circle_id = $this->Circles->getCircleID_email($email);
+		
+		if ($this->Circles->isMember($user_id, $circle_id)) {
 
-		//if the phone number exists in our database
-		if ($user_id != 0) {
-			if($circle_id != 0) {
-				$this->Messages->validEmailReceived($user_id, $circle_id, $email, $_POST['text']);
+			//if the phone number exists in our database
+			if ($user_id != 0) {
+				if($circle_id != 0) {
+					$this->Messages->validMessageReceived($user_id, $circle_id, $email, $_POST['text']);
+				}
+				else {
+					//circle doesn't exists.. send reply?
+				}
 			}
 			else {
-				//circle doesn't exists.. send reply?
+				//phone doesn't exist, send reply?
 			}
 		}
 		else {
-			//phone doesn't exist, send reply?
+			//user is not a member of the circle, send reply?
 		}
-		
 	}
 }

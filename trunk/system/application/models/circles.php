@@ -58,4 +58,17 @@ class Circles extends Model {
 		$query = $this->db->get();
 		return $query->result();
 	}	
+	
+	function isMember($user_id, $circle_id) {
+		
+		$this->db->select();
+		$this->db->from('users_circles');
+		$this->db->where('circle_id', $circle_id);
+		$this->db->where('user_id', $user_id);
+		$query = $this->db->get();
+		
+		$results = $query->result();
+		
+		return (!empty($results));
+	}
 }

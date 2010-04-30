@@ -21,7 +21,7 @@ class Messages extends Model {
 		$this->email->send();
 	}
 	
-	function validEmailReceived($user_id, $circle_id, $circle_email, $message) {
+	function validMessageReceived($user_id, $circle_id, $circle_email, $message) {
 
 		// insert message into database
 		$this->db->set('text', $message);
