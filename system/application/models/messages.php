@@ -45,7 +45,9 @@ class Messages extends Model {
 		}
 
 		foreach ($emailList as $contact) {
-			$this->send($circle_email.'@ombtp.com', $contact->phone_number.'@'.$contact->gateway, $message);
+			if ($user_id != $contact->user_id) {
+				$this->send($circle_email.'@ombtp.com', $contact->phone_number.'@'.$contact->gateway, $message);
+			}
 		}
 	}
 }
