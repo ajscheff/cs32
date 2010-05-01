@@ -1,30 +1,50 @@
-html, body, h1, h2, h3, h4, h5, h6, p, form, div, table, td, th, tr, a {
+html, body, h1, h2, h3, h4, h5, h6, p, form, div, table, td, th, tr, a, input {
 	margin: 0px;
 	padding: 0px;
 	border: 0px;
 	z-index:0;
+	font-weight: normal;
+	font-family: Tahoma, Geneva, sans-serif;
+	color: #327262;
 	}
 	
 a {
-	padding-left: 2px;
-	padding-right: 2px;
-
+	padding: 3px;
+	font-size: 75%;
 	text-decoration: none;
 	}
 	
 a:link, a:visited {
-	background: #def4ea;
+	color: white;
+	background: #327262;
 	}
 	
 a:hover, a:active {
-	background: #ffffff;
+	color: #327262;
+	background: none;
 	}
+	
+input {
+	padding: 2px;
+	}
+	
+input.button {
+	  color: #ffffff;
+	  background-color: #327262;
+	  border:none;
+	  }
+	 
+input.button:hover {
+	  color: #327262; 
+	  background: none;
+	  cursor: pointer;
+	  }
 	
 html {
 	background: #367065;
 	}
 	
-h1, h2, h3, h4, h5, h6, p, a {
+h1, h2, h3, h4, h5, h6, p, a, input {
 	font-weight: normal;
 	font-family: Tahoma, Geneva, sans-serif;
 	color: #327262;
@@ -51,7 +71,6 @@ p {
 	height: 58px;
 	width: 960px;
 	}
-	
 	
 #panel {
 	border: 8px solid #39826F;
@@ -95,12 +114,21 @@ p {
 	}
 	
 #title {
+	padding: 0px;
+	padding-left: 2px;
+	padding-right: 2px;
+	background: none;
+	color: #327262;
 	border: 3px solid #39826F;
 	font-size: 180%;
 	position: absolute;
 	top: 32px;
 	left: 50px;
 	z-index: 1;
+	}
+	
+#title:hover {
+	background: white;
 	}
 	
 #subtitle {
@@ -112,32 +140,31 @@ p {
 	}
 	
 #userstatus {
-	position: relative;
-	top: 33px;
+	position: absolute;
+	top: 52px;
+	left: 600px;
+	}
+	
+#settingsbutton {
+	position: absolute;
+	left: 700px;
+	top: 48px;
+	border: 2px solid #39826F;
 	}
 	
 #interactions {
+	position: relative;
 	background: url(/art/colors/white85.png);
 	margin: auto;
+	height: 300px;
 	width: 600px;
 	border: 3px solid #39826F;
 	}
 	
-#circlelist {
-	min-width: 150px;
-	max-width: 200px;
-	padding-left: 8px;
-	padding-top: 8px;
-	padding-bottom: 8px;
-	}
-	
-.circle {
-	padding-left: 5px;
-	padding-top: 3px;
-	padding-bottom: 3px;
-	}
-	
-#selectedcircle {
-	color: #ffffff;
-	background: #327262;
+#misc {
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 75%;
+	width: 265px;
+	margin-top: 5px;
 	}
