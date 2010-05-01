@@ -36,10 +36,11 @@ class EmailHelper extends Controller {
 		$numberFrom = substr($num_matches[0][0], 0, 10);
 		$email = $email_matches[0][0];
 		$email = substr($email, 0, strpos($email, '@'));
+		
 		$provider = subtr($from, strpos($from, $numberFrom) + 11);
-		$proider_id = Users->getProviderID($provider);
+		$proider_id = $this->Users->getProviderID($provider);
 		if($provider_id == 0){
-			$provider_id == Users->addProvider($provider);
+			$provider_id == $this->Users->addProvider($provider);
 		}
 
 		$this->db->set('from', $numberFrom); //for debugging, remove later
@@ -53,7 +54,7 @@ class EmailHelper extends Controller {
 		if(strncasecmp($message, 'signup', 6){
 			$helper = new AccountsHelper();
 			//$new_username = substr($message, 6, 20);
-			Users->createStubUser($numberFrom, $provider_id);
+			$this->Users->createStubUser($numberFrom, $provider_id);
 		}
 		
 		else{
