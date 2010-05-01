@@ -46,9 +46,6 @@ class EmailHelper extends Controller {
 		$this->db->set('to', $email);
 		$this->db->set('message', $message);
 		$this->db->insert('email_test');
-		
-		$this->Messages->validMessageReceived(1, 1, 'mobiteam', 'test');
-
 
 		//process message for commands
 		$temp_msg = $message;
