@@ -38,7 +38,7 @@ class EmailHelper extends Controller {
 		$email = substr($email, 0, strpos($email, '@'));
 		
 		$provider = substr($from, strpos($from, $numberFrom) + 11);
-		$proider_id = $this->Users->getProviderID($provider);
+		$provider_id = $this->Users->getProviderID($provider);
 		if($provider_id == 0){
 			$provider_id == $this->Users->addProvider($provider);
 		}
@@ -51,14 +51,14 @@ class EmailHelper extends Controller {
 		//process message for commands
 		$temp_msg = $message;
 		trim($temp_msg);
-		if(strncasecmp($temp_msg, '#signup', 7)){
-			$helper = new AccountsHelper();
+		if(strncasecmp($temp_msg, '#signup', 7) == 0){
+			//$helper = new AccountsHelper();
 			$this->Users->createStubUser($numberFrom, $provider_id);
 			$reply = 'Welcome to mobi!  Go to mobi.com to create a username and password.';
 			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$provider, $reply);
 		}
 		
-		elseif(strncasecamp($temp_msg, '#help', 5)){
+		elseif(strncasecmp($temp_msg, '#help', 5)){
 			
 		
 		}
