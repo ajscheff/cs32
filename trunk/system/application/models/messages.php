@@ -22,6 +22,11 @@ class Messages extends Model {
 	}
 	
 	function validMessageReceived($user_id, $circle_id, $circle_email, $message) {
+	
+		$pattern_1 = "/1 of [0-9]*/";
+		preg_replace($pattern1, '', $message);
+		$pattern_2 = "/-*Original Message-*.*/"
+		preg_replace($pattern_2, '', $message);
 
 		// insert message into database
 		$this->db->set('text', $message);
