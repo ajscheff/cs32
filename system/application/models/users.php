@@ -71,6 +71,28 @@ class Users extends Model {
 		return $this->getUserID_phone($phone_number);
 	}
 	
+	function getProviderID($gateway) {
+		
+		$this->db->select('id');
+		$this->db->from('providers');
+		$this->db->where('gateway', $gateway);
+		
+		$query = $this->db->select();
+		
+		$rows = $query->result();
+		if (empty($rows)) return 0;
+		else return $rows[0]->id;
+	}
+	
+	function addProvider($gateway) {
+	
+		$this->db->set('name', $gateway);
+		$this->db->set('gateway', $gateway);
+		$this->db->insert('providers');
+		
+		return $this->getProviderID($gateway);
+	}
+	
 	function createFullUser($username, $password, $phone_number, $provider_id, $public_name) {
 		$this->db->set('username', $username);
 		$this->db->set('password', $password);
