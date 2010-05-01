@@ -1,0 +1,32 @@
+#login {
+	position: absolute;
+	left: 375px;
+	top: 45px;
+	}
+	
+#welcome {
+	position: absolute;
+	top: 30px;
+	left: 50px;
+	}
+	
+#summary {
+	text-align: justify;
+	font-size: 100%;
+	width: 250px;
+	position: absolute;
+	top: 75px;
+	left: 50px;
+	}
+	
+#learn {
+	position: absolute;
+	top: 150px;
+	left: 100px;
+	}
+	
+#sign {
+	position: absolute;
+	top: 150px;
+	left: 170px;
+	}
