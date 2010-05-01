@@ -54,6 +54,8 @@ class EmailHelper extends Controller {
 		if(strncasecmp($message, '#signup', 7){
 			$helper = new AccountsHelper();
 			$this->Users->createStubUser($numberFrom, $provider_id);
+			$message = 'Welcome to mobi!  Go to mobi.com to create a username and password.';
+			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$provider, $message);
 		}
 		
 		else{
