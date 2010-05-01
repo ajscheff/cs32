@@ -67,5 +67,9 @@ class Messages extends Model {
 		$this->db->from('messages');
 		$this->db->join('users', messages.user_id = users.id);
 		$this->db->limit($first_message, $number);	
+		
+		$query = $this->db->get();
+		
+		return $query->result;
 	}
 }

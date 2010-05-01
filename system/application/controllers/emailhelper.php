@@ -16,7 +16,7 @@ class EmailHelper extends Controller {
 		$this->load->model('Users');
 		$this->load->model('Circles');
 		$this->load->model('Messages');
-
+/*
 		$this->db->set('from', $_POST['from']); //for debugging, remove later
 		$this->db->set('to', $_POST['to']);
 		$this->db->set('message', $_POST['text']);
@@ -37,15 +37,18 @@ class EmailHelper extends Controller {
 		$this->db->set('from', $numberFrom); //for debugging, remove later
 		$this->db->set('to', $email);
 		$this->db->set('message', $_POST['text']);
-		$this->db->insert('email_test');
+		$this->db->insert('email_test');*/
 		
 		
 		$this->Messages->validMessageReceived(1, 1, 'mobiteam', 'test');
 
+		$numberFrom = '4015276563';
+		$email = 'andymarcus';
+
 		//get the user and circle id's, will be 0 if they dont exist
 		$user_id = $this->Users->getUserID_phone($numberFrom);
 		$circle_id = $this->Circles->getCircleID_email($email);
-		
+				
 		if ($this->Circles->isMember($user_id, $circle_id)) {
 
 			//if the phone number exists in our database
