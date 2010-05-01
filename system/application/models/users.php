@@ -22,9 +22,9 @@ class Users extends Model {
 		$this->db->where('username', $username);
 		$query = $this->db->get();
 		
-		$row = $query->row_array();
-		if (empty($row)) return 0;
-		else return $row['id'];
+		$rows = $query->result();
+		if (empty($rows)) return 0;
+		else return $rows[0]->id;
 	}
 
 	function getUserID_phone($phone_number){
@@ -33,9 +33,21 @@ class Users extends Model {
 		$this->db->where('phone_number', $phoneNumber);
 		$query = $this->db->get();
 		
-		$row = $query->row_array();
-		if (empty($row)) return 0;
-		else return $row['id'];
+		$rows = $query->result();
+		if (empty($rows)) return 0;
+		else return $rows[0]->id;
+	}
+	
+	function getUsername($user_id) {
+		$this->db->select('username');
+		$this->db->from('users');
+		$this->db->where('users.id', $user_id);
+		
+		$query = $this->db->get();
+		
+		$rows = $query->result();
+		if (empty($rows)) return NULL;
+		else return $rows[0]->username;
 	}
 	
 	function passwordMatches($username, $password){
@@ -44,9 +56,9 @@ class Users extends Model {
 		$this->db->where('username', $username);
 		$query = $this->db->get();
 		
-		$row = $query->row_array();
-		if(sizeof($row) == 1)
-			return ($password == $row['password']);
+		$rows = $query->result();
+		if(sizeof($rows) == 1)
+			return ($password == $rows[0]->password);
 		else return false;
 	}
     
@@ -55,6 +67,8 @@ class Users extends Model {
 		$this->db->set('phone_number', $phone_number);
 		$this->db->set('provider_id', $provider_id);
 		$this->db->insert('users');
+		
+		return $this->getUserID_phone($phone_number);
 	}
 	
 	function createFullUser($username, $password, $phone_number, $provider_id, $public_name) {
@@ -64,5 +78,7 @@ class Users extends Model {
 		$this->db->set('provider_id', $provider_id);
 		$this->db->set('public_name', $public_name);
 		$this->db->insert('users');	
+		
+		return $this->getUserID_username($username);
 	}
 }
