@@ -54,7 +54,7 @@ class Messages extends Model {
 	function getMessages_circle($circle_id, $first_message, $number) {
 		$this->db->select('messages.user_id, users.public_name, messages.text, messages.timestamp');
 		$this->db->from('messages');
-		$this->db->join('users', messages.user_id = users.id);
+		$this->db->join('users', 'messages.user_id = users.id');
 		$this->db->limit($first_message, $number);
 		
 		$query = $this->db->get();
@@ -65,7 +65,7 @@ class Messages extends Model {
 	function getMessages_user($user_id, $first_message, $number) {
 		$this->db->select('messages.circle_id, users.public_name, messages.text, messages.timestamp');
 		$this->db->from('messages');
-		$this->db->join('users', messages.user_id = users.id);
+		$this->db->join('users', 'messages.user_id = users.id');
 		$this->db->limit($first_message, $number);	
 		
 		$query = $this->db->get();
