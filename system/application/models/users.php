@@ -77,7 +77,7 @@ class Users extends Model {
 		$this->db->from('providers');
 		$this->db->where('gateway', $gateway);
 		
-		$query = $this->db->select();
+		$query = $this->db->get();
 		
 		$rows = $query->result();
 		if (empty($rows)) return 0;
