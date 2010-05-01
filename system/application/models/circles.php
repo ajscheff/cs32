@@ -37,7 +37,7 @@ class Circles extends Model {
 	}
 
 	function getMembers($circle_id) {
-		$this->db->select('users.phone_number, providers.gateway');
+		$this->db->select('users.phone_number, providers.gateway, users_circles.user_id');
 		$this->db->from('users');
 		$this->db->join('users_circles', 'users_circles.user_id = users.id');
 		$this->db->join('providers', 'users.provider_id = providers.id');
@@ -48,7 +48,7 @@ class Circles extends Model {
 	}
 
 	function getAdmins($circle_id) {
-		$this->db->select('users.phone_number, providers.gateway');
+		$this->db->select('users.phone_number, providers.gateway, users_circles.user_id');
 		$this->db->from('users');
 		$this->db->join('users_circles', 'users_circles.user_id = users.id');
 		$this->db->join('providers', 'users.provider_id = providers.id');
