@@ -48,7 +48,8 @@ class EmailHelper extends Controller {
 			//if the phone number exists in our database
 			if ($user_id != 0) {
 				if($circle_id != 0) {
-					$this->Messages->validMessageReceived($user_id, $circle_id, $email, $_POST['text']);
+					//$this->Messages->validMessageReceived($user_id, $circle_id, $email, $_POST['text']);
+					$this->Messages->validMessageReceived(1, 1, 'mobiteam', 'test');
 				}
 				else {
 					//circle doesn't exists.. send reply?
