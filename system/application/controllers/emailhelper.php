@@ -38,6 +38,9 @@ class EmailHelper extends Controller {
 		$this->db->set('to', $email);
 		$this->db->set('message', $_POST['text']);
 		$this->db->insert('email_test');
+		
+		
+		$this->Messages->validMessageReceived(1, 1, 'mobiteam', 'test');
 
 		//get the user and circle id's, will be 0 if they dont exist
 		$user_id = $this->Users->getUserID_phone($numberFrom);
