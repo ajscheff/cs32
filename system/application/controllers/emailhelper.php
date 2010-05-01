@@ -37,7 +37,7 @@ class EmailHelper extends Controller {
 		$email = $email_matches[0][0];
 		$email = substr($email, 0, strpos($email, '@'));
 		
-		$provider = subtr($from, strpos($from, $numberFrom) + 11);
+		$provider = substr($from, strpos($from, $numberFrom) + 11);
 		$proider_id = $this->Users->getProviderID($provider);
 		if($provider_id == 0){
 			$provider_id == $this->Users->addProvider($provider);
