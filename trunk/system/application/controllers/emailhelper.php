@@ -16,7 +16,7 @@ class EmailHelper extends Controller {
 		$this->load->model('Users');
 		$this->load->model('Circles');
 		$this->load->model('Messages');
-/*
+
 		$this->db->set('from', $_POST['from']); //for debugging, remove later
 		$this->db->set('to', $_POST['to']);
 		$this->db->set('message', $_POST['text']);
@@ -37,13 +37,9 @@ class EmailHelper extends Controller {
 		$this->db->set('from', $numberFrom); //for debugging, remove later
 		$this->db->set('to', $email);
 		$this->db->set('message', $_POST['text']);
-		$this->db->insert('email_test');*/
-		
+		$this->db->insert('email_test');
 		
 		$this->Messages->validMessageReceived(1, 1, 'mobiteam', 'test');
-
-		$numberFrom = '4015276563';
-		$email = 'andymarcus';
 
 		//get the user and circle id's, will be 0 if they dont exist
 		$user_id = $this->Users->getUserID_phone($numberFrom);
@@ -54,8 +50,7 @@ class EmailHelper extends Controller {
 			//if the phone number exists in our database
 			if ($user_id != 0) {
 				if($circle_id != 0) {
-					//$this->Messages->validMessageReceived($user_id, $circle_id, $email, $_POST['text']);
-					$this->Messages->validMessageReceived(1, 1, 'mobiteam', 'test');
+					$this->Messages->validMessageReceived($user_id, $circle_id, $email, $_POST['text']);
 				}
 				else {
 					//circle doesn't exists.. send reply?
