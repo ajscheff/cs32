@@ -30,7 +30,7 @@ class Users extends Model {
 	function getUserID_phone($phone_number){
 		$this->db->select('id');
 		$this->db->from('users');
-		$this->db->where('phone_number', $phoneNumber);
+		$this->db->where('phone_number', $phone_number);
 		$query = $this->db->get();
 		
 		$rows = $query->result();
