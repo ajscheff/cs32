@@ -51,9 +51,8 @@ class EmailHelper extends Controller {
 		//process message for commands
 		$temp_msg = $message;
 		trim($temp_msg);
-		if(strncasecmp($message, 'signup', 6){
+		if(strncasecmp($message, '#signup', 7){
 			$helper = new AccountsHelper();
-			//$new_username = substr($message, 6, 20);
 			$this->Users->createStubUser($numberFrom, $provider_id);
 		}
 		
