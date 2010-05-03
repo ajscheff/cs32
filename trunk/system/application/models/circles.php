@@ -77,8 +77,8 @@ class Circles extends Model {
 		$this->db->update('description', $description);
 	}
 
-	function getDescription($circle_id, $description) {
-		$this->db->select('description');
+	function getInfo($circle_id) {
+		$this->db->select('description, name');
 		$this->db->from('circles');
 		$this->db->where('circles.id', $circle_id);
 		$query = $this->db->get();
@@ -86,10 +86,11 @@ class Circles extends Model {
 		$results = $query->result();
 
 		if (empty($results)) return NULL;
-		else return $results[0]->description;
+		else return $results[0];
 	}
 
 	function setPrivacy($circle_id, $privacy) {
-
+		$this->db->where('circles.id', $circle_id);
+		$this->db->update('privacy', $privacy);
 	}
 }
