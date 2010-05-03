@@ -8,7 +8,7 @@ class Welcome extends Controller {
 	function Welcome() {
 		parent::Controller();	
 		$this->load->model('Users');
-		//$this->load->helper('AccountsHelper');
+		$this->load->helper('AccountsHelper');
 		
 	}
 	
