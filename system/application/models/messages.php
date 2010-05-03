@@ -6,14 +6,20 @@ class Messages extends Model {
 	var $content = '';
 	var $date    = '';
 
-	function Messages()
-	{
+	/**
+	 * This is the constructor for the Messages model that loads the database.
+	 */
+	function Messages() {
 		// Call the Model constructor
 		parent::Model();
 		$this->load->database();
 		$this->load->library('email');
 	}
 
+	/**
+	 * Sends a from the $from to $to. This method does NOT check for 
+	 * permissions, circles, or validity of the email.
+	 */
 	function send($from, $to, $message){
 		$this->email->from($from);
 		$this->email->to($to); 
@@ -21,6 +27,10 @@ class Messages extends Model {
 		$this->email->send();
 	}
 
+	/**
+	 * This is for testing only. This should not be called outside of a testing
+	 * environment.
+	 */
 	function sendTest() {
 		$this->email->from('thewebsite@ombtp.com');
 		$this->email->to('4015276563@mms.att.net'); 
@@ -29,6 +39,10 @@ class Messages extends Model {
 		$this->email->send();
 	}
 	
+	/**
+	 * Sends out a message to all members of a circle. Should only be called 
+	 * when it is confirmed that the message is valid.
+	 */
 	function validMessageReceived($user_id, $circle_id, $circle_email, $message) {
 	
 		$pattern_1 = "/1 of [0-9]*/";
@@ -64,6 +78,12 @@ class Messages extends Model {
 		}
 	}
 	
+	/**
+	 * Returns an array of most recent $number of messages for a given circle, 
+	 * beginning with the message at the index $first_message. Elements of array
+	 * are object with the following public fields: 'public_name' (sender of 
+	 * message), 'timestamp', 'text'.
+	 */
 	function getMessages_circle($circle_id, $first_message, $number) {
 		$this->db->select('messages.user_id, users.public_name, messages.text, messages.timestamp');
 		$this->db->from('messages');
@@ -75,6 +95,12 @@ class Messages extends Model {
 		return $query->result;
 	}
 	
+	/**
+	 * Returns an array of most recent $number of messages for a given user, 
+	 * beginning with the message at the index $first_message. Elements of array
+	 * are object with the following public fields: 'name' (group to which 
+	 * message was sent), 'timestamp', 'text'.
+	 */
 	function getMessages_user($user_id, $first_message, $number) {
 		$this->db->select('messages.circle_id, users.public_name, messages.text, messages.timestamp');
 		$this->db->from('messages');
