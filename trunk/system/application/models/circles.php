@@ -71,4 +71,25 @@ class Circles extends Model {
 		
 		return (!empty($results));
 	}
+
+	function setDescription($circle_id, $description) {
+		$this->db->where('circles.id', $circle_id);
+		$this->db->update('description', $description);
+	}
+
+	function getDescription($circle_id, $description) {
+		$this->db->select('description');
+		$this->db->from('circles');
+		$this->db->where('circles.id', $circle_id);
+		$query = $this->db->get();
+
+		$results = $query->result();
+
+		if (empty($results)) return NULL;
+		else return $results[0]->description;
+	}
+
+	function setPrivacy($circle_id, $privacy) {
+
+	}
 }
