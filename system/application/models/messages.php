@@ -92,7 +92,7 @@ class Messages extends Model {
 		
 		$query = $this->db->get();
 		
-		return $query->result;
+		return $query->result();
 	}
 	
 	/**
@@ -109,7 +109,7 @@ class Messages extends Model {
 		
 		$query = $this->db->get();
 		
-		return $query->result;
+		return $query->result();
 	}
 	
 }
