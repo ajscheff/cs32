@@ -38,7 +38,7 @@ class Welcome extends Controller {
 		$user_id = $this->Users->getUserID_username($username);
 		if($user_id != 0){
 			if($this->Users->passwordMatches($username, $_POST['password'])){
-			$data = getUserHomeData($user_id);
+			$data = $this->getUserHomeData($user_id);
 			echo $this->load->view('home', $data);
 		}
 		}
@@ -53,8 +53,9 @@ class Welcome extends Controller {
 	}
 	
 	function createUser($username, $password, $phonenumber, $provider_id, $public_name){	
-		if($this->Users->getUserID_username($username) != 0)
+		if($this->Users->getUserID_username($username) != 0)  {
 			return 0;
+		}
 		else {
 			return $this->Users->createFullUser($username, $password, $phonenumber, $provider_id, $public_name);
 		}
