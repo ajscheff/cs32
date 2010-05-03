@@ -12,6 +12,12 @@ class Circles extends Model {
 		$this->load->database();
 	}
 	
+	/**
+	 * Returns the id of the circle with the passed email address. This method 
+	 * expects that the passed email address is without the @ombtp.com on the 
+	 * end. If a circle does not exist with the passed email address, 0 is 
+	 * returned.
+	 */
 	function getCircleID_email($email){
 		$this->db->select('id');
 		$this->db->from('circles');
@@ -23,6 +29,10 @@ class Circles extends Model {
 		else return $row['id'];
 	}
 
+	/**
+	 * Returns the permissions of the passed user in the passed circle, Returns 
+	 * NULL if the user is not a member of that circle.
+	 */
 	function getPermissions($user_id, $circle_id){
 		$this->db->select('privileges');
 		$this->db->from('users_circles');
@@ -35,7 +45,10 @@ class Circles extends Model {
 		if (empty($queryResults)) return NULL;
 		else return $queryResults[0]->privileges;
 	}
-
+	
+	/**
+	 * Returns true if the passed user is in the passed circle and false otherwise
+	 */
 	function getMembers($circle_id) {
 		$this->db->select('users.phone_number, providers.gateway, users_circles.user_id');
 		$this->db->from('users');
@@ -47,6 +60,12 @@ class Circles extends Model {
 		return $query->result();
 	}
 
+	/**
+	 * Returns the id of the circle with the passed email address. This method 
+	 * expects that the passed email address is without the @ombtp.com on the 
+	 * end. If a circle does not exist with the passed email address, 0 is 
+	 * returned.
+	 */
 	function getAdmins($circle_id) {
 		$this->db->select('users.phone_number, providers.gateway, users_circles.user_id');
 		$this->db->from('users');
@@ -59,6 +78,12 @@ class Circles extends Model {
 		return $query->result();
 	}	
 	
+	/**
+	 * Returns the id of the circle with the passed email address. This method 
+	 * expects that the passed email address is without the @ombtp.com on the 
+	 * end. If a circle does not exist with the passed email address, 0 is 
+	 * returned.
+	 */
 	function isMember($user_id, $circle_id) {
 		
 		$this->db->select();
