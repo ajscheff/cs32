@@ -85,4 +85,5 @@ class Messages extends Model {
 		
 		return $query->result;
 	}
+	
 }

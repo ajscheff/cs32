@@ -103,4 +103,36 @@ class Users extends Model {
 		
 		return $this->getUserID_username($username);
 	}
+	
+	function upgradeUser($user_id, $username, $password, $public_name) {
+		$this->db->where('users.id', $user_id);
+		$this->db->update('username', $username);
+		$this->db->update('password', $password);
+		$this->db->update('public_name', $public_name);
+	}
+	
+	function getCircles($user_id) {
+		$this->db->select('circles.name, circles.id, users_circles.admin, circles.description');
+		$this->db->from('circles');
+		$this->db->join('users_circles', "users_circles.user_id = users.id");
+		$this->db->where('users.id', $user_id);
+		$query = $this->db->get();
+		return $query->result();
+	}
+	
+	function addUserToCircle($user_id, $circle_id) {
+		$this->db->set('user_id', $user_id);
+		$this->db->set('circle_id', $circle_id);
+		$this->db->set('admin', 0);
+		$this->db->set('privileges', 'reply_all');
+		$this->db->insert('users_circles');
+	}
+	
+	function removeUserFromCircle($user_id, $circle_id) {
+		$this->db->where('user_id', $user_id);
+		$this->db->where('circle_id', $circle_id);
+		$this->db->delete('users_circles');
+	}
+	
+	
 }
