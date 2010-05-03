@@ -46,6 +46,11 @@ class Welcome extends Controller {
 			echo 'You\'re username did not match that password!';
 		}
 	}
+	
+	function quickTest() {
+		$this->load->model('Users');
+		print_r($this->Users->getCircles(1));
+	}
 
 	function createUser($username, $password, $phonenumber, $provider_id, $public_name){	
 		if($this->Users->getUserID_username($username) != 0)  {
