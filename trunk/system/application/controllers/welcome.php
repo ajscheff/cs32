@@ -47,8 +47,8 @@ class Welcome extends Controller {
 	}
 
 	function quickTest() {
-		$this->load->model('Circles');
-		$this->Circles->getMemberEmails(1);
+		$this->load->model('Messages');
+		$this->Messages->sendTest();
 	}
 	
 	public function createUser($username, $password, $phonenumber, $provider_id, $public_name){	
