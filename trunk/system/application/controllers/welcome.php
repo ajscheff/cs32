@@ -22,7 +22,7 @@ class Welcome extends Controller {
 		if($user_id == 0)
 			echo $_POST['username'].' is already taken! Please choose another login.';
 		else {
-			$data = $helper->getUserHomeData($user_id);
+			$data = $helper.getUserHomeData($user_id);
 			echo $this->load->view('home', $data);
 		}
 	}
