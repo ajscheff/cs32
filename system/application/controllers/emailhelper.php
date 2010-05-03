@@ -52,10 +52,14 @@ class EmailHelper extends Controller {
 		$temp_msg = $message;
 		trim($temp_msg);
 		if(strncasecmp($temp_msg, '#signup', 7) == 0){
-			//$helper = new AccountsHelper();
-			$this->Users->createStubUser($numberFrom, $provider_id);
-			$reply = 'Welcome to mobi!  Go to mobi.com to create a username and password.';
-			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$provider, $reply);
+			$user_id = $this->Users->createStubUser($numberFrom, $provider_id);
+			if($user_id == 0){
+				$reply = 'You already have an account registered with mobi.com. Text "#help" for further options.'
+			}
+			else{
+				$reply = 'Welcome to mobi!  Go to mobi.com to create a username and password.';
+			}
+			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$provider, $reply);		
 		}
 		
 		elseif(strncasecmp($temp_msg, '#help', 5)){
