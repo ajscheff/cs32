@@ -63,7 +63,7 @@ class EmailHelper extends Controller {
 			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);		
 		}
 		
-		elseif(strncasecmp($temp_msg, '#help', 5)){
+		elseif(strncasecmp($temp_msg, '#help', 5) == 0){
 			$reply = 'Here\'s some help!';
 			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
 		
