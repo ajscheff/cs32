@@ -43,12 +43,6 @@ class Welcome extends Controller {
 		}
 	}
 	
-		//test function
-	function quickTest() {
-		$this->load->model('Messages');
-		$this->Messages->sendTest();
-	}
-	
 	private function getUserHomeData($user_id){
 		$data['username'] =$this->Users->getUsername($user_id);
 		$data['circles'] = $this->Users->getCircles($user_id);
