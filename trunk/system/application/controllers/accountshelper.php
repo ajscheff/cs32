@@ -9,7 +9,7 @@ class AccountsHelper extends Controller{
 
 
 		/** returns 0 if the user name is already taken, user_id upon successfully creating the new user */
-	function createUser($username, $password, $phonenumber, $provider_id, $public_name){	
+	public function createUser($username, $password, $phonenumber, $provider_id, $public_name){	
 		if($this->Users->usernameExists($username))
 			return 0;
 		else {
@@ -18,10 +18,16 @@ class AccountsHelper extends Controller{
 	
 	}
 	
-	function getUserHomeData($user_id){
+	public function getUserHomeData($user_id){
 		$data['username'] =$this->Users->getUsername($user_id);
 		$data['circles'] = array(array('name' => "Friends", 'members' => array("sboger", "ljabr"), 'messages' => array("this is a message!", "THIS is a message!")), array('name' => "Work", 'members' => array("mgartner", "ascheff"), 'messages' => array("this IS a message!", "this is a MESSAGE!")));
 		return $data;
+	
+	}
+	
+	function createCircle($name, $email_address, $description, $settings_array, $creator_id){
+		
+	
 	
 	}
 
