@@ -104,14 +104,6 @@ p {
 	height: 70px;
 	}
 	
-#logo {
-	background: url(/art/whaletail.png);
-	height: 70px;
-	width: 84px;
-	position: absolute;
-	left: 117px;
-	z-index: 0;
-	}
 	
 #title {
 	padding: 0px;

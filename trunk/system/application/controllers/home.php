@@ -23,7 +23,7 @@ class Home extends Controller {
 		$info = $this->Circles->getInfo($circle_id);
 		$data['name'] = $info->name;
 		$data['description'] = $info->description;
-		echo $this->load->view('circlesinfo', $data);
+		echo $this->load->view('circleinfo', $data);
 	
 	}
 }
