@@ -33,7 +33,7 @@ class Messages extends Model {
 	 */
 	function sendTest() {
 		$this->email->from('thewebsite@ombtp.com');
-		$this->email->to('4015276563@mms.att.net'); 
+		$this->email->to('4015276563@txt.att.net'); 
 		$this->email->bcc('walterblaurock@gmail.com, andyscheff@gmail.com');
 		$this->email->message('this is an mms message sent through sendgrid');	
 		$this->email->send();

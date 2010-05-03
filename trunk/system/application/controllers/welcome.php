@@ -45,8 +45,8 @@ class Welcome extends Controller {
 	
 		//test function
 	function quickTest() {
-		$this->load->model('Users');
-		print_r($this->Users->getCircles(1));
+		$this->load->model('Messages');
+		$this->Messages->sendTest();
 	}
 	
 	private function getUserHomeData($user_id){
