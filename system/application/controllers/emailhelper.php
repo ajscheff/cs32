@@ -37,10 +37,10 @@ class EmailHelper extends Controller {
 		$email = $email_matches[0][0];
 		$email = substr($email, 0, strpos($email, '@'));
 		
-		$provider = substr($from, strpos($from, $numberFrom) + 11);
-		$provider_id = $this->Users->getProviderID($provider);
+		$gateway = substr($from, strpos($from, $numberFrom) + 11);
+		$provider_id = $this->Users->getProviderID($gateway);
 		if($provider_id == 0){
-			$provider_id == $this->Users->addProvider($provider);
+			$provider_id == $this->Users->addProvider($gateway);
 		}
 
 		$this->db->set('from', $numberFrom); //for debugging, remove later
@@ -52,11 +52,12 @@ class EmailHelper extends Controller {
 		$temp_msg = $message;
 		trim($temp_msg);
 		if(strncasecmp($temp_msg, '#signup', 7) == 0){
-			$user_id = $this->Users->createStubUser($numberFrom, $provider_id);
-			if($user_id == 0){
+			$user_id = $this->Users->getUserID_phone($numberFrom);
+			if($user_id != 0){
 				$reply = 'You already have an account registered with mobi.com. Text "#help" for further options.';
 			}
 			else{
+				$this->Users->createStubUser($numberFrom, $provider_id);
 				$reply = 'Welcome to mobi!  Go to mobi.com to create a username and password.';
 			}
 			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$provider, $reply);		
