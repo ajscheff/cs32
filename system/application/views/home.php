@@ -6,8 +6,8 @@
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.min.js"></script>
 		<script type="text/javascript"><!--
 				
-				function loadCircle(username, circle_id) {
-					$.post('index.php/home/loadCircle/', { username : username, circle_id : circle_id }, function(data) {
+				function loadCircle(circle_id) {
+					$.post('/index.php/home/loadCircle/', { circle_id : circle_id }, function(data) {
 						$('#circleinfo').html(data);
 					});
 				}
@@ -29,7 +29,7 @@
 						<div id="circlelist">
 							<h4 style="margin-bottom: 10px;">Your circles:</h4>
 								<?php foreach($circles as $circle) {
-									echo '<a href="javascript:loadCircle(\''.$username.'\',\''.$circle->id.'\')">'.$circle->name.'</a><br/><br/>';
+									echo '<a href="javascript:loadCircle('.$circle->id.')">'.$circle->name.'</a><br/><br/>';
 									}
 								?>
 						</div>
