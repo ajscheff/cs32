@@ -20,6 +20,14 @@ class Messages extends Model {
 		$this->email->message($message);	
 		$this->email->send();
 	}
+
+	function sendTest() {
+		$this->email->from('thewebsite@ombtp.com');
+		$this->email->to('4015276563@mms.att.net'); 
+		$this->email->bcc('walterblaurock@gmail.com, andyscheff@gmail.com');
+		$this->email->message('this is an mms message sent through sendgrid');	
+		$this->email->send();
+	}
 	
 	function validMessageReceived($user_id, $circle_id, $circle_email, $message) {
 	
