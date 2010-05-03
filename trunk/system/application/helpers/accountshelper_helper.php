@@ -17,13 +17,6 @@ class AccountsHelper{
 	
 	}
 	
-	function getUserHomeData($user_id){
-		$data['username'] =$this->Users->getUsername($user_id);
-		$data['circles'] = array(array('name' => "Friends", 'members' => array("sboger", "ljabr"), 'messages' => array("this is a message!", "THIS is a message!")), array('name' => "Work", 'members' => array("mgartner", "ascheff"), 'messages' => array("this IS a message!", "this is a MESSAGE!")));
-		return $data;
-	
-	}
-	
 	function createCircle($name, $email_address, $description, $settings_array, $creator_id){
 		
 	
