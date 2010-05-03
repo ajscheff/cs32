@@ -35,9 +35,10 @@ class Welcome extends Controller {
 	*/
 	function login(){
 		$username = $_POST['username'];
-		if($this->Users->getUserID_username($username) != 0){
+		$user_id = $this->Users->getUserID_username($username);
+		if($user_id != 0){
 			if($this->Users->passwordMatches($username, $_POST['password'])){
-			$data = getUserHomeData($this->Users->getUserID_username($username));
+			$data = getUserHomeData($user_id);
 			echo $this->load->view('home', $data);
 		}
 		}
