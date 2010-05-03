@@ -52,7 +52,7 @@ class Welcome extends Controller {
 		$this->Messages->sendTest();
 	}
 	
-	public function createUser($username, $password, $phonenumber, $provider_id, $public_name){	
+	function createUser($username, $password, $phonenumber, $provider_id, $public_name){	
 		if($this->Users->getUserID_username($username) != 0)
 			return 0;
 		else {
@@ -61,7 +61,7 @@ class Welcome extends Controller {
 	
 	}
 	
-	public function getUserHomeData($user_id){
+	function getUserHomeData($user_id){
 		$data['username'] =$this->Users->getUsername($user_id);
 		$data['circles'] = array(array('name' => "Friends", 'members' => array("sboger", "ljabr"), 'messages' => array("this is a message!", "THIS is a message!")), array('name' => "Work", 'members' => array("mgartner", "ascheff"), 'messages' => array("this IS a message!", "this is a MESSAGE!")));
 		return $data;
