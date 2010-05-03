@@ -35,7 +35,7 @@ class Welcome extends Controller {
 	*/
 	function login(){
 		$username = $_POST['username'];
-		if($this->Users->usernameExists($username)){
+		if($this->Users->getUserID_username($username) != 0){
 			if($this->Users->passwordMatches($username, $_POST['password'])){
 			$data = getUserHomeData($this->Users->getUserID_username($username));
 			echo $this->load->view('home', $data);
@@ -52,7 +52,7 @@ class Welcome extends Controller {
 	}
 	
 	public function createUser($username, $password, $phonenumber, $provider_id, $public_name){	
-		if($this->Users->usernameExists($username))
+		if($this->Users->getUserID_username($username) != 0)
 			return 0;
 		else {
 			return $this->Users->createFullUser($username, $password, $phonenumber, $provider_id, $public_name);
