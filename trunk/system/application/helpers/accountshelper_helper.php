@@ -1,11 +1,5 @@
 <?php
 
-class AccountsHelper{
-
-	function AccountsHelper(){
-		$this->load->model('Users');
-	}
-
 
 			/** returns 0 if the user name is already taken, user_id upon successfully creating the new user */
 	function createUser($username, $password, $phonenumber, $provider_id, $public_name){	
@@ -19,7 +13,7 @@ class AccountsHelper{
 	
 	function createCircle($name, $email_address, $description, $settings_array, $creator_id){
 		
-	
+		echo 'Hello!';
 	
 	}
 
@@ -51,5 +45,5 @@ class AccountsHelper{
 		return $circles;
 	}
 	*/
+	
 
-}
