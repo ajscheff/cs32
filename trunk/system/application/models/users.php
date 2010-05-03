@@ -114,8 +114,8 @@ class Users extends Model {
 	function getCircles($user_id) {
 		$this->db->select('circles.name, circles.id, users_circles.admin, circles.description');
 		$this->db->from('circles');
-		$this->db->join('users_circles', "users_circles.user_id = $users_id");
-		//$this->db->where('users.id', $user_id);
+		$this->db->join('users_circles', 'users_circles.circle_id = circles.id');
+		$this->db->where('users_circles.user_id', $user_id);
 		$query = $this->db->get();
 		return $query->result();
 	}
