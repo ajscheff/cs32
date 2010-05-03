@@ -105,10 +105,12 @@ class Users extends Model {
 	}
 	
 	function upgradeUser($user_id, $username, $password, $public_name) {
+		$data = array(
+				'username' => $username,
+				'password' => $password,
+				'public_name' => $public_name);
 		$this->db->where('users.id', $user_id);
-		$this->db->update('username', $username);
-		$this->db->update('password', $password);
-		$this->db->update('public_name', $public_name);
+		$this->db->update('users', $data);
 	}
 	
 	function getCircles($user_id) {
@@ -132,6 +134,20 @@ class Users extends Model {
 		$this->db->where('user_id', $user_id);
 		$this->db->where('circle_id', $circle_id);
 		$this->db->delete('users_circles');
+	}
+	
+	function setUserAdmin($user_id, $circle_id, $admin) {
+		$this->db->where('user_id', $user_id);
+		$this->db->where('circle_id', $circle_id);
+		$data = array('admin' => $admin);
+		$this->db->update('users_circles', $data);
+	}
+	
+	function setUserPermissions($user_id, $circle_id, $permissions) {
+		$this->db->where('user_id', $user_id);
+		$this->db->where('circle_id', $circle_id);
+		$data = array('privileges' => $permissions);
+		$this->db->update('users_circles', $data);
 	}
 	
 	
