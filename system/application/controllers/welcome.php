@@ -47,11 +47,6 @@ class Welcome extends Controller {
 		}
 	}
 
-	function quickTest() {
-		$this->load->model('Messages');
-		$this->Messages->sendTest();
-	}
-	
 	function createUser($username, $password, $phonenumber, $provider_id, $public_name){	
 		if($this->Users->getUserID_username($username) != 0)  {
 			return 0;
