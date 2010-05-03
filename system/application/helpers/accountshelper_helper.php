@@ -1,15 +1,14 @@
 <?php
 
-class AccountsHelper extends Helper{
+class AccountsHelper{
 
 	function AccountsHelper(){
-		parent::Controller();
 		$this->load->model('Users');
 	}
 
 
-		/** returns 0 if the user name is already taken, user_id upon successfully creating the new user */
-	public function createUser($username, $password, $phonenumber, $provider_id, $public_name){	
+			/** returns 0 if the user name is already taken, user_id upon successfully creating the new user */
+	function createUser($username, $password, $phonenumber, $provider_id, $public_name){	
 		if($this->Users->getUserID_username($username) == 0)
 			return 0;
 		else {
@@ -18,7 +17,7 @@ class AccountsHelper extends Helper{
 	
 	}
 	
-	public function getUserHomeData($user_id){
+	function getUserHomeData($user_id){
 		$data['username'] =$this->Users->getUsername($user_id);
 		$data['circles'] = array(array('name' => "Friends", 'members' => array("sboger", "ljabr"), 'messages' => array("this is a message!", "THIS is a message!")), array('name' => "Work", 'members' => array("mgartner", "ascheff"), 'messages' => array("this IS a message!", "this is a MESSAGE!")));
 		return $data;
