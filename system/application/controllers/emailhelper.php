@@ -62,7 +62,7 @@ class EmailHelper extends Controller {
 				$reply = 'Welcome to mobi!  Go to mobi.com to create a username and password.';
 			}
 			echo $reply;
-			echo $numberFrom.'@'.$gateway
+			//echo $numberFrom.'@'.$gateway;
 			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);		
 		}
 		
