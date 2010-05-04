@@ -212,7 +212,7 @@ class Users extends Model {
 
 		echo $this->pwEncode($password);
 
-		echo $this->passwordMatches($user_id, $password);
+		if ($this->passwordMatches($user_id, $password)) echo true;
 		$this->db->update('users', $data);
 	}
 	
