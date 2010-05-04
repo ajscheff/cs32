@@ -26,8 +26,9 @@ class Welcome extends Controller {
 				//$this->loadHomeView($user_id);
 			//} 
 		} else {
-			//echo 'here3';
-			$this->load->view('login');
+			echo false;
+			echo $username;
+			//$this->load->view('login');
 		}
 		
 	}
