@@ -18,7 +18,7 @@ class Welcome extends Controller {
 	
 	
 	function signup(){
-		//
+		
 		
 	}
 	
@@ -47,6 +47,11 @@ class Welcome extends Controller {
 		$data['username'] =$this->Users->getUsername($user_id);
 		$data['circles'] = $this->Users->getCircles($user_id);
 		return $data;
+	}
+	
+	private function loginHelper($user_id){
+	
+	
 	}
 
 
