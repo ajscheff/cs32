@@ -47,7 +47,7 @@ class Messages extends Model {
 	function validMessageReceived($user_id, $circle_id, $circle_email, $message) {
 	
 		$pattern_1 = "/1 of [0-9]*/";
-		$message = preg_replace($pattern1, '', $message);
+		$message = preg_replace($pattern_1, '', $message);
 		$pattern_2 = "/-*Original Message-*.*/";
 		$message = preg_replace($pattern_2, '', $message);
 
