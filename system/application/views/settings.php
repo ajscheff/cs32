@@ -15,7 +15,7 @@
 					<table id="interactions">
 					<tr>
 					<td>
-					<?php echo '<form method="post" action="/index.php/settings/changePassword/'.$username.'">'; ?>
+					<?php echo '<form method="post" action="/index.php/settings/changePassword/'.$user_id.'">'; ?>
 						<p>change your password:</p>
 						<br/>
 						<p>enter old password:</p>
