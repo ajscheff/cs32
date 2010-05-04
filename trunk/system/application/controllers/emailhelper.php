@@ -78,6 +78,12 @@ class EmailHelper extends Controller {
 		
 		}
 		
+		elseif(strncasecmp($temp_msg, '#test', 5) == 0){
+			$this->Messages->send('admin@ombtp.com', '6504640945@vtext.com', 'test');
+		
+		
+		}
+		
 		else{
 		
 		//
