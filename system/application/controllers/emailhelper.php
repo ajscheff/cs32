@@ -68,6 +68,7 @@ class EmailHelper extends Controller {
 		elseif(strncasecmp($temp_msg, '#help', 5) == 0){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			$reply = '';
+			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, 'test');
 			if($user_id != 0){
 				$reply = 'Text \'#signup\' to register an account with mobi!';
 			}
