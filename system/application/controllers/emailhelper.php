@@ -11,7 +11,6 @@ class EmailHelper extends Controller {
 	
 	
 	function receive(){
-		$this->Messages->send('admin@ombtp.com', '6504640945@vtext.com', 'test');
 		$this->load->database();
 		$this->load->model('Users');
 		$this->load->model('Circles');
@@ -61,7 +60,6 @@ class EmailHelper extends Controller {
 				$this->Users->createStubUser($numberFrom, $provider_id);
 				$reply = 'Welcome to mobi!  Go to mobi.com to create a username and password.';
 			}
-			echo $reply.$numberFrom.'@'.$gateway;
 			$this->Messages->send('admin@ombtp.com', '6504640945@vtext.com', $reply);		
 		}
 		
