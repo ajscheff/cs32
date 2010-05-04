@@ -13,7 +13,7 @@ class Welcome extends Controller {
 	}
 	
 	function index() {
-		//echo 'here';
+		echo 'here1';
 		$user_id = $this->session->userdata('user_id');
 		$username = $this->session->userdata('username');
 		$password = $this->session->userdata('password');
@@ -21,7 +21,7 @@ class Welcome extends Controller {
 		echo $username;
 		echo $user_id;
 		if ($this->Users->passwordMatches($username, $password) {
-			echo 'here';
+			echo 'here2';
 			//$this->loadHomeView($user_id);
 		} else {
 			$this->load->view('login');
