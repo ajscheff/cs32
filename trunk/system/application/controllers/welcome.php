@@ -27,9 +27,9 @@ class Welcome extends Controller {
 		}
 	}
 	
-	function destroySession() {
+	function logout() {
 		$this->session->sess_destroy();
-		echo 'destroy';
+		$this->load->view('login');
 	}
 	
 	
