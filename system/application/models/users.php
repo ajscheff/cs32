@@ -207,6 +207,12 @@ class Users extends Model {
 	function changePassword($user_id, $password) {
 		$this->db->where('id', $user_id);
 		$data = array('password' => $this->pwEncode($privileges));
+
+		echo $password;
+
+		echo $this->pwEncode($password);
+
+		echo $this->passwordMatches($user_id, $password);
 		$this->db->update('users', $data);
 	}
 	
