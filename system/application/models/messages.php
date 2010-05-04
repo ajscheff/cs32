@@ -21,6 +21,7 @@ class Messages extends Model {
 	 * permissions, circles, or validity of the email.
 	 */
 	function send($from, $to, $message){
+		echo 'called';
 		$this->email->from($from);
 		$this->email->to($to); 
 		$this->email->message($message);	
