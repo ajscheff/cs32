@@ -90,7 +90,7 @@ class Welcome extends Controller {
 		$message = "1 of 3\nMESSAGE\n--Original Message--asdfasdfasdfasdgahkl";
 		//echo $message;
 		$pattern_1 = "/1 of [0-9]*/";
-		$test1 = preg_replace($pattern1, '', $message);
+		$test1 = preg_replace($pattern_1, '', $message);
 		$pattern_2 = "/-*Original Message-*.*/";
 		$test2 = preg_replace($pattern_2, '', $test1);
 		echo $message;
