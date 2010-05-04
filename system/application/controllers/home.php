@@ -24,6 +24,6 @@ class Home extends Controller {
 		$data['name'] = $info->name;
 		$data['description'] = $info->description;
 		echo $this->load->view('circleinfo', $data);
-	
 	}
+	
 }

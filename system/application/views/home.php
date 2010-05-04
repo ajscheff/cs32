@@ -22,7 +22,7 @@
 						<a id="title" href="/index.php/welcome/index">mobi</a>
 						<p id="subtitle">mobile social networking</p>
 						<p id="userstatus">Hello, <?php echo $username ?>!</p>
-						<?php echo '<a id="settingsbutton" href="/index.php/settings/loadSettings/'.$username.'">settings</a>';?>
+						<a id="settingsbutton" href="/index.php/settings/loadSettings/">settings</a>
 					</div>
 					<div class="divider" style="height: 3px; width: 100%;"/>
 					<div id="interactions">
