@@ -61,13 +61,20 @@ class EmailHelper extends Controller {
 				$this->Users->createStubUser($numberFrom, $provider_id);
 				$reply = 'Welcome to mobi!  Go to mobi.com to create a username and password.';
 			}
-			//echo $reply;
-			echo $numberFrom.'@'.$gateway;
+			echo $reply.$numberFrom.'@'.$gateway;
 			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);		
 		}
 		
 		elseif(strncasecmp($temp_msg, '#help', 5) == 0){
-			$reply = 'Here\'s some help!';
+			$user_id = $this->Users->getUserID_phone($numberFrom);
+			$reply = '';
+			if($user_id != 0){
+				$reply = 'Text \'#signup\' to register an account with mobi!';
+			}
+			else{
+				$this->Users->createStubUser($numberFrom, $provider_id);
+				$reply = 'There are no other text commands supported at this time.';
+			}
 			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
 		
 		}
