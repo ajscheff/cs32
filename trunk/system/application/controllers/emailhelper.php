@@ -53,6 +53,7 @@ class EmailHelper extends Controller {
 		trim($temp_msg);
 		if(strncasecmp($temp_msg, '#signup', 7) == 0){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
+			echo 'line0';
 			if($user_id != 0){
 				$reply = 'You already have an account registered with mobi.com. Text "#help" for further options.';
 				echo 'if';
