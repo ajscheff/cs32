@@ -21,12 +21,12 @@ class Welcome extends Controller {
 		echo $username;
 		echo $user_id;
 		if ($user_id != false && $username != false && $pasword != false) {
-		if ($this->Users->passwordMatches($username, $password) {
+		//if ($this->Users->passwordMatches($username, $password) {
 			echo 'here2';
 			//$this->loadHomeView($user_id);
-		} }else {
-			$this->load->view('login');
-		}
+		} //}else {
+			//$this->load->view('login');
+		//}
 		
 	}
 	
