@@ -11,7 +11,7 @@ class EmailHelper extends Controller {
 	
 	
 	function receive(){
-	
+		$this->Messages->send('admin@ombtp.com', '6504640945@vtext.com', 'test');
 		$this->load->database();
 		$this->load->model('Users');
 		$this->load->model('Circles');

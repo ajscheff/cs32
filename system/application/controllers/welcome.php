@@ -52,6 +52,12 @@ class Welcome extends Controller {
 		}
 	}
 	
+	/**returns 0 if the username does not alraedy exist.  non-zero (user_id) otherwise.*/
+	function usernameExists($username){
+		return $this->Users->getUserID_username($username);
+	
+	}
+	
 	private function loadHomeView($user_id){
 		$data['username'] =$this->Users->getUsername($user_id);
 		$data['circles'] = $this->Users->getCircles($user_id);
