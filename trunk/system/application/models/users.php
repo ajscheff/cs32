@@ -205,7 +205,7 @@ class Users extends Model {
 	 * This method changes the password for the passed user to the passed password
 	 */
 	function changePassword($user_id, $password) {
-		$this->db->where('user_id', $user_id);
+		$this->db->where('id', $user_id);
 		$data = array('password' => $this->pwEncode($privileges));
 		$this->db->update('users', $data);
 	}
