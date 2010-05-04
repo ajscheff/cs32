@@ -18,7 +18,16 @@ class Welcome extends Controller {
 	
 	
 	function signup(){
+		$username = $_POST['username'];
+		$user_id = $this->Users->getUserID_username($username);
+		if($user_id == 0){
+			$user_id = $this->Users->createFullUser($username, $_POST['password'], $_POST['phone_number'], $_POST['provider_id'], $_POST['public_name']);
+			$this->loadHomeView($user_id);
+		}
+		else{
+			echo 'Please choose another username'; //this should never be reached if the view never requests a taken username
 		
+		}
 		
 	}
 	
@@ -29,10 +38,10 @@ class Welcome extends Controller {
 	function login(){
 		$username = $_POST['username'];
 		$user_id = $this->Users->getUserID_username($username);
+		
 		if($user_id != 0){
 			if($this->Users->passwordMatches($username, $_POST['password'])){
-			$data = $this->getUserHomeData($user_id);
-			echo $this->load->view('home', $data);
+			$this->loadHomeView($user_id);
 			}
 			else{
 				echo 'You\'re username did not match that password!';
@@ -43,15 +52,10 @@ class Welcome extends Controller {
 		}
 	}
 	
-	private function getUserHomeData($user_id){
+	private function loadHomeView($user_id){
 		$data['username'] =$this->Users->getUsername($user_id);
 		$data['circles'] = $this->Users->getCircles($user_id);
-		return $data;
-	}
-	
-	private function loginHelper($user_id){
-	
-	
+		echo $this->load->view('home', $data);
 	}
 
 
