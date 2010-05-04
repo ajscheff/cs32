@@ -17,6 +17,7 @@ class Welcome extends Controller {
 		$username = $this->session->userdata('username');
 		$password = $this->sesson->userdata('password');
 		if ($this->Users->passwordMatches($username, $password) {
+			echo 'here';
 			$this->loadHomeView($user_id);
 		} else {
 			$this->load->view('login');
