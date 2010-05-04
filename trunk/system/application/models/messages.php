@@ -21,7 +21,7 @@ class Messages extends Model {
 	 * permissions, circles, or validity of the email.
 	 */
 	function send($from, $to, $message){
-		echo 'message sent: '.$reply.' to '.$numberFrom.'@'.$gateway;
+		echo 'message sent: '.$message.' to '.$to.' from '.$from;
 		$this->email->from($from);
 		$this->email->to($to); 
 		$this->email->message($message);	
