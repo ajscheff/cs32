@@ -10,15 +10,19 @@ class Settings extends Controller {
 	}
 	
 	function loadSettings(){
-		/*$user_id = $this->session->userdata('user_id');
+		$user_id = $this->session->userdata('user_id');
 		$username = $this->session->userdata('username');
-		$password = $this->sesson->userdata('password');
-		if ($this->Users->passwordMatches($username, $password) {
-			$data['username'] = $username;
-			echo $this->load->view('settings', $data);
-		} else {*/
+		$password = $this->session->userdata('password');
+		if ($user_id != false && $username != false && $password != false) {
+			if ($this->Users->passwordMatches($username, $password)) {
+				$data['username'] = $username;
+				echo $this->load->view('settings', $data);
+			} else {
+				$this->load->view('login');
+			}
+		} else {
 			$this->load->view('login');
-		//}
+		}
 	}
 	
 	function changePassword($username){
