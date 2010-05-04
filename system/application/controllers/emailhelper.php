@@ -61,8 +61,8 @@ class EmailHelper extends Controller {
 				$this->Users->createStubUser($numberFrom, $provider_id);
 				$reply = 'Welcome to mobi!  Go to mobi.com to create a username and password.';
 			}
-			echo $reply;
-			//echo $numberFrom.'@'.$gateway;
+			//echo $reply;
+			echo $numberFrom.'@'.$gateway;
 			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);		
 		}
 		
