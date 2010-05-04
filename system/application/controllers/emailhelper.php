@@ -55,6 +55,7 @@ class EmailHelper extends Controller {
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			if($user_id != 0){
 				$reply = 'You already have an account registered with mobi.com. Text "#help" for further options.';
+				echo 'if';
 			}
 			else{
 				$this->Users->createStubUser($numberFrom, $provider_id);
