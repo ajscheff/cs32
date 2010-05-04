@@ -13,16 +13,16 @@ class Welcome extends Controller {
 	}
 	
 	function index() {
-		echo 'here';
+		//echo 'here';
 		$user_id = $this->session->userdata('user_id');
 		$username = $this->session->userdata('username');
 		$password = $this->session->userdata('password');
-		/*if ($this->Users->passwordMatches($username, $password) {
+		if ($this->Users->passwordMatches($username, $password) {
 			echo 'here';
 			//$this->loadHomeView($user_id);
 		} else {
 			$this->load->view('login');
-		}*/
+		}
 	}
 	
 	function destorySession() {
