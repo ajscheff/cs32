@@ -89,9 +89,9 @@ class Welcome extends Controller {
 	function pregReplaceTest() {
 		$message = "1 of 3\nMESSAGE\n--Original Message--asdfasdfasdfasdgahkl";
 		$pattern_1 = "/1 of [0-9]*/";
-		preg_replace($pattern1, '', $message);
+		$message = preg_replace($pattern1, '', $message);
 		$pattern_2 = "/-*Original Message-*.*/";
-		preg_replace($pattern_2, '', $message);
+		$message = preg_replace($pattern_2, '', $message);
 		echo $message;
 	}
 
