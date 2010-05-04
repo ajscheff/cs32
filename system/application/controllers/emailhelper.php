@@ -72,10 +72,12 @@ class EmailHelper extends Controller {
 			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, 'test');
 			if($user_id != 0){
 				$reply = 'Text \'#signup\' to register an account with mobi!';
+				echo 'line1';
 			}
 			else{
 				$this->Users->createStubUser($numberFrom, $provider_id);
 				$reply = 'There are no other text commands supported at this time.';
+				echo 'line2';
 			}
 			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
 		
