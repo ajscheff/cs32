@@ -6,10 +6,19 @@ class Settings extends Controller {
 	function Settings(){
 		parent::Controller();
 		$this->load->model('Users');
+		$this->load->library('session');
 	}
-	function loadSettings($username){
-		$data['username'] = $username;
-		echo $this->load->view('settings', $data);
+	
+	function loadSettings(){
+		$user_id = $this->session->userdata('user_id');
+		$username = $this->session->userdata('username');
+		$password = $this->sesson->userdata('password');
+		if ($this->Users->passwordMatches($username, $password) {
+			$data['username'] = $username;
+			echo $this->load->view('settings', $data);
+		} else {
+			$this->load->view('login');
+		}
 	}
 	
 	function changePassword($username){

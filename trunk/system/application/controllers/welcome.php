@@ -9,11 +9,18 @@ class Welcome extends Controller {
 		parent::Controller();	
 		$this->load->model('Users');
 		$this->load->helper('AccountsHelper');
-		
+		$this->load->library('session');
 	}
 	
 	function index() {
-		$this->load->view('login');
+		$user_id = $this->session->userdata('user_id');
+		$username = $this->session->userdata('username');
+		$password = $this->sesson->userdata('password');
+		if ($this->Users->passwordMatches($username, $password) {
+			$this->loadHomeView($user_id);
+		} else {
+			$this->load->view('login');
+		}
 	}
 	
 	
@@ -41,7 +48,13 @@ class Welcome extends Controller {
 		
 		if($user_id != 0){
 			if($this->Users->passwordMatches($username, $_POST['password'])){
-			$this->loadHomeView($user_id);
+				$session_data = array(
+								'username' => $username,
+								'password' => $_POST['password'],
+								'user_id' => $user_id
+							);
+				$this->session->set_userdata($session_data);
+				$this->loadHomeView($user_id);
 			}
 			else{
 				echo 'You\'re username did not match that password!';
