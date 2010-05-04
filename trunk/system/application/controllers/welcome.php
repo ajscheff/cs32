@@ -17,7 +17,7 @@ class Welcome extends Controller {
 		$username = $this->session->userdata('username');
 		$password = $this->session->userdata('password');
 		if ($user_id != false && $username != false && $password != false) {
-			if ($this->Users->passwordMatches($username, $password)) {
+			if ($this->Users->passwordMatches($user_id, $password)) {
 				$this->loadHomeView($user_id);
 			} else {
 				$this->load->view('login');
@@ -56,7 +56,7 @@ class Welcome extends Controller {
 		$user_id = $this->Users->getUserID_username($username);
 		
 		if($user_id != 0){
-			if($this->Users->passwordMatches($username, $_POST['password'])){
+			if($this->Users->passwordMatches($user_id, $_POST['password'])){
 				$session_data = array(
 								'username' => $username,
 								'password' => $_POST['password'],
