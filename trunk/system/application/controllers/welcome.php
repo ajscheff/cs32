@@ -92,7 +92,7 @@ class Welcome extends Controller {
 		$pattern_1 = "/1 of [0-9]*/";
 		$test1 = preg_replace($pattern1, '', $message);
 		$pattern_2 = "/-*Original Message-*.*/";
-		$test2 = preg_replace($pattern_2, '', $test2);
+		$test2 = preg_replace($pattern_2, '', $test1);
 		echo $message;
 		echo $test1;
 		echo $test2;
