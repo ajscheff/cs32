@@ -27,6 +27,7 @@ class Home extends Controller {
 	}
 	
 	function createCircle(){
+		echo 'entered';
 		$user_id = $this->session->userdata('user_id');
 		$circle_name = $_POST['circle_name'];
 		$email = $_POST['email'];
