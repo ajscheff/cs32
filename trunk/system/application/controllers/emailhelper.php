@@ -13,11 +13,9 @@ class EmailHelper extends Controller {
 	function receive(){
 		$this->load->database();
 		$this->load->model('Users');
-		echo 'Users';
 		$this->load->model('Circles');
-		echo 'Circles';
 		$this->load->model('Messages');
-		echo 'Messages';
+
 
 		$from = $_POST['from'];
 		$to = $_POST['to'];
@@ -38,7 +36,6 @@ class EmailHelper extends Controller {
 		$numberFrom = substr($num_matches[0][0], 0, 10);
 		$email = $email_matches[0][0];
 		$email = substr($email, 0, strpos($email, '@'));
-		echo 'line00';
 		$gateway = substr($from, strpos($from, $numberFrom) + 11);
 		//$provider_id = $this->Users->getProviderID($gateway);
 		//if($provider_id == 0){
@@ -54,26 +51,23 @@ class EmailHelper extends Controller {
 		$temp_msg = $message;
 		$temp_msg = trim($temp_msg);
 		$temp_msg = strtok($temp_msg, ' ');
-		echo 'line0';
 		if(strncasecmp($temp_msg, '#signup', 7) == 0){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			$reply = '';
 			if($user_id != 0){
 				$reply = 'You already have an account registered with mobi.com. Text "#help" for further options.';
-				echo 'line1';
 			}
 			else{
 				$temp_msg = strtok(' ');
 				$username_taken = getUserID_username($temp_msg);
-				echo 'line2';
 				if($username_taken == 0){
 					$temp_password = 'tharsheblows';
 					$this->Users->createFullUser($temp_msg, $temp_password, $numberFrom, $temp_msg);
-					echo 'line3';
+
 					$reply = "Welcome to Mobi!  Your temporary password is $temp_password.  Please visit mobi.com to change your password.";
 				}
 				else{
-					echo 'line4';
+
 					$reply = 'This username is already taken.  Please resubmit your signup request with a different username.';
 				}
 			}
