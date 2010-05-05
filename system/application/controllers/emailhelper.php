@@ -11,9 +11,7 @@ class EmailHelper extends Controller {
 	
 	
 	function receive(){
-		echo 'line000';
 		$this->load->database();
-		echo 'database';
 		$this->load->model('Users');
 		echo 'Users';
 		$this->load->model('Circles');
