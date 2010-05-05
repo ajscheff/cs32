@@ -171,9 +171,11 @@ class Users extends Model {
 	 * and can accept an admin (1 or 0) or privledges ('reply_all, reply_admins, no_reply)
 	 * it adds a line to the users_circle table to reflect the new group membership
 	 */
-	function addUserToCircle($user_id, $circle_id, $admin = 0, $privledges = 'reply_all') {
+	function addUserToCircle($user_id, $circle_id, $public_name = NULL, $admin = 0, $privledges = 'reply_all') {
 		
-		$public_name = $this->getPreferredName($user_id);
+		if ($public_name == NULL) {
+			$public_name = $this->getPreferredName($user_id);
+		}
 	
 		$this->db->set('user_id', $user_id);
 		$this->db->set('circle_id', $circle_id);
