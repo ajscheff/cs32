@@ -13,9 +13,10 @@
 								var circle_name = $('#circle_name').val();
 								var privacy = $('input:radio[name=privacy]:checked').val();
 								var description = $('#description').val();
-								$.post('/index.php/home/createCircle/', {email:email, circle_name:circle_name, privacy:privacy, description:description}, function(data) {
+								$.post('/index.php/home/createCircle/', {email:email, circle_name:circle_name, privacy:privacy, description:description}, function(newdata) {
 									hideCircleForm();
-									$('#circleinfo').html(data);
+									$('#circleinfo').html(newdata);
+								});
 							} else {
 								$('#emailtakenpopup').show();
 							}
@@ -93,6 +94,7 @@
 				</p>
 			</form>
 			<div id="emailtakenpopup">
-			<a style="float:right" href="javascript:hideEmailTakenPopup()">Close</a>The email you entered is taken by another circle, please choose a different email address.</div>
+				<a style="float:right" href="javascript:hideEmailTakenPopup()">Close</a>The email you entered is taken by another circle, please choose a different email address.
+			</div>
 	</body>
 </html>

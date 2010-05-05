@@ -45,4 +45,5 @@
 	
 #emailtakenpopup{
 	display:none;
+	position: fixed;
 	}
