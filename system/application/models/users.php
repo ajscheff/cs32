@@ -222,7 +222,7 @@ class Users extends Model {
 
 		if (!$site) echo false;
 
-		return $site;
+		return 'a provider';
 	}
 	
 	/**
