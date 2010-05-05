@@ -74,7 +74,7 @@ class Messages extends Model {
 
 		foreach ($emailList as $contact) {
 			if ($user_id != $contact->user_id) {
-				$username = $this->Users->getPublicName($user_id);
+				$username = $this->Users->getPublicName($user_id, $circle_id);
 				$from = '' . $username . '_' . $circle_email . '@ombtp.com';
 				$this->send($from, $contact->phone_number.'@'.$contact->gateway, $message);
 			}
@@ -88,7 +88,7 @@ class Messages extends Model {
 	 * message), 'timestamp', 'text'.
 	 */
 	function getMessages_circle($circle_id, $first_message, $number) {
-		$this->db->select('messages.user_id, users.public_name, messages.text, messages.timestamp');
+		$this->db->select('messages.user_id, users_circles.public_name, messages.text, messages.timestamp');
 		$this->db->from('messages');
 		$this->db->join('users', 'messages.user_id = users.id');
 		$this->db->limit($first_message, $number);
