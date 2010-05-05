@@ -90,7 +90,9 @@ class Welcome extends Controller {
 		$message = " MESSAGE ";
 		$string = "USER: "
 		$user = 'Marcus'
-		echo $string.$user."\n".$message;
+		$full = $string . $user . "\n" . $message;
+		echo $full;
+		echo $string . $user . "\n" . $message;
 	}
 
 	function quickTest() {
