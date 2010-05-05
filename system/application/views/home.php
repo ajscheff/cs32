@@ -55,7 +55,7 @@
 			</div>
 			</div>
 			<div id="bottomshade"></div>
-			<form id="newcircleform" action="/index.php/home/createCircle/">
+			<form id="newcircleform" method="post" action="/index.php/home/createCircle/">
 				<a style="float:right" href="javascript:hideCircleForm()">Close</a>
 				<p>
 					Circle name:
