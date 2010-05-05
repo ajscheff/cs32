@@ -25,6 +25,16 @@
 				function hideSignUp() {
 					$('#signupform').hide();
 				}
+				
+				function signUp() {
+					var username = $('#username').val();
+					var password = $('#password').val();
+					var public_name = $('#public_name').val();
+					var phone_number = $('#phone_number').val();
+					var provider = $('#provider').val();
+					$.post('/index.php/welcome/signup', { username : username, password : password, public_name : public_name, phone_number : phone_number, provider : provider });
+				}
+					
 	
 			--></script>
 	</head>
@@ -32,7 +42,7 @@
 			<div id="backshade">
 			<div id="panel">
 					<div id="masthead">
-						<a id="title" href="/index.php/welcome/index">mobi</a>
+						<a class="mastheadbutton" id="title" href="/index.php/welcome/index">mobi</a>
 						<p id="subtitle">mobile social networking</p>
 					</div>
 					<div class="divider" style="height: 3px; width: 100%;"/>
@@ -42,15 +52,10 @@
 						<a id="learn" href="javascript:showLearnMore()">Learn More</a>
 						<a id="sign" href="javascript:showSignUp()">Sign Up</a>
 						<form id="login" method="post" action="/index.php/welcome/login">
-							<p>
 							<h4>Sign in:</h4>
-							<br/>
 							<input id="logininput" type="text" name="username" value="username" size="25"/>
-							<br/>
 							<input id="logininput" type="password" name="password" value="" size="25"/>
-							<br/>
 							<input id="loginbutton" class="button" type="submit" value="Login" style="float:right"/>
-							</p>
 						</form>
 					</div>
 					<div id="misc">
@@ -70,10 +75,35 @@
 				<a style="float:right;" href="javascript:hideLearnMore()">Close</a>
 				<p> Mobi is a free service that let's people text multiple other people at once with just one text message!</p>
 			</div>
-			<form id="signupform" method="post" action="">
-				<input type="text" name="username"/>
-				<input type="password" name="password1"/>
-				<input type="password" name="password2"
+			<form id="signupform" method="post" action="/index.php/welcome/signup">
+				<a style="float:right;" href="javascript:hideSignUp()">Close</a>
+				<p>
+					username:
+					<input type="text" id="username" name="username"/>
+				</p>
+				<p>
+					password:
+					<input type="password" id="password" name="password"/>
+				</p>
+				<p>
+					type your pasword again:
+					<input type="password" id="password2" name="password2"/>
+				</p>
+				<p>
+				give a public name, this name will be viewable by the public:
+					<input type="text" id="public_name" name="public_name"/>
+					</p>
+				<p>
+					provide your phone number and service provider:<br/>
+					<input type="text" id="phone_number" name="phone_number"/>
+					<select id="provider" name="provider_id">
+						<option value="1">AT&T</option>
+						<option value="2">Verizon</option>
+						<option value="3">Sprint</option>
+						<option value="4">T Mobile</option>
+					</select>
+				</p>
+				<input class="button" type="submit" value="Sign Up!"/>
 			</form>
 	</body>
 </html>

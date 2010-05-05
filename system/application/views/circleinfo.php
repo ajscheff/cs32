@@ -8,6 +8,6 @@
 			?>
 			<h4>recent messages:<h4>
 			<?php foreach($messages as $message) {
-				echo '<p class="message">'.$message.'</p>';
+				echo '<p class="message">asf'.$message.'</p>';
 				}
 			?>

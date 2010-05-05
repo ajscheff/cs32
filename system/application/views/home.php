@@ -23,6 +23,7 @@
 						<p id="subtitle">mobile social networking</p>
 						<p id="userstatus">Hello, <?php echo $username ?>!</p>
 						<a id="settingsbutton" href="/index.php/settings/loadSettings/">settings</a>
+						<a id="logoutbutton" href="/index.php/welcome/logout/">logout</a>
 					</div>
 					<div class="divider" style="height: 3px; width: 100%;"/>
 					<div id="interactions">
