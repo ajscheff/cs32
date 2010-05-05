@@ -11,7 +11,6 @@ class EmailHelper extends Controller {
 	
 	
 	function receive(){
-		echo 'entered receive';
 		$this->load->database();
 		$this->load->model('Users');
 		$this->load->model('Circles');
@@ -36,7 +35,7 @@ class EmailHelper extends Controller {
 		$numberFrom = substr($num_matches[0][0], 0, 10);
 		$email = $email_matches[0][0];
 		$email = substr($email, 0, strpos($email, '@'));
-		
+		echo 'line00';
 		$gateway = substr($from, strpos($from, $numberFrom) + 11);
 		//$provider_id = $this->Users->getProviderID($gateway);
 		//if($provider_id == 0){
