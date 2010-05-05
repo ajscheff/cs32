@@ -17,6 +17,7 @@ class Home extends Controller {
 		the circlesinfo view with this data.
 	*/
 	function loadCircle(){
+		echo 'entered loadCircle()';
 		$circle_id = $_POST['circle_id'];
 		$data['admins'] = $this->Circles->getAdmins($circle_id);
 		$data['messages'] = $this->Messages->getMessages_circle($circle_id, 0, 10);
@@ -27,7 +28,7 @@ class Home extends Controller {
 	}
 	
 	function createCircle(){
-		echo 'entered';
+		echo 'entered createCircle()';
 		$user_id = $this->session->userdata('user_id');
 		$circle_name = $_POST['circle_name'];
 		$email = $_POST['email'];
