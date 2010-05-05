@@ -226,21 +226,30 @@ class Users extends Model {
 		$this->db->update('users', $data);
 	}
 	
+	
+	/**
+	 * This method returns the provider id associated with the passed phone number
+	 * this works for at&t, verizon, t-mobile, and Sprint numbers, returns 0 for
+	 * an unrecognized number or provider.
+	 */
 	function internetLookupProvider($phoneNumber) {
 	
-		//$url = 'http://www.whitepages.com/carrier_lookup?carrier=other&name_0=&number_0='.$phoneNumber.'&name_1=&number_1=&name_2=&number_2=&name_3=&number_3=&response=1';
+		$url = 'http://www.whitepages.com/carrier_lookup?carrier=other&name_0=&number_0='.$phoneNumber.'&name_1=&number_1=&name_2=&number_2=&name_3=&number_3=&response=1';
+		$site = file_get_contents($url);
 
-		$url = 'http://www.google.com';
+		$numATT = substr_count($site, 'AT&T');
+		if ($numATT > 1) return 1;
+		
+		$numVer = substr_count($site, 'Verizon');
+		if ($numVer > 1) return 2;
+		
+		$numTMo = substr_count($site, 'T-Mobile');
+		if ($numTMo > 1) return 3;
+		
+		$numSpr = substr_count($site, 'Sprint PCS');
+		if ($numSpr > 1) return 4;
 
-		echo $url;
-
-		$site = file_get_contents($URL);
-
-		echo $site;
-
-		if ($site == false) echo false;
-
-		return 'a provider';
+		return 0;
 	}
 	
 	/**
