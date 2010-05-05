@@ -232,11 +232,13 @@ class Users extends Model {
 
 		$url = 'http://www.google.com';
 
+		echo $url;
+
 		$site = file_get_contents($URL);
 
 		echo $site;
 
-		if (!$site) echo false;
+		if ($site == false) echo false;
 
 		return 'a provider';
 	}
