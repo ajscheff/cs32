@@ -76,7 +76,7 @@ class Messages extends Model {
 			//if ($user_id != $contact->user_id) {
 				$username = $this->Users->getUsername($user_id);
 				$message = 'USER: ' . $username . "\n" . $message;
-				$from = '' . $username . ' in circle ' . $circle_email . '@ombtp.com';
+				$from = ' ' . $username . ' in circle ' . $circle_email . '@ombtp.com';
 				//$from = 'wtf';
 				$this->send($from, $contact->phone_number.'@'.$contact->gateway, $message);
 				//$this->send('asdf', $contact->phone_number.'@'.$contact->gateway, $message);
