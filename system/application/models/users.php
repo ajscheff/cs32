@@ -217,6 +217,11 @@ class Users extends Model {
 		$url = 'http://www.google.com';
 
 		$site = file_get_contents($URL);
+
+		echo $site;
+
+		if (!$site) echo false;
+
 		return $site;
 	}
 	
