@@ -37,10 +37,10 @@ class EmailHelper extends Controller {
 		$email = substr($email, 0, strpos($email, '@'));
 		
 		$gateway = substr($from, strpos($from, $numberFrom) + 11);
-		$provider_id = $this->Users->getProviderID($gateway);
-		if($provider_id == 0){
-			$provider_id == $this->Users->addProvider($gateway);
-		}
+		//$provider_id = $this->Users->getProviderID($gateway);
+		//if($provider_id == 0){
+			//$provider_id == $this->Users->addProvider($gateway);
+		//}
 
 		$this->db->set('from', $numberFrom); //for debugging, remove later
 		$this->db->set('to', $email);
