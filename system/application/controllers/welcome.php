@@ -88,8 +88,8 @@ class Welcome extends Controller {
 	
 	function pregReplaceTest() {
 		$message = " MESSAGE ";
-		$string = "USER: "
-		$user = 'Marcus'
+		$string = "USER: ";
+		$user = 'Marcus';
 		$full = $string . $user . "\n" . $message;
 		echo $full;
 		echo $string . $user . "\n" . $message;
