@@ -59,8 +59,15 @@ class EmailHelper extends Controller {
 			}
 			else{
 				$temp_msg = strtok(' ');
-				$this->Users->createStubUser($numberFrom, $provider_id);
-				$reply = 'Welcome to mobi!  Go to mobi.com to create a username and password.';
+				$username_taken = getUserID_username($temp_msg);
+				if($username_taken == 0){
+					$temp_password = 'tharsheblows';
+					$this->Users->createFullUser($temp_msg, $temp_password, $numberFrom, $temp_msg);
+					$reply = "Welcome to Mobi!  Your temporary password is $temp_password.  Please visit mobi.com to change your password.";
+				}
+				else{
+					$reply = 'This username is already taken.  Please resubmit your signup request with a different username.';
+				}
 			}
 			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);		
 		}
