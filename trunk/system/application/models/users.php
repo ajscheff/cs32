@@ -173,8 +173,9 @@ class Users extends Model {
 	 */
 	function addUserToCircle($user_id, $circle_id, $public_name = NULL, $admin = 0, $privledges = 'reply_all') {
 		
-		if ($public_name == NULL) {
-			$public_name = $this->getPreferredName($user_id);
+		$userPreferredName = $this->getPreferredName($user_id);
+		if ($userPreferredName != NULL) {
+			$public_name = $userPreferredName;
 		}
 	
 		$this->db->set('user_id', $user_id);

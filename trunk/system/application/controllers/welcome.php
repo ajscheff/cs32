@@ -91,10 +91,7 @@ class Welcome extends Controller {
 	
 	function quickTest() {
 		$this->load->model('Circles');
-	
-		$result = $this->Circles->createCircle('name', 'circelemaifea', 'public', 'hello');
-		
-		print_r($result);
+		$this->Users->addUserToCircle(6, 3, 'blah');
 	}
 }
 
