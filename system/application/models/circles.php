@@ -12,22 +12,6 @@ class Circles extends Model {
 		$this->load->database();
 	}
 	
-	/**
-	 * Returns the id of the circle with the passed email address. This method 
-	 * expects that the passed email address is without the @ombtp.com on the 
-	 * end. If a circle does not exist with the passed email address, 0 is 
-	 * returned.
-	 */
-	function getCircleID_email($email){
-		$this->db->select('id');
-		$this->db->from('circles');
-		$this->db->where('email', $email);
-		$query = $this->db->get();
-		
-		$row = $query->row_array();
-		if (empty($row)) return 0;
-		else return $row['id'];
-	}
 
 	/**
 	 * Returns the permissions of the passed user in the passed circle, Returns 
@@ -52,18 +36,20 @@ class Circles extends Model {
 	 */
 	function createCircle($circle_name, $email, $privacy, $description) {
 	
-			$this->db->set('name', $circle_name);
-			$this->db->set('email', $email);
-			$this->db->set('privacy', $privacy);
-			$this->db->set('description', $description);
-			$this->db->insert('circles');
+		$this->db->set('name', $circle_name);
+		$this->db->set('email', $email);
+		$this->db->set('privacy', $privacy);
+		$this->db->set('description', $description);
+		$this->db->insert('circles');
 		
-			return $this->getCircleID_email($email);	
+		return $this->getCircleID_email($email);	
 	}
 	
 	/**
-	 * Returns the circle ID associated with the passed email address. 0 if
-	 * the passed email doesn't exist.
+	 * Returns the id of the circle with the passed email address. This method 
+	 * expects that the passed email address is without the @ombtp.com on the 
+	 * end. If a circle does not exist with the passed email address, 0 is 
+	 * returned.
 	 */
 	function getCircleID_email($email) {
 	
