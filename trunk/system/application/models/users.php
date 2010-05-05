@@ -60,6 +60,22 @@ class Users extends Model {
 	}
 	
 	/**
+	 * This method returns the public name of the user with the passed user id
+	 * if the passed user id doesn't exist in the db, this method returns NULL
+	 */
+	function getPublicName($user_id) {
+		$this->db->select('public_name');
+		$this->db->from('users');
+		$this->db->where('users.id', $user_id);
+		
+		$query = $this->db->get();
+		
+		$rows = $query->result();
+		if (empty($rows)) return NULL;
+		else return $rows[0]->username;
+	}
+	
+	/**
 	 * This method returns true if the passed username and password match in the
 	 * database and false if the username doesn't exist or the password is incorrect
 	 */
