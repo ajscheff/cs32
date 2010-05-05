@@ -121,7 +121,7 @@ p {
 	left: 50px;
 	}
 	
-#title:hover, #settingsbutton:hover, #logoutbutton:hover {
+#title:hover, #settingsbutton:hover, #logoutbutton:hover, #circlesbutton:hover {
 	background: white;
 	}
 	
@@ -137,6 +137,15 @@ p {
 	position: absolute;
 	top: 52px;
 	left: 550px;
+	}
+	
+#circlesbutton {
+	position: absolute;
+	left: 630px;
+	top: 48px;
+	border: 2px solid #327262;
+	background: none;
+	color: #327262;
 	}
 	
 #settingsbutton {
@@ -161,7 +170,8 @@ p {
 	position: relative;
 	background: url(/art/colors/white85.png);
 	margin: auto;
-	height: 300px;
+	margin-bottom: 0px;
+	height: 500px;
 	width: 700px;
 	border: 3px solid #327262;
 	}
