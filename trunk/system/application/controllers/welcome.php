@@ -88,6 +88,14 @@ class Welcome extends Controller {
 		$data['first_circle'] = $circle_id;
 		echo $this->load->view('home', $data);
 	}
+	
+	function quickTest() {
+		$this->load->model('Messages');
+	
+		$result = $this->Messages->getMessages_user(1,0,10);
+		
+		print_r($result);
+	}
 }
 
 /* End of file welcome.php */

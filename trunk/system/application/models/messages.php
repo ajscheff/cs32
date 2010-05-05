@@ -106,10 +106,11 @@ class Messages extends Model {
 	 * message was sent), 'timestamp', 'text'.
 	 */
 	function getMessages_user($user_id, $first_message, $number) {
-		$this->db->select('messages.circle_id, users.public_name, messages.text, messages.timestamp');
-		$this->db->from('messages');
-		$this->db->join('users_circles', 'messages.circle_id = users_circles.circle_id');
+		$this->db->select('messages.circle_id, users_circles.public_name, messages.text, messages.timestamp');
+		$this->db->from('messages, users_circles');
 		$this->db->where('users_circles.user_id', $user_id);
+		$this->db->where('users_circles.circle_id', 'messages.circle_id');
+
 		$this->db->limit($first_message, $number);	
 		
 		$query = $this->db->get();
