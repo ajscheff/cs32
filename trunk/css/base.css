@@ -26,6 +26,9 @@ a:hover, a:active {
 	
 input {
 	padding: 2px;
+	margin: 5px;
+	font-size: 13px;
+	border: 2px solid #DDDDDD; 
 	}
 	
 input.button {
@@ -118,7 +121,7 @@ p {
 	left: 50px;
 	}
 	
-#title:hover {
+#title:hover, #settingsbutton:hover, #logoutbutton:hover {
 	background: white;
 	}
 	
@@ -133,14 +136,25 @@ p {
 #userstatus {
 	position: absolute;
 	top: 52px;
-	left: 600px;
+	left: 550px;
 	}
 	
 #settingsbutton {
 	position: absolute;
-	left: 700px;
+	left: 671px;
 	top: 48px;
-	border: 2px solid #39826F;
+	border: 2px solid #327262;
+	background: none;
+	color: #327262;
+	}
+	
+#logoutbutton {
+	position: absolute;
+	left: 720px;
+	top: 48px;
+	background: none;
+	border: 2px solid #327262;
+	color: #327262;
 	}
 	
 #interactions {
@@ -149,7 +163,7 @@ p {
 	margin: auto;
 	height: 300px;
 	width: 700px;
-	border: 3px solid #39826F;
+	border: 3px solid #327262;
 	}
 	
 #misc {

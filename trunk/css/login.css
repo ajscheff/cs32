@@ -1,6 +1,11 @@
 #login {
 	float: right;
 	padding: 40px;
+	max-width: 240px;
+	}
+	
+#input {
+	margin: 5px;
 	}
 	
 #welcome {
@@ -31,9 +36,9 @@
 	}
 	
 #logininput {
+	margin: 10px;
 	font-size: 16px;
 	height: 24px;
-	border: 2px solid #DDDDDD; 
 	}
 	
 #loginbutton {
@@ -43,8 +48,7 @@
 	}
 	
 #learnmore, #signupform {
-	font-size: 200%;
-	width: 300px;
+	width: 500px;
 	height: 300px;
 	border: 3px solid #39826F;
 	background: white;
