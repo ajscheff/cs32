@@ -214,7 +214,7 @@ class Users extends Model {
 	
 		//$url = 'http://www.whitepages.com/carrier_lookup?carrier=other&name_0=&number_0='.$phoneNumber.'&name_1=&number_1=&name_2=&number_2=&name_3=&number_3=&response=1';
 
-		$url = 'www.google.com';
+		$url = 'http://www.google.com';
 
 		$site = file_get_contents($URL);
 		return $site;
