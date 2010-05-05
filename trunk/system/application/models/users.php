@@ -207,7 +207,26 @@ class Users extends Model {
 		
 		return $results[0]->preferred_name;
 	}
-	 
+	
+	/**
+	 * sets the preferred name of the passed user
+	 */
+	function setPreferredName($user_id, $preferred_name) {
+		$this->db->where('id', $user_id);
+		$data = array('preferred_name' => $preferred_name);
+		$this->db->update('users', $data);
+	}
+	
+	
+	/**
+	 * Sets the public name of the passed user in the passed circle
+	 */
+	function setPublicName($user_id, $circle_id, $public_name) {
+		$this->db->where('user_id', $user_id);
+		$this->db->where('circle_id', $circle_id);
+		$data = array('public_name' => $public_name);
+		$this->db->update('users_circles', $dsata);
+	}
 	
 	/**
 	 * This method sets the admin status of the passed user in the passed
