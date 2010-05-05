@@ -70,10 +70,11 @@ class Circles extends Model {
 	 * Returns an array of members of the circle. These are objects with the 
 	 * following fields: 'public_name' (public name of user), 'phone_number', 
 	 * 'gateway' (gateway associated with the user's provider), 'admin' (1 if 
-	 * the user is an admin in this circle, 0 otherwise).
+	 * the user is an admin in this circle, 0 otherwise), 'public_name' (the 
+	 * public name of the member of the circle)
 	 */
 	function getMembers($circle_id) {
-		$this->db->select('users.phone_number, providers.gateway, users_circles.user_id');
+		$this->db->select('users.phone_number, providers.gateway, users_circles.user_id, users_circles.public_name');
 		$this->db->from('users');
 		$this->db->join('users_circles', 'users_circles.user_id = users.id');
 		$this->db->join('providers', 'users.provider_id = providers.id');
@@ -88,7 +89,7 @@ class Circles extends Model {
 	 * same fields as above except for no 'admin' field.
 	 */
 	function getAdmins($circle_id) {
-		$this->db->select('users.phone_number, providers.gateway, users_circles.user_id');
+		$this->db->select('users.phone_number, providers.gateway, users_circles.user_id, users_circles.public_name');
 		$this->db->from('users');
 		$this->db->join('users_circles', 'users_circles.user_id = users.id');
 		$this->db->join('providers', 'users.provider_id = providers.id');

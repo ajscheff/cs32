@@ -92,7 +92,7 @@ class Welcome extends Controller {
 	function quickTest() {
 		$this->load->model('Messages');
 	
-		$result = $this->Messages->getMessages_user(1,0,10);
+		$result = $this->Messages->getMessages_circle(1,10,10);
 		
 		print_r($result);
 	}
