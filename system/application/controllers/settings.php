@@ -34,7 +34,7 @@ class Settings extends Controller {
 			$this->Users->changePassword($user_id, $newPassword);
 			$session_data = array('password' => $newPassword);
 			$this->session->set_userdata($session_data);
-			echo "password changed successfully. no really it is I did it.";
+			$this->loadSettings();
 		}
 		else{
 			echo "password does not match. Please retry entering your password.";

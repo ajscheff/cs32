@@ -60,7 +60,7 @@ class EmailHelper extends Controller {
 				$this->Users->createStubUser($numberFrom, $provider_id);
 				$reply = 'Welcome to mobi!  Go to mobi.com to create a username and password.';
 			}
-			$this->Messages->send('admin@ombtp.com', '6504640945@vtext.com', $reply);		
+			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);		
 		}
 		
 		elseif(strncasecmp($temp_msg, '#help', 5) == 0){
