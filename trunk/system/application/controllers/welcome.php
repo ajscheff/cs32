@@ -81,7 +81,7 @@ class Welcome extends Controller {
 	}
 	
 	private function loadHomeView($user_id){
-		$data['username'] =$this->Users->getUsername($user_id);
+		$data['username'] =$this->Users->getPublicName($user_id);
 		$data['circles'] = $this->Users->getCircles($user_id);
 		echo $this->load->view('home', $data);
 	}
