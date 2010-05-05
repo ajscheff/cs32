@@ -42,12 +42,10 @@ class Home extends Controller {
 			
 			$this->Users->addUserToCircle($user_id, $circle_id, $preferred_name, 1); //default reply-all
 			$this->loadHomeView($user_id, $circle_id);
-			echo 'line1';
 		}
 		else{
 			$this->loadHomeView($user_id);
-			echo 'line1.1';
-		
+			echo 'that email address is already taken';
 		}
 	}
 		//identical to function in welcome.php.  This should be abstracted eventually

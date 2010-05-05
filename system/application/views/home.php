@@ -13,9 +13,12 @@
 				}	
 					
 				function loadCircle(circle_id) {
-					$.post('/index.php/home/loadCircle/', { circle_id : circle_id }, function(data) {
-						$('#circleinfo').html(data);
-					});
+				
+					if (circle_id != 0) {
+						$.post('/index.php/home/loadCircle/', { circle_id : circle_id }, function(data) {
+							$('#circleinfo').html(data);
+						});
+					}
 				}
 				
 				function showCircleForm() {
@@ -28,7 +31,7 @@
 					
 			--></script>
 	</head>
-	<body>
+	<body onload="loadCircle(<?php echo $first_circle ?>)">
 			<div id="backshade">
 			<div id="panel" onload="javascript:defaultCircle()">
 					<div id="masthead">
