@@ -12,7 +12,7 @@
 					}
 				}	
 					
-				function loadCircle(circle_id) {;
+				function loadCircle(circle_id) {
 				
 					if (circle_id != 0) {
 						$.post('/index.php/home/loadCircle/', { circle_id : circle_id }, function(data) {
@@ -33,12 +33,11 @@
 	</head>
 	<body onload="loadCircle(<?php echo $first_circle ?>)">
 			<div id="backshade">
-			<div id="panel" >
+			<div id="panel" onload="javascript:defaultCircle()">
 					<div id="masthead">
 						<a id="title" href="/index.php/welcome/index">mobi</a>
 						<p id="subtitle">mobile social networking</p>
 						<p id="userstatus">Hello, <?php echo $username ?>!</p>
-						<a id="circlesbutton" href="/index.php/welcome/index">circles</a>
 						<a id="settingsbutton" href="/index.php/settings/loadSettings/">settings</a>
 						<a id="logoutbutton" href="/index.php/welcome/logout/">logout</a>
 					</div>
