@@ -26,7 +26,7 @@ class Home extends Controller {
 	}
 	
 	function loadCircle() {
-		loadCircle_id($_POST['circle_id']);
+		$this->loadCircle_id($_POST['circle_id']);
 	}
 	
 	function createCircle() {
