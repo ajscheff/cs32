@@ -72,7 +72,7 @@ class Users extends Model {
 		
 		$rows = $query->result();
 		if (empty($rows)) return NULL;
-		else return $rows[0]->username;
+		else return $rows[0]->public_name;
 	}
 	
 	/**
