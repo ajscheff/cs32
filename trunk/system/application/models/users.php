@@ -210,6 +210,11 @@ class Users extends Model {
 		$this->db->update('users', $data);
 	}
 	
+	function internetLookupProvider($phoneNumber) {
+
+		return 'a provider'
+	}
+	
 	/**
 	 * This is a helper method for password security.  It hashes the passed password
 	 * for lookup in the db
