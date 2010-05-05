@@ -95,8 +95,11 @@ class Users extends Model {
 	 * This method creates a stub user (a user with only a phone number and a provider)
 	 * in the database and returns the user id associated with the new user.
 	 */
-	function createStubUser($phone_number, $provider_id)
+	function createStubUser($phone_number)
 	{
+	
+		$provider_id = $this->internetLookupProvider($phone_number);
+	
 		$this->db->set('phone_number', $phone_number);
 		$this->db->set('provider_id', $provider_id);
 		$this->db->insert('users');
@@ -120,24 +123,14 @@ class Users extends Model {
 		if (empty($rows)) return 0;
 		else return $rows[0]->id;
 	}
-
-	/**
-	 * This method adds a provider with a given gateway to the database and returns
-	 * the id associated with it.
-	 */
-	function addProvider($gateway) {
-	
-		$this->db->set('name', $gateway);
-		$this->db->set('gateway', $gateway);
-		$this->db->insert('providers');
-		
-		return $this->getProviderID($gateway);
-	}
 	
 	/**
 	 * This method creates a full user and returns the id associated with it
 	 */
-	function createFullUser($username, $password, $phone_number, $provider_id, $public_name) {
+	function createFullUser($username, $password, $phone_number, $public_name) {
+	
+		$provider_id = $this->internetLookupProvider($phone_number);
+		
 		$this->db->set('username', $username);
 		$this->db->set('password', $this->pwEncode($password));
 		$this->db->set('phone_number', $phone_number);

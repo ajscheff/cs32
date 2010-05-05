@@ -46,6 +46,38 @@ class Circles extends Model {
 		else return $queryResults[0]->privileges;
 	}
 	
+	function createCircle($circle_name, $email, $privacy, $description) {
+
+		if ($this->getCircleID_email($email) == 0) {
+
+			$this->db->set('name', $circle_name);
+			$this->db->set('email', $email);
+			$this->db->set('privacy', $privacy);
+			$this->db->set('description', $description);
+			$this->db->insert('circles');
+		
+			return $this->getCircleID_email($email);	
+		}
+		else {
+			return 0;
+		}
+	}
+	
+	function getCircleID_email($email) {
+	
+		$this->db->select('id');
+		$this->db->from('circles');
+		$this->db->where('email', $email);
+		$query = $this->db->get();
+		
+		$queryResults = $query->result();
+		
+		if (empty($queryResults)) return 0;
+		else return $queryResults[0]->id;
+		
+	}
+	
+	
 	/**
 	 * Returns an array of members of the circle. These are objects with the 
 	 * following fields: 'public_name' (public name of user), 'phone_number', 
