@@ -49,7 +49,7 @@ class EmailHelper extends Controller {
 
 		//process message for commands
 		$temp_msg = $message;
-		trim($temp_msg);
+		$temp_msg = trim($temp_msg);
 		if(strncasecmp($temp_msg, '#signup', 7) == 0){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			$reply = '';
