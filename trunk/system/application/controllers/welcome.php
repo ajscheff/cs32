@@ -89,7 +89,7 @@ class Welcome extends Controller {
 	function pregReplaceTest() {
 		$circle_email = 'Marcus';
 		$username = $this->Users->getPublicName(1);
-		$from = ' ' . $username . ' in circle ' . $circle_email . '@ombtp.com';
+		$from = '' . $username . ' in circle ' . $circle_email . '@ombtp.com';
 		echo $from;
 	}
 }
