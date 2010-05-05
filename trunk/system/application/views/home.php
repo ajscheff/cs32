@@ -5,20 +5,33 @@
 		<link rel="stylesheet" type="text/css" href="/css/home.css" />
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.min.js"></script>
 		<script type="text/javascript"><!--
-		
-				function defaultCircle() {
-					if($first_circle > 0){
-						loadCircle($first_circle);
-					}
-				}	
+
+				function submitNewCircle(){
+					var email = $('#email').val();
+					$.post('/index.php/home/emailExists/', { email : email }, function(data) {
+							if(data==0){
+								var circle_name = $('#circle_name').val();
+								var privacy = $('input:radio[name=privacy]:checked').val();
+								var description = $('#description').val();
+								$.post('/index.php/home/createCircle/', {email:email, circle_name:circle_name, privacy:privacy, description:description}, function(data) {
+									hideCircleForm();
+									$('#circleinfo').html(data);
+							} else {
+								$('#emailtakenpopup').show();
+							}
+						});
+				}
 					
 				function loadCircle(circle_id) {
-				
 					if (circle_id != 0) {
 						$.post('/index.php/home/loadCircle/', { circle_id : circle_id }, function(data) {
 							$('#circleinfo').html(data);
 						});
 					}
+				}
+				
+				function hideEmailTakenPopup(){
+					$('#emailtakenpopup').hide();
 				}
 				
 				function showCircleForm() {
@@ -33,7 +46,7 @@
 	</head>
 	<body onload="loadCircle(<?php echo $first_circle ?>)">
 			<div id="backshade">
-			<div id="panel" onload="javascript:defaultCircle()">
+			<div id="panel">
 					<div id="masthead">
 						<a id="title" href="/index.php/welcome/index">mobi</a>
 						<p id="subtitle">mobile social networking</p>
@@ -58,15 +71,15 @@
 			</div>
 			</div>
 			<div id="bottomshade"></div>
-			<form id="newcircleform" method="post" action="/index.php/home/createCircle/">
+			<form id="newcircleform" method="post" action="javascript:submitNewCircle()">
 				<a style="float:right" href="javascript:hideCircleForm()">Close</a>
 				<p>
 					Circle name:
-					<input type="text" name="circle_name"/>
+					<input id="circle_name" type="text" name="circle_name"/>
 				</p>
 				<p>
 					Circle email:
-					<input type="text" name="email"/>@ombtp.com
+					<input id="email" type="text" name="email"/>@ombtp.com
 				</p>
 				<p>
 					Privacy:
@@ -75,9 +88,11 @@
 					<input type="radio" name="privacy" value="secret">Secret</input>
 				</p>
 				<p>
-					<textarea rows="10" cols="30" name="description">Enter a description for your circle.</textarea>
+					<textarea id="description" rows="10" cols="30" name="description">Enter a description for your circle.</textarea>
 					<input class="button" type="submit" value="Done!"/>
 				</p>
 			</form>
+			<div id="emailtakenpopup">
+			<a style="float:right" href="javascript:hideEmailTakenPopup()">Close</a>The email you entered is taken by another circle, please choose a different email address.</div>
 	</body>
 </html>
