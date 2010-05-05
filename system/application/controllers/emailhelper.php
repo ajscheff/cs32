@@ -13,9 +13,13 @@ class EmailHelper extends Controller {
 	function receive(){
 		echo 'line000';
 		$this->load->database();
+		echo 'database';
 		$this->load->model('Users');
+		echo 'Users';
 		$this->load->model('Circles');
+		echo 'Circles';
 		$this->load->model('Messages');
+		echo 'Messages';
 
 		$from = $_POST['from'];
 		$to = $_POST['to'];
