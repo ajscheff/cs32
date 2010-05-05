@@ -32,6 +32,8 @@ class Settings extends Controller {
 			$newPassword = $_POST['new_password'];
 			
 			$this->Users->changePassword($user_id, $newPassword);
+			$session_data = array('password' => $newPassword);
+			$this->session->set_userdata($session_data);
 			echo "password changed successfully. no really it is I did it.";
 		}
 		else{
