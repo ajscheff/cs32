@@ -59,7 +59,7 @@ class EmailHelper extends Controller {
 			}
 			else{
 				$temp_msg = strtok(' ');
-				$username_taken = getUserID_username($temp_msg);
+				$username_taken = $this->Users->getUserID_username($temp_msg);
 				if($username_taken == 0){
 					$temp_password = 'tharsheblows';
 					$this->Users->createFullUser($temp_msg, $temp_password, $numberFrom, $temp_msg);
