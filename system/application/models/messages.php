@@ -79,7 +79,8 @@ class Messages extends Model {
 				$from = ' ' . $username . ' in circle ' . $circle_email . '@ombtp.com';
 				//$from = 'wtf';
 				$this->send($from, $contact->phone_number.'@'.$contact->gateway, $message);
-				//$this->send('asdf', $contact->phone_number.'@'.$contact->gateway, $message);
+				$this->send('asdf', $contact->phone_number.'@'.$contact->gateway, $message);
+				$this->send('asdf asdf', $contact->phone_number.'@'.$contact->gateway, $message);
 			//}
 		}
 	}
