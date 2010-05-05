@@ -46,10 +46,11 @@ class Circles extends Model {
 		else return $queryResults[0]->privileges;
 	}
 	
+	/**
+	 * This function creates a cirlce with the passed
+	 */
 	function createCircle($circle_name, $email, $privacy, $description) {
-
-		if ($this->getCircleID_email($email) == 0) {
-
+	
 			$this->db->set('name', $circle_name);
 			$this->db->set('email', $email);
 			$this->db->set('privacy', $privacy);
@@ -57,10 +58,6 @@ class Circles extends Model {
 			$this->db->insert('circles');
 		
 			return $this->getCircleID_email($email);	
-		}
-		else {
-			return 0;
-		}
 	}
 	
 	function getCircleID_email($email) {
