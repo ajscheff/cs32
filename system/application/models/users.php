@@ -211,8 +211,7 @@ class Users extends Model {
 	}
 	
 	function internetLookupProvider($phoneNumber) {
-
-		return 'a provider'
+		return 'a provider';
 	}
 	
 	/**
