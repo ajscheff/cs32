@@ -50,6 +50,7 @@ class EmailHelper extends Controller {
 		//process message for commands
 		$temp_msg = $message;
 		$temp_msg = trim($temp_msg);
+		$temp_msg = strtok($temp_msg, ' ');
 		if(strncasecmp($temp_msg, '#signup', 7) == 0){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			$reply = '';
@@ -57,6 +58,7 @@ class EmailHelper extends Controller {
 				$reply = 'You already have an account registered with mobi.com. Text "#help" for further options.';
 			}
 			else{
+				$temp_msg = strtok(' ');
 				$this->Users->createStubUser($numberFrom, $provider_id);
 				$reply = 'Welcome to mobi!  Go to mobi.com to create a username and password.';
 			}
@@ -77,9 +79,7 @@ class EmailHelper extends Controller {
 		}
 		
 		elseif(strncasecmp($temp_msg, '#test', 5) == 0){
-			$this->Messages->send('admin@ombtp.com', '6504640945@vtext.com', 'test');
-		
-		
+			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, 'test');
 		}
 		
 		else{

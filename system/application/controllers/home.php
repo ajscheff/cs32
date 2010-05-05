@@ -26,4 +26,31 @@ class Home extends Controller {
 		echo $this->load->view('circleinfo', $data);
 	}
 	
+	function createCircle(){
+		$user_id = $this->session->userdata('user_id');
+		$circle_name = $_POST['circle_name'];
+		$email = $_POST['email'];
+		$email_taken = $this->Circles->getCircleID_email($email);
+		if($email_taken == 0){
+			$circle_id = $this->Circles->createCircle($circle_name, $email, $_POST['privacy'], $_POST['description']);
+				//add user who created this circle to the new circle as an admin
+			$this->Users->addUserToCircle($user_id, $circle_id, 1); //default reply-all
+			$this->loadHomeView($user_id, $circle_id);
+		}
+		else{
+			$this->loadHomeView($user_id, 0);
+		
+		}
+		
+	
+	
+	}
+	
+	function loadHomeView($user_id, $circle_id = 0;){
+		$data['username'] =$this->Users->getUsername($user_id);
+		$data['circles'] = $this->Users->getCircles($user_id);
+		$data['first_circle'] = $circle_id;
+		echo $this->load->view('home', $data);
+	}
+	
 }
