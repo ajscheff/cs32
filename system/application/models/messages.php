@@ -74,8 +74,8 @@ class Messages extends Model {
 
 		foreach ($emailList as $contact) {
 			//if ($user_id != $contact->user_id) {
-				$username = $this->Users->getUsername($user_id);
-				$message = 'USER: ' . $username . "\n" . $message;
+				$username = $this->Users->getPublicName($user_id);
+				//$message = 'USER: ' . $username . "\n" . $message;
 				$from = ' ' . $username . ' in circle ' . $circle_email . '@ombtp.com';
 				//$from = 'wtf';
 				$this->send($from, $contact->phone_number.'@'.$contact->gateway, $message);
