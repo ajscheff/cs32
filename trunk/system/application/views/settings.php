@@ -9,6 +9,7 @@
 						<a id="title" href="/index.php/welcome/index">mobi</a>
 						<p id="subtitle">mobile social networking</p>
 						<p id="userstatus">Hello, <?php echo $username ?>!</p>
+						<a id="circlesbutton" href="/index.php/welcome/index">circles</a>
 						<a id="settingsbutton" href="/index.php/settings/loadSettings">settings</a>
 						<a id="logoutbutton" href="/index.php/welcome/logout/">logout</a>
 					</div>
@@ -23,7 +24,7 @@
 						<input type="password" name="old_password"/>
 						<p>enter new password:</p>
 						<input type="password" name="new_password"/>
-						<input type="submit" value="change password"/>
+						<input class="button" type="submit" value="Go!"/>
 					</form>
 					</td>
 					</tr>
