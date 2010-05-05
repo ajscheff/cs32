@@ -94,12 +94,6 @@ class Welcome extends Controller {
 		echo $full;
 		echo $string . $user . "\n" . $message;
 	}
-
-	function quickTest() {
-		$result = $this->Users->internetLookupProvider('6504640945');
-
-		echo $result;
-	}
 }
 
 /* End of file welcome.php */
