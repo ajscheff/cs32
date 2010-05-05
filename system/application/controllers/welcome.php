@@ -85,13 +85,6 @@ class Welcome extends Controller {
 		$data['circles'] = $this->Users->getCircles($user_id);
 		echo $this->load->view('home', $data);
 	}
-	
-	function pregReplaceTest() {
-		$circle_email = 'Marcus';
-		$username = $this->Users->getPublicName(1);
-		$from = '' . $username . ' in circle ' . $circle_email . '@ombtp.com';
-		echo $from;
-	}
 }
 
 /* End of file welcome.php */
