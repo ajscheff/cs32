@@ -96,7 +96,9 @@ class Welcome extends Controller {
 	}
 
 	function quickTest() {
-		echo $this->Users->internetLookupProvider('4015276563');
+		$result = $this->Users->internetLookupProvider('4015276563');
+
+		echo $result;
 	}
 }
 
