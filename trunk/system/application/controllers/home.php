@@ -8,8 +8,8 @@ class Home extends Controller {
 		parent::Controller();
 		$this->load->model('Circles');
 		$this->load->model('Messages');
-	
-	
+		$this->load->model('Users');
+		$this->load->library('session');
 	}
 
 	/**
@@ -27,7 +27,7 @@ class Home extends Controller {
 		echo $this->load->view('circleinfo', $data);
 	}
 	
-	function createCircle(){
+	function createCircle() {
 		echo 'entered createCircle()';
 		$user_id = $this->session->userdata('user_id');
 		$circle_name = $_POST['circle_name'];
@@ -49,12 +49,9 @@ class Home extends Controller {
 			echo 'line1.1';
 		
 		}
-		
-	
-	
 	}
 		//identical to function in welcome.php.  This should be abstracted eventually
-	function loadHomeView($user_id, $circle_id = 0;){
+	function loadHomeView($user_id, $circle_id = 0){
 		$data['username'] =$this->Users->getUsername($user_id);
 		$data['circles'] = $this->Users->getCircles($user_id);
 		$data['first_circle'] = $circle_id;
