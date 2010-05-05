@@ -63,11 +63,11 @@ class Users extends Model {
 	 * This method returns the public name of the user with the passed user id
 	 * if the passed user id doesn't exist in the db, this method returns NULL
 	 */
-	function getPublicName($user_id) {
+	function getPublicName($user_id, $circle_id) {
 		$this->db->select('public_name');
-		$this->db->from('users');
-		$this->db->where('users.id', $user_id);
-		
+		$this->db->from('users_circles');
+		$this->db->where('user_id', $user_id);
+		$this->db->where('circle_id', $circle_id);		
 		$query = $this->db->get();
 		
 		$rows = $query->result();
@@ -127,7 +127,7 @@ class Users extends Model {
 	/**
 	 * This method creates a full user and returns the id associated with it
 	 */
-	function createFullUser($username, $password, $phone_number, $public_name) {
+	function createFullUser($username, $password, $phone_number, $preferred_name) {
 	
 		$provider_id = $this->internetLookupProvider($phone_number);
 		
@@ -135,7 +135,7 @@ class Users extends Model {
 		$this->db->set('password', $this->pwEncode($password));
 		$this->db->set('phone_number', $phone_number);
 		$this->db->set('provider_id', $provider_id);
-		$this->db->set('public_name', $public_name);
+		$this->db->set('preferred_name', $preferred_name);
 		$this->db->insert('users');	
 		
 		return $this->getUserID_username($username);
@@ -144,11 +144,11 @@ class Users extends Model {
 	/**
 	 * This method creates a full user and returns the id associated with it
 	 */
-	function upgradeUser($user_id, $username, $password, $public_name) {
+	function upgradeUser($user_id, $username, $password, $preferred_name) {
 		$data = array(
 				'username' => $username,
 				'password' => $password,
-				'public_name' => $public_name);
+				'preferred_name' => $preferred_name);
 		$this->db->where('users.id', $user_id);
 		$this->db->update('users', $data);
 	}
@@ -172,10 +172,14 @@ class Users extends Model {
 	 * it adds a line to the users_circle table to reflect the new group membership
 	 */
 	function addUserToCircle($user_id, $circle_id, $admin = 0, $privledges = 'reply_all') {
+		
+		$public_name = $this->getPreferredName($user_id);
+	
 		$this->db->set('user_id', $user_id);
 		$this->db->set('circle_id', $circle_id);
 		$this->db->set('admin', $admin);
 		$this->db->set('privileges', $privledges);
+		$this->db->set('public_name', $public_name);
 		$this->db->insert('users_circles');
 	}
 
@@ -187,6 +191,21 @@ class Users extends Model {
 		$this->db->where('circle_id', $circle_id);
 		$this->db->delete('users_circles');
 	}
+	
+	/**
+	 * Returns the preferred name of the passed user ID
+	 */
+	function getPreferredName($user_id) {
+		$this->db->select('preferred_name');
+		$this->db->from('users');
+		$this->db->where('users.id', $user_id);
+		
+		$query = $this->db->get();
+		$results = $query->result();
+		
+		return $results[0]->preferred_name;
+	}
+	 
 	
 	/**
 	 * This method sets the admin status of the passed user in the passed

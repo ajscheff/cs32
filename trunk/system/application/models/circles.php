@@ -47,7 +47,8 @@ class Circles extends Model {
 	}
 	
 	/**
-	 * This function creates a cirlce with the passed
+	 * This function creates a cirlce with the passed parameters.  Assumes
+	 * that the email address is not already taken
 	 */
 	function createCircle($circle_name, $email, $privacy, $description) {
 	
@@ -60,6 +61,10 @@ class Circles extends Model {
 			return $this->getCircleID_email($email);	
 	}
 	
+	/**
+	 * Returns the circle ID associated with the passed email address. 0 if
+	 * the passed email doesn't exist.
+	 */
 	function getCircleID_email($email) {
 	
 		$this->db->select('id');
