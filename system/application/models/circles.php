@@ -154,6 +154,19 @@ class Circles extends Model {
 		if (empty($results)) return NULL;
 		else return $results[0];
 	}
+	
+	/**
+	* Returns the email address of the circle with id $circle_id
+	*/
+	function getEmail($circle_id) {
+		$this->db->select('email');
+		$this->db->from('circles');
+		$this->db->where('circles.id', $circle_id);
+		$query = $this->db->get();
+		$result = $query->result();
+		
+		return $result[0]->email;
+	}
 
 	/**
 	 * Sets searchability of the group, expects 'public', 'private', 'secret'.

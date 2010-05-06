@@ -158,6 +158,25 @@ class EmailHelper extends Controller {
 			}
 		}
 		
+		elseif(strncasecmp($temp_msg, '#mycircles', 10)){
+			$user_id = $this->Users->getUserID_phone($numberFrom);
+			if($user_id == 0){
+				$this->sendNotRegisteredMsg($numberFrom, $gateway);
+				return;
+			}
+			else{
+				$reply_length = 0;
+				$reply = '';
+				$circles = $this->Users->getCircles($user_id);
+				$circle_emails;
+				$index = 0;
+				foreach($circles as $circle){
+					$email = $this->Circles->getEmail($circle->id));
+					
+				}
+			}
+		}
+		
 		elseif(strncasecmp($temp_msg, '#add', 4) == 0){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			if($user_id == 0){
