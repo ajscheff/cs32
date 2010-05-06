@@ -140,16 +140,16 @@ class EmailHelper extends Controller {
 			else{
 				$token = strtok(' ');
 				if($token != false){
-				$circle_id = $this->Circles->getCircleID_email($email);
-				$reply = '';
-				if($circle_id != 0){//circle doesn't exist
-					$reply = "The circle to which you have tried to create already exists.  Please select a different email address for your new circle, $token.";
-				}
-					//circle can be added
-				else{
-					$reply = "Circle $token has been created successfully!  Go online to change the settings of this circle.";
-					$circle_id = $this->Circles->createCircle($user_id, $token, $email, 'public', 'this circle was created by text message!');
-				}
+					$circle_id = $this->Circles->getCircleID_email($email);
+					$reply = '';
+					if($circle_id != 0){//circle doesn't exist
+						$reply = "The circle to which you have tried to create already exists.  Please select a different email address for your new circle, $token.";
+					}
+						//circle can be added
+					else{
+						$reply = "Circle $token has been created successfully!  Go online to change the settings of this circle.";
+						$circle_id = $this->Circles->createCircle($user_id, $token, $email, 'public', 'this circle was created by text message!');
+					}
 				}
 				else{
 					$reply = "Please choose a name for your new circle.  Text \'#makecircle nameofmynewcircle\' to $email@ombtp.com";
