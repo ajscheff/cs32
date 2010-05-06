@@ -30,8 +30,7 @@ class Welcome extends Controller {
 	
 	function logout() {
 		$this->session->sess_destroy();
-		redirect('index.php', 'location');
-		//$this->load->view('login');
+		redirect('', 'location');
 	}
 	
 	
@@ -74,7 +73,7 @@ class Welcome extends Controller {
 								'user_id' => $user_id
 							);
 				$this->session->set_userdata($session_data);
-				$this->loadHomeView($user_id);
+				redirect('', 'location');
 			}
 			else{
 				echo 'You\'re username did not match that password!';
