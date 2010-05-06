@@ -62,7 +62,7 @@ class EmailHelper extends Controller {
 		* MAY BE SENT ONLY TO VALID CIRCLES:
 		* #addme 
 		* #add <number1> <number2> ...
-		* #addnewuser <public_name>
+		* #addnewuser <number> <public_name>
 		* #makecircle <circle_name>
 		* #removeme
 		********************************************************************************************/
@@ -311,13 +311,36 @@ class EmailHelper extends Controller {
 			}
 		}
 		
-		//#
-		elseif(strncasecmp($token, '#', ) == 0){
-			
+		//#removeme [no args] (must be sent to the email address of the circle)
+		elseif(strncasecmp($token, '#removeme', 9) == 0){
+			$user_id = $this->Users->getUserID_phone($numberFrom);
+			if($user_id == 0){
+				$this->sendNotRegisteredMsg($numberFrom, $gateway);
+				return;
+			}
+			else{
+				$circle_id = $this->Circles->getCircleID_email($email);
+				$reply = '';
+				if($circle_id == 0){
+					$reply = 'The circle from which you have tried to remove yourself does not exist.';
+				}else{
+					if($this->Circles->isMember($user_id, $circle_id)){
+						$this->Users->removeUserFromCircle($user_id, $circle_id);
+						$reply = "You have been successfully removed from the circle with address $email.";
+					}
+					else{
+						$reply = "You are already not a member of circle with address $email!";
+					}
+				}
+				$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
+				return;
+			}
 		}
 		
 		
-		/**
+		/******************************************************************************************
+		* END OF PARSING
+		*
 		*  The user is probably trying to send a message to a circle...
 		*/
 		else{
