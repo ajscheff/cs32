@@ -213,6 +213,7 @@ class EmailHelper extends Controller {
 							$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $local_reply);
 							$all_success = false;
 						}
+						$temp_msg = strtok(' ');
 					}
 					if(all_success){
 						$reply = "All users have been added to $email successfully";
