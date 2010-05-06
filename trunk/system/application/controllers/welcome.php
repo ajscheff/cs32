@@ -10,6 +10,7 @@ class Welcome extends Controller {
 		$this->load->model('Users');
 		$this->load->helper('AccountsHelper');
 		$this->load->library('session');
+		$this->load->helper('url');
 	}
 	
 	function index() {
