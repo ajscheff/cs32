@@ -30,7 +30,7 @@ class Welcome extends Controller {
 	
 	function logout() {
 		$this->session->sess_destroy();
-		redirect('/welcome/index/', 'location');
+		redirect('index.php', 'location');
 		//$this->load->view('login');
 	}
 	
