@@ -46,6 +46,7 @@ class Home extends Controller {
 		$data['is_admin'] = $this->Users->getUserAdmin($user_id, $circle_id);
 		$data['circle_id'] = $circle_id;
 		$data['description'] = $info->description;
+		$data['email'] = $this->Circles->getEmail($circle_id);
 		echo $this->load->view('circleinfo', $data);
 	}
 	

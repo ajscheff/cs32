@@ -30,7 +30,7 @@ class EmailHelper extends Controller {
 		$regex_pattern_num = "/[0-9]{10}@/";
 		preg_match_all($regex_pattern_num, $from, $num_matches);
 
-		$regex_pattern_email = "/[a-zA-Z0-9]*@ombtp.com/";
+		$regex_pattern_email = "/[a-zA-Z0-9_]*@ombtp.com/";
 		preg_match_all($regex_pattern_email, $to, $email_matches);
 
 		$numberFrom = substr($num_matches[0][0], 0, 10);
