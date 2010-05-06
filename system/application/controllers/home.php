@@ -23,8 +23,15 @@ class Home extends Controller {
 		foreach($rawMessageData as $rawMessage) {
 			$prettyMessageData[] = $rawMessage->public_name.'@'.$rawMessage->timestamp.': '.$rawMessage->text;
 		}
+		
+		$rawAdminData = $this->Circles->getAdmins($circle_id);
+		
+		$prettyAdminsData = array();
+		foreach($rawAdminData as $rawAdmin) {
+			$prettyAdminData[] = $rawAdmin->public_name;
+		}
 	
-		$data['admins'] = $this->Circles->getAdmins($circle_id);
+		$data['admins'] = $prettyAdminData;
 		$data['messages'] = $prettyMessageData;
 		$info = $this->Circles->getInfo($circle_id);
 		$data['name'] = $info->name;
