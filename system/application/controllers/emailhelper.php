@@ -158,6 +158,48 @@ class EmailHelper extends Controller {
 			}
 		}
 		
+		elseif(strncasecmp($temp_msg, '#add', 4) == 0){
+			$user_id = $this->Users->getUserID_phone($numberFrom);
+			if($user_id == 0){
+				$this->sendNotRegisteredMsg($numberFrom, $gateway);
+				return;
+			}
+			else{
+				$circle_id = $this->Circles->getCircleID_email($email);
+				$reply = '';
+				if($circle_id == 0){
+					$reply = 'The circle to which you have tried to add users does not exist.';
+				}
+				else{
+					$temp_msg = strtok(' ');
+						//add all the numbers to the circle
+					$all_success = true;
+					while($temp_msg != false){
+						$user_toAdd_id = $this->Users->getUserID_phone($temp_msg);
+						if($user_toAdd_id != 0){
+							if($this->Users->isMember($user_toAdd_id, $circle_id)){
+								$local_reply = "The number $temp_msg belongs to a user who is already a member of this circle.";
+								$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $local_reply);
+								$all_success = false;
+							}
+							else{
+								$this->Users->addUserToCircle($user_toAdd_id, $circle_id);
+							}
+						}
+						else{
+							$local_reply = "The number $temp_msg does not belong to a registered Mobi user.  Text '#addnewuser $temp_msg nameofnewuser' to $email@ombtp.com";
+							$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $local_reply);
+							$all_success = false;
+						}
+					}
+					if(all_success){
+						$reply = "All users have been added to $email successfully";
+					}
+				}
+				$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
+			}
+		}
+		
 		
 		/**
 		*  The user is probably trying to send a message to a circle...

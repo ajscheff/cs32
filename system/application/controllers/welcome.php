@@ -10,6 +10,8 @@ class Welcome extends Controller {
 		$this->load->model('Users');
 		$this->load->helper('AccountsHelper');
 		$this->load->library('session');
+		
+		$this->foo = 0;
 	}
 	
 	function index() {
@@ -91,6 +93,16 @@ class Welcome extends Controller {
 	
 	function quickTest() {
 		$this->Users->addUserToCircle(10, 1);
+	}
+	
+	function prank() {
+		$this->load->model('Messages');
+		
+		$this->Messages->send('John_C_Walsh@ombtp.com', '3039290940@vtext.com', 'poop');
+		
+		$this->foo += 1;
+		
+		$echo 'Prank message #'.$this->foo.' sent successfully.';
 	}
 }
 
