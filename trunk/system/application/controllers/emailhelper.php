@@ -139,6 +139,7 @@ class EmailHelper extends Controller {
 			}
 			else{
 				$token = strtok(' ');
+				if($token != false){
 				$circle_id = $this->Circles->getCircleID_email($email);
 				$reply = '';
 				if($circle_id != 0){//circle doesn't exist
@@ -148,6 +149,10 @@ class EmailHelper extends Controller {
 				else{
 					$reply = "Circle $token has been created successfully!  Go online to change the settings of this circle.";
 					$circle_id = $this->Circles->createCircle($user_id, $token, $email, 'public', 'this circle was created by text message!');
+				}
+				}
+				else{
+					$reply = "Please choose a name for your new circle.  Text \'#makecircle nameofmynewcircle\' to $email@ombtp.com";
 				}
 				$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
 				return;
@@ -171,7 +176,8 @@ class EmailHelper extends Controller {
 					if($reply_length <= 160){
 						$reply .= $circle_email.' ';
 					}
-					else{
+					else{ //we've reached the character limit.  
+						//send the current msg, then send all remaining circles out through a different msg
 						$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
 						$reply = '';
 						$reply_legnth = 0;
