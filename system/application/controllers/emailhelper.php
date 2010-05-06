@@ -112,7 +112,7 @@ class EmailHelper extends Controller {
 					$reply = '';
 						//user is already a memeber of this circle
 					if($this->Circles->isMember($user_id, $circle_id)){
-						$reply = "You are already a member of $temp_msg!";
+						$reply = "You are already a member of $email!";
 					}
 						//user is not already a member of this circle
 					else{
@@ -154,7 +154,7 @@ class EmailHelper extends Controller {
 			}
 		}
 		
-		/*elseif(strncasecmp($temp_msg, '#mycircles', 10)){
+		elseif(strncasecmp($temp_msg, '#mycircles', 10) == 0){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			if($user_id == 0){
 				$this->sendNotRegisteredMsg($numberFrom, $gateway);
@@ -178,7 +178,7 @@ class EmailHelper extends Controller {
 				$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
 				return;
 			}
-		}*/
+		}
 		
 		elseif(strncasecmp($temp_msg, '#add', 4) == 0){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
