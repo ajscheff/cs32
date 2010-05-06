@@ -11,6 +11,7 @@ class Users extends Model {
 		// Call the Model constructor
 		parent::Model();
 		$this->load->database();
+		$this->load->model('Circles');
 	}
 	
 	/**
@@ -167,6 +168,19 @@ class Users extends Model {
 	}
 	
 	/**
+	 * Returns the phone number associated with the given user id.
+	 */
+	 function getPhone($user_id) {
+	 	$this->db->select('phone_number');
+	 	$this->db->from('users');
+	 	$this->db->where('users.id', $user_id);
+	 	$query = $this->db->get();
+	 	$rows = $query->result();
+		if (empty($rows)) return NULL;
+		else return $rows[0]->phone_number;
+	 }
+	
+	/**
 	 * This method adds a user to a circle.  This method accepts a user id and a circle id
 	 * and can accept an admin (1 or 0) or privledges ('reply_all, reply_admins, no_reply)
 	 * it adds a line to the users_circle table to reflect the new group membership
@@ -184,6 +198,12 @@ class Users extends Model {
 		$this->db->set('privileges', $privledges);
 		$this->db->set('public_name', $public_name);
 		$this->db->insert('users_circles');
+		
+		$circle_email = $this->Circles->getEmail($circle_id);
+		$numberTo = $this->getPhone($user_id);
+		$gateway = 
+		$reply = "You have been added to this circle.  Reply with #removeme to remove yourself.";
+		$this->Messages->send("$circle_email@ombtp.com", $numberFrom.'@'.$gateway, $reply);	
 	}
 
 	/**
