@@ -76,7 +76,7 @@ class EmailHelper extends Controller {
 				}
 			}
 			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);	
-			break;
+			return;
 		}
 		
 		elseif(strncasecmp($temp_msg, '#help', 5) == 0){
@@ -89,13 +89,13 @@ class EmailHelper extends Controller {
 				$reply = '#addme <circle_email> #newcircle <circle_email>';
 			}
 			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
-			break;
+			return;
 		
 		}
 		
 		elseif(strncasecmp($temp_msg, '#test', 5) == 0){
 			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, 'test');
-			break;
+			return;
 		}
 		
 		elseif(strncasecmp($temp_msg, '#addme', 6) == 0){
@@ -125,7 +125,7 @@ class EmailHelper extends Controller {
 					$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
 				}
 			}
-			break;
+			return;
 		}
 		
 		elseif(strncasecmp($temp_msg, '#newcircle', 10) == 0){
@@ -154,7 +154,7 @@ class EmailHelper extends Controller {
 						if($privacy == 'public'){
 							$reply = "You are not a member of this circle.  To add yourself, text '#addme $email' to admin@ombtp.com'";
 							$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
-							break;
+							return;
 						}
 						//if the circle is private, don't inform user that it exists: do nothing
 					}
@@ -163,13 +163,13 @@ class EmailHelper extends Controller {
 					//circle doesn't exist
 					$reply = 'The circle to which you have tried to post does not exist.  To create a circle with this address, text \'#newcircle emailofmynewcircle\' to admin@ombtp.com';
 					$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
-					break;
+					return;
 				}
 			}
 			else {
 				//phone doesn't exist; user is not registered
 				$this->sendNotRegisteredMsg($numberFrom, $gateway);
-				break;
+				return;
 			}
 		}
 	}
