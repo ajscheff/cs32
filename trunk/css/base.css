@@ -6,8 +6,6 @@ html, body, h1, h2, h3, h4, h5, h6, p, form, div, table, td, th, tr, a, input {
 	font-weight: normal;
 	font-family: Tahoma, Geneva, sans-serif;
 	color: #327262;
-	scrollbar-base-color:#327262; 
-	scrollbar-face-color:#327262; 
 	}
 	
 a {
@@ -191,4 +189,10 @@ p {
 	background: white;
 	position: fixed;
 	display:none;
+	}
+
+.closebutton {
+	float: right;
+	margin-left: 2px;
+	margin-bottom: 2px;
 	}

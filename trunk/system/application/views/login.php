@@ -72,11 +72,11 @@
 			</div>
 			<div id="bottomshade"></div>
 			<div id="learnmore">
-				<a style="float:right;" href="javascript:hideLearnMore()">Close</a>
+				<a class="closebutton" href="javascript:hideLearnMore()">Close</a>
 				<p> Mobi is a free service that let's people text multiple other people at once with just one text message!</p>
 			</div>
 			<form class="popup" id="signupform" method="post" action="/index.php/welcome/signup">
-				<a style="float:right;" href="javascript:hideSignUp()">Close</a>
+				<a class="closebutton" href="javascript:hideSignUp()">Close</a>
 				<p>
 					username:
 					<input type="text" id="username" name="username"/>
