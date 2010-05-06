@@ -94,7 +94,7 @@
 					<input type="text" id="public_name" name="public_name"/>
 					</p>
 				<p>
-					provide your phone number and service provider:<br/>
+					provide your phone number:<br/>
 					<input type="text" id="phone_number" name="phone_number"/>
 				</p>
 				<input class="button" type="submit" value="Sign Up!"/>
