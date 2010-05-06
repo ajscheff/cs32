@@ -199,7 +199,7 @@ class EmailHelper extends Controller {
 					while($temp_msg != false){
 						$user_toAdd_id = $this->Users->getUserID_phone($temp_msg);
 						if($user_toAdd_id != 0){
-							if($this->Users->isMember($user_toAdd_id, $circle_id)){
+							if($this->Circles->isMember($user_toAdd_id, $circle_id)){
 								$local_reply = "The number $temp_msg belongs to a user who is already a member of this circle.";
 								$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $local_reply);
 								$all_success = false;
