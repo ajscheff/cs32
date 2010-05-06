@@ -36,8 +36,11 @@ class Welcome extends Controller {
 	function signup(){
 		$username = $_POST['username'];
 		$user_id = $this->Users->getUserID_username($username);
+		
+		$stripped_phone = ereg_replace("[^0-9]", "", $_POST['phone_number']);
+		
 		if($user_id == 0){
-			$user_id = $this->Users->createFullUser($username, $_POST['password'], $_POST['phone_number'], _POST['public_name']);
+			$user_id = $this->Users->createFullUser($username, $_POST['password'], $stripped_phone, _POST['public_name']);
 			$session_data = array(
 				'username' => $username,
 				'password' => $_POST['password'],
