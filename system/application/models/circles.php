@@ -147,4 +147,15 @@ class Circles extends Model {
 		$this->db->where('circles.id', $circle_id);
 		$this->db->update('privacy', $privacy);
 	}
+	
+	function getPrivacy($circle_id) {
+		$this->db->select('privacy');
+		$this->db->from('circles');
+		$this->db->where('circles.id', $circle_id);
+		$query = $this->db->get();
+		
+		$result = $query->result();
+		
+		return $result[0]->privacy;
+	}
 }
