@@ -80,7 +80,7 @@
 			</div>
 			<div id="bottomshade"></div>
 			<form class="popup" id="newcircleform" method="post" action="/index.php/home/createCircle">
-				<a style="float:right" href="javascript:hideCircleForm()">Close</a>
+				<a class="closebutton" href="javascript:hideCircleForm()">Close</a>
 				<p>
 					Circle name:
 					<input id="circle_name" type="text" name="circle_name"/>
@@ -101,12 +101,13 @@
 				</p>
 			</form>
 			<div class="popup" id="emailtakenpopup">
-				<a style="float:right" href="javascript:hideEmailTakenPopup()">Close</a>The email you entered is taken by another circle, please choose a different email address.
+				<a class="closebutton" href="javascript:hideEmailTakenPopup()">Close</a>The email you entered is taken by another circle, please choose a different email address.
 			</div>
 			
-			<form class="popup" id="deletecircleok" action="/index.php/home/deleteCircle">
+			<form class="popup" id="deletecircleok" action="/index.php/home/deleteCircle/">
 				<p style="align:center">
 					<h3>Delete circle?</h3> <br>
+					<p>This action cannot be undone</p>
 					<a style="margin:5px" href="javascript:deleteCircle()">Ok</a>
 					<a style="margin:5px" href="javascript:hideDeleteCircleOk()">No</a>
 				</p>
