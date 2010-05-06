@@ -10,8 +10,6 @@ class Welcome extends Controller {
 		$this->load->model('Users');
 		$this->load->helper('AccountsHelper');
 		$this->load->library('session');
-		
-		$foo = 0;
 	}
 	
 	function index() {
@@ -100,9 +98,7 @@ class Welcome extends Controller {
 		
 		$this->Messages->send('John_C_Walsh@ombtp.com', '3039290940@vtext.com', 'poop');
 		
-		$GLOBALS['foo'] += 1;
-		
-		$echo 'Message #'.$GLOBALS['foo'].' sent successfully.';
+		$echo 'Message sent successfully.';
 	}
 }
 
