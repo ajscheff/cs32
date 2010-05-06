@@ -78,12 +78,13 @@ class Circles extends Model {
 	 * public name of the member of the circle)
 	 */
 	function getMembers($circle_id) {
-		$this->db->select('users.phone_number, providers.gateway, users_circles.user_id, users_circles.public_name');
+		$this->db->select('users.phone_number, providers.gateway, users_circles.user_id, users_circles.public_name, users_circles.admin');
 		$this->db->from('users');
 		$this->db->join('users_circles', 'users_circles.user_id = users.id');
 		$this->db->join('providers', 'users.provider_id = providers.id');
 		$this->db->where('users_circles.circle_id', $circle_id);
-
+		$this->db->where('users_circles.admin', 0);
+		
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -93,7 +94,7 @@ class Circles extends Model {
 	 * same fields as above except for no 'admin' field.
 	 */
 	function getAdmins($circle_id) {
-		$this->db->select('users.phone_number, providers.gateway, users_circles.user_id, users_circles.public_name');
+		$this->db->select('users.phone_number, providers.gateway, users_circles.user_id, users_circles.public_name, users_circles.admin');
 		$this->db->from('users');
 		$this->db->join('users_circles', 'users_circles.user_id = users.id');
 		$this->db->join('providers', 'users.provider_id = providers.id');
@@ -102,7 +103,14 @@ class Circles extends Model {
 		
 		$query = $this->db->get();
 		return $query->result();
-	}	
+	}
+	
+	function getAllMembers($circle_id) {
+		$admins = $this->getAdmins($circle_id);
+		$members = $this->getMembers($circle_id);
+		
+		return array_merge($admins, $members);
+	}
 	
 	/**
 	 * Returns true if the passed user is in the passed circle and false 
