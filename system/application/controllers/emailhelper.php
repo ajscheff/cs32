@@ -48,9 +48,28 @@ class EmailHelper extends Controller {
 		$token = trim($token);
 		$token = strtok($token, ' ');
 		
-		/**
+		
+		/*******************************************************************************************
 		*  Parsing for in-text commands
-		*/
+		*
+		* Commands currently supported:
+		*
+		* MAY BE SENT TO ANY ADDRESS:
+		* #signup <username>
+		* #help
+		* #mycircles
+		* #upgrade <username>
+		*
+		* MAY BE SENT ONLY TO VALID CIRCLES:
+		* #addme 
+		* #add <number1> <number2> ...
+		* #addnewuser <number> <public_name>
+		* #makecircle <circle_name>
+		* #removeme
+		* 
+		********************************************************************************************/
+		
+		//#signup <username>
 		if(strncasecmp($token, '#signup', 7) == 0){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			$reply = '';
@@ -59,41 +78,49 @@ class EmailHelper extends Controller {
 			}
 			else{
 				$token = strtok(' ');
-				$username_taken = $this->Users->getUserID_username($token);
-				if($username_taken == 0){
-					$temp_password = 'tharsheblows';
-					$this->Users->createFullUser($token, $temp_password, $numberFrom, $token);
+				if($token != false){ //did not specify a username
+					$username_taken = $this->Users->getUserID_username($token);
+					if($username_taken == 0){
+						$temp_password = 'tharsheblows';
+						$this->Users->createFullUser($token, $temp_password, $numberFrom, $token);
+	
+						$reply = "Welcome to Mobi, $token!  Your temporary password is $temp_password.  Please visit mobi.com to change your password.";
+					}
+					else{
 
-					$reply = "Welcome to Mobi, $token!  Your temporary password is $temp_password.  Please visit mobi.com to change your password.";
+						$reply = 'This username is already taken.  Please resubmit your signup request with a different username.';
+					}
 				}
-				else{
-
-					$reply = 'This username is already taken.  Please resubmit your signup request with a different username.';
+				else {
+					$reply = 'Please choose a username.  Text \'#signup myusername\' to admin@ombtp.com';
 				}
 			}
 			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);	
 			return;
 		}
 		
+		//#help [no args]
 		elseif(strncasecmp($token, '#help', 5) == 0){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			$reply = '';
 			if($user_id == 0){
-				$reply = 'Text \'#signup\' to register an account with mobi!';
+				$reply = 'Text \'#signup myusername\' to register an account with mobi!';
 			}
 			else{
-				$reply = '#addme <circle_email> #newcircle <circle_email>';
+				$reply = 'to admin: #mycircles; to a circle:#addme #add #makecircle #removeme';
 			}
 			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
 			return;
 		
 		}
 		
+		//#test [no args] (to be removed)
 		elseif(strncasecmp($token, '#test', 5) == 0){
 			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, 'test');
 			return;
 		}
 		
+		//#addme [no args] (must be sent to the email address of circle)
 		elseif(strncasecmp($token, '#addme', 6) == 0){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			if($user_id == 0){
@@ -130,7 +157,8 @@ class EmailHelper extends Controller {
 				}
 			}
 		}
-		
+
+			//#makecircle <circle_name> (must be sent to the email address of circle)
 		elseif(strncasecmp($token, '#makecircle', 11) == 0){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			if($user_id == 0){
@@ -159,6 +187,7 @@ class EmailHelper extends Controller {
 			}
 		}
 		
+		//#mycircles [no args] (may send multiple text messages)
 		elseif(strncasecmp($token, '#mycircles', 10) == 0){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			if($user_id == 0){
@@ -190,6 +219,7 @@ class EmailHelper extends Controller {
 			}
 		}
 		
+		//#add <number1> <number2> ... (must be sent to the email address of circle)
 		elseif(strncasecmp($token, '#add', 4) == 0){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			if($user_id == 0){
@@ -235,11 +265,112 @@ class EmailHelper extends Controller {
 					}
 				}
 				$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
+				return;
+			}
+		}
+		
+		//#addnewuser <number> <public_name> (must be sent to the email address of circle)
+		elseif(strncasecmp($token, '#addnewuser', 11) == 0){
+			$user_id = $this->Users->getUserID_phone($numberFrom);
+			if($user_id == 0){
+				$this->sendNotRegisteredMsg($numberFrom, $gateway);
+				return;
+			}
+			else{
+				$circle_id = $this->Circles->getCircleID_email($email);
+				$reply = '';
+				if($circle_id == 0){
+					$reply = 'The circle to which you have tried to add users does not exist.';
+				}else{
+					if($this->Circles->isMember($user_id, $circle_id)){
+						$token = strtok(' ');
+						$user_toAdd_id = $this->Users->getUserID_phone($token);
+						if($user_toAdd_id != 0){ //"new" user is not new at all!
+							$reply = "Number $token already belongs to a registered Mobi user.  Text '#add $token' to $email@ombtp.com to add them to this circle.";
+						}
+						else{ //new user is in fact not registered
+							if(strlen($token) == 10){
+								$number_to_add = $token;
+								$token = strtok(' ');
+								if($token != false){
+									$user_id_toAdd = $this->Users->createStubUser($number_to_add);
+									$this->Users->addUserToCircle($user_id_toAdd, $circle_id, $token);
+									$reply = "$number_to_add has been successfully added to $email will name $token, and will be invited to join Mobi!";
+								} else {
+									$reply = 'Please provide a public name for the new user you are adding.  This name will be used to identify the new user within this circle.';
+								}
+							}
+							else{
+								$reply = "$token is not a valid phone number.  Please provide numbers with the area code and without spaces";
+							}
+						}
+					}
+					else{
+						$reply = "You are not a member of circle with address $email.  Text '#addme' to $email@ombtp.com to add yourself to this circle.";
+					}
+				}
+				$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
+				return;
+			}
+		}
+		
+		//#removeme [no args] (must be sent to the email address of the circle)
+		elseif(strncasecmp($token, '#removeme', 9) == 0){
+			$user_id = $this->Users->getUserID_phone($numberFrom);
+			if($user_id == 0){
+				$this->sendNotRegisteredMsg($numberFrom, $gateway);
+				return;
+			}
+			else{
+				$circle_id = $this->Circles->getCircleID_email($email);
+				$reply = '';
+				if($circle_id == 0){
+					$reply = 'The circle from which you have tried to remove yourself does not exist.';
+				}else{
+					if($this->Circles->isMember($user_id, $circle_id)){
+						$this->Users->removeUserFromCircle($user_id, $circle_id);
+						$reply = "You have been successfully removed from the circle with address $email.";
+					}
+					else{
+						$reply = "You are already not a member of circle with address $email!";
+					}
+				}
+				$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
+				return;
+			}
+		}
+		//#upgrademe <username>
+		elseif(strncasecmp($token, '#upgrademe', 10) == 0){
+			$user_id = $this->Users->getUserID_phone($numberFrom);
+			if($user_id == 0){
+				$this->sendNotRegisteredMsg($numberFrom, $gateway);
+				return;
+			}
+			else{
+				$reply = '';
+				$token = strtok(' ');
+				if($token != false){
+					$username_taken = $this->Users->getUserID_username($token);
+					if($username_taken == 0){
+						$this->Users->upgradeUser($user_id, $username, $password, $preferred_name);
+						$reply = "Congrats, $token!  You have been upgraded to a full user.  Text '#help' for more options.";
+					}
+					else{
+						$reply = "The username $token is already taken.  Please choose a different username.";
+					}
+				}
+				else{
+					$reply = 'Please choose a username.';
+				}
+				$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
+				return;
 			}
 		}
 		
 		
-		/**
+		/******************************************************************************************
+		* END OF PARSING
+		*
 		*  The user is probably trying to send a message to a circle...
 		*/
 		else{
