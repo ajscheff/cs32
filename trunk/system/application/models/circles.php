@@ -45,7 +45,7 @@ class Circles extends Model {
 		$this->db->insert('circles');
 		$circle_id = $this->getCircleID_email($email);
 		$preferred_name = $this->Users->getPreferredName($user_id); //get preferred name of user
-		$this->Users->$this->Users->addUserToCircle($user_id, $circle_id, $preferred_name, 1); //default reply-all
+		$this->Users->addUserToCircle($user_id, $circle_id, $preferred_name, 1); //default reply-all
 		return $circle_id;	
 	}
 	
