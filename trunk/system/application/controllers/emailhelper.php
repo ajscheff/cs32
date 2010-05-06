@@ -58,6 +58,7 @@ class EmailHelper extends Controller {
 		* #signup <username>
 		* #help
 		* #mycircles
+		* #upgrade <username>
 		*
 		* MAY BE SENT ONLY TO VALID CIRCLES:
 		* #addme 
@@ -65,6 +66,7 @@ class EmailHelper extends Controller {
 		* #addnewuser <number> <public_name>
 		* #makecircle <circle_name>
 		* #removeme
+		* 
 		********************************************************************************************/
 		
 		//#signup <username>
@@ -263,6 +265,7 @@ class EmailHelper extends Controller {
 					}
 				}
 				$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
+				return;
 			}
 		}
 		
@@ -331,6 +334,33 @@ class EmailHelper extends Controller {
 					else{
 						$reply = "You are already not a member of circle with address $email!";
 					}
+				}
+				$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
+				return;
+			}
+		}
+		//#upgrademe <username>
+		elseif(strncasecmp($token, '#upgrademe', 10) == 0){
+			$user_id = $this->Users->getUserID_phone($numberFrom);
+			if($user_id == 0){
+				$this->sendNotRegisteredMsg($numberFrom, $gateway);
+				return;
+			}
+			else{
+				$reply = '';
+				$token = strtok(' ');
+				if($token != false){
+					$username_taken = $this->Users->getUserID_username($token);
+					if($username_taken == 0){
+						$this->Users->upgradeUser($user_id, $username, $password, $preferred_name);
+						$reply = "Congrats, $token!  You have been upgraded to a full user.  Text '#help' for more options.";
+					}
+					else{
+						$reply = "The username $token is already taken.  Please choose a different username.";
+					}
+				}
+				else{
+					$reply = 'Please choose a username.';
 				}
 				$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
 				return;
