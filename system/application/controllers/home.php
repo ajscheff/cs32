@@ -30,8 +30,16 @@ class Home extends Controller {
 		foreach($rawAdminData as $rawAdmin) {
 			$prettyAdminData[] = $rawAdmin->public_name;
 		}
+		
+		$rawMemberData = $this->Circles->getMembers($circle_id);
+		
+		$prettyMemberData = array();
+		foreach($rawMemberData as $rawMember) {
+			$prettyMemberData[] = $rawMember->public_name;
+		}
 	
 		$data['admins'] = $prettyAdminData;
+		$data['members'] = $prettyMemberData;
 		$data['messages'] = $prettyMessageData;
 		$info = $this->Circles->getInfo($circle_id);
 		$data['name'] = $info->name;
