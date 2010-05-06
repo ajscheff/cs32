@@ -1,13 +1,20 @@
 			<div id="circleheader">
-				<?php echo '<h4>'.$name.'</h4>' ?>
+				<?php echo '<h4>'.$name.'</h4>';
+						echo '<p>'.$description.'</p>';?>
 			</div>
-			<h4>members:</h4>	
-			<?php foreach($admins as $admin) {
-				echo '<p class="member">'.$admin.'</p>';
-				}
-			?>
-			<h4>recent messages:<h4>
-			<?php foreach($messages as $message) {
-				echo '<p class="message">asf'.$message.'</p>';
-				}
-			?>
+			<div>
+				<div id="adminslist">
+					<h5>admins:</h5>	
+					<?php foreach($admins as $admin) {
+						echo '<p class="admin">'.$admin.'</p>';
+						}
+					?>
+				</div>
+				<div id="messagelist">
+					<h5>recent messages:<h5>
+					<?php foreach($messages as $message) {
+						echo '<p class="message">asf'.$message.'</p>';
+						}
+					?>
+				</div>
+			</div>

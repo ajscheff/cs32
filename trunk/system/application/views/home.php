@@ -46,6 +46,7 @@
 						<a id="title" href="/index.php/welcome/index">mobi</a>
 						<p id="subtitle">mobile social networking</p>
 						<p id="userstatus">Hello, <?php echo $username ?>!</p>
+						<a id="circlesbutton" href="/index.php/welcome/index">circles</a>
 						<a id="settingsbutton" href="/index.php/settings/loadSettings/">settings</a>
 						<a id="logoutbutton" href="/index.php/welcome/logout/">logout</a>
 					</div>
@@ -57,10 +58,11 @@
 									echo '<a href="javascript:loadCircle('.$circle->id.')">'.$circle->name.'</a><br/><br/>';
 									}
 								?>
-								<a id="newcirclebutton" href="javascript:showCircleForm()">New Circle</a>
 						</div>
 						<div id="circleinfo">
 						</div>
+						<a id="newcirclebutton" href="javascript:showCircleForm()">New Circle</a>
+
 					</div>
 					<div id="whaleback"></div>
 			</div>
