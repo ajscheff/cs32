@@ -44,25 +44,25 @@ class EmailHelper extends Controller {
 		$this->db->insert('email_test');
 
 		//process message for commands
-		$temp_msg = $message;
-		$temp_msg = trim($temp_msg);
-		$temp_msg = strtok($temp_msg, ' ');
+		$token = $message;
+		$token = trim($token);
+		$token = strtok($token, ' ');
 		
 		/**
 		*  Parsing for in-text commands
 		*/
-		if(strncasecmp($temp_msg, '#signup', 7) == 0){
+		if(strncasecmp($token, '#signup', 7) == 0){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			$reply = '';
 			if($user_id != 0){
 				$reply = 'You already have an account registered with mobi.com. Text "#help" for further options.';
 			}
 			else{
-				$temp_msg = strtok(' ');
-				$username_taken = $this->Users->getUserID_username($temp_msg);
+				$token = strtok(' ');
+				$username_taken = $this->Users->getUserID_username($token);
 				if($username_taken == 0){
 					$temp_password = 'tharsheblows';
-					$this->Users->createFullUser($temp_msg, $temp_password, $numberFrom, $temp_msg);
+					$this->Users->createFullUser($token, $temp_password, $numberFrom, $token);
 
 					$reply = "Welcome to Mobi!  Your temporary password is $temp_password.  Please visit mobi.com to change your password.";
 				}
@@ -75,7 +75,7 @@ class EmailHelper extends Controller {
 			return;
 		}
 		
-		elseif(strncasecmp($temp_msg, '#help', 5) == 0){
+		elseif(strncasecmp($token, '#help', 5) == 0){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			$reply = '';
 			if($user_id == 0){
@@ -89,12 +89,12 @@ class EmailHelper extends Controller {
 		
 		}
 		
-		elseif(strncasecmp($temp_msg, '#test', 5) == 0){
+		elseif(strncasecmp($token, '#test', 5) == 0){
 			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, 'test');
 			return;
 		}
 		
-		elseif(strncasecmp($temp_msg, '#addme', 6) == 0){
+		elseif(strncasecmp($token, '#addme', 6) == 0){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			if($user_id == 0){
 				$this->sendNotRegisteredMsg($numberFrom, $gateway);
@@ -131,30 +131,30 @@ class EmailHelper extends Controller {
 			}
 		}
 		
-		elseif(strncasecmp($temp_msg, '#makecircle', 11) == 0){
+		elseif(strncasecmp($token, '#makecircle', 11) == 0){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			if($user_id == 0){
 				$this->sendNotRegisteredMsg($numberFrom, $gateway);
 				return;
 			}
 			else{
-				$temp_msg = strtok(' ');
+				$token = strtok(' ');
 				$circle_id = $this->Circles->getCircleID_email($email);
 				$reply = '';
 				if($circle_id != 0){//circle doesn't exist
-					$reply = "The circle to which you have tried to create already exists.  Please select a different email address for your new circle, $temp_msg.";
+					$reply = "The circle to which you have tried to create already exists.  Please select a different email address for your new circle, $token.";
 				}
 					//circle can be added
 				else{
-					$reply = "Circle $temp_msg has been created successfully!  Go online to change the settings of this circle.";
-					$circle_id = $this->Circles->createCircle($user_id, $temp_msg, $email, 'public', 'this circle was created by text message!');
+					$reply = "Circle $token has been created successfully!  Go online to change the settings of this circle.";
+					$circle_id = $this->Circles->createCircle($user_id, $token, $email, 'public', 'this circle was created by text message!');
 				}
 				$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
 				return;
 			}
 		}
 		
-		elseif(strncasecmp($temp_msg, '#mycircles', 10) == 0){
+		elseif(strncasecmp($token, '#mycircles', 10) == 0){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			if($user_id == 0){
 				$this->sendNotRegisteredMsg($numberFrom, $gateway);
@@ -180,7 +180,7 @@ class EmailHelper extends Controller {
 			}*/
 		}
 		
-		elseif(strncasecmp($temp_msg, '#add', 4) == 0){
+		elseif(strncasecmp($token, '#add', 4) == 0){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			if($user_id == 0){
 				$this->sendNotRegisteredMsg($numberFrom, $gateway);
@@ -193,14 +193,14 @@ class EmailHelper extends Controller {
 					$reply = 'The circle to which you have tried to add users does not exist.';
 				}
 				else{
-					$temp_msg = strtok(' ');
+					$token = strtok(' ');
 						//add all the numbers to the circle
 					$all_success = true;
-					while($temp_msg != false){
-						$user_toAdd_id = $this->Users->getUserID_phone($temp_msg);
+					while($token != false){
+						$user_toAdd_id = $this->Users->getUserID_phone($token);
 						if($user_toAdd_id != 0){
 							if($this->Circles->isMember($user_toAdd_id, $circle_id)){
-								$local_reply = "The number $temp_msg belongs to a user who is already a member of this circle.";
+								$local_reply = "The number $token belongs to a user who is already a member of this circle.";
 								$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $local_reply);
 								$all_success = false;
 							}
@@ -209,13 +209,13 @@ class EmailHelper extends Controller {
 							}
 						}
 						else{
-							$local_reply = "The number $temp_msg does not belong to a registered Mobi user.  Text '#addnewuser $temp_msg nameofnewuser' to $email@ombtp.com";
+							$local_reply = "The number $token does not belong to a registered Mobi user.  Text '#addnewuser $token nameofnewuser' to $email@ombtp.com to invite them!";
 							$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $local_reply);
 							$all_success = false;
 						}
-						$temp_msg = strtok(' ');
+						$token = strtok(' ');
 					}
-					if(all_success){
+					if($all_success){
 						$reply = "All users have been added to $email successfully";
 					}
 				}
