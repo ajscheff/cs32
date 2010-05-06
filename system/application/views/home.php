@@ -9,7 +9,7 @@
 				function submitNewCircle(){
 					var email = $('#email').val();
 					$.post('/index.php/home/emailExists/', { email : email }, function(data) {
-							if(data == '0'){
+							if(data == "0"){
 								document.forms["newcircleform"].submit();
 							} else {
 								$('#emailtakenpopup').show();
@@ -66,7 +66,7 @@
 			</div>
 			</div>
 			<div id="bottomshade"></div>
-			<form id="newcircleform" method="post" action="/index.php/home/createCircle">
+			<form class="popup" id="newcircleform" method="post" action="/index.php/home/createCircle">
 				<a style="float:right" href="javascript:hideCircleForm()">Close</a>
 				<p>
 					Circle name:
@@ -87,7 +87,7 @@
 					<a href="javascript:submitNewCircle()">Done!</a>
 				</p>
 			</form>
-			<div id="emailtakenpopup">
+			<div class="popup" id="emailtakenpopup">
 				<a style="float:right" href="javascript:hideEmailTakenPopup()">Close</a>The email you entered is taken by another circle, please choose a different email address.
 			</div>
 	</body>

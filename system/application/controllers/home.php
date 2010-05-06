@@ -43,8 +43,8 @@ class Home extends Controller {
 		$this->loadHomeView($user_id, $circle_id);
 	}
 	
-	function emailExists($email) {
-		$id = $this->Circles->getCircleID_email($email);
+	function emailExists() {
+		$id = $this->Circles->getCircleID_email($_POST['email']);
 		echo $id;
 	}
 	

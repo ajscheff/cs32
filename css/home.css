@@ -34,18 +34,13 @@
 	padding: 5px;
 	width: 330px;
 	height: 250px;
-	border: 3px solid #39826F;
-	background: white;
-	position: fixed;
 	margin: auto;
 	top: 100px;
 	left: 550px;
-	display: none;
 	}
 	
 #emailtakenpopup{
-	display:none;
-	position: fixed;
 	top: 150px;
-	width: 50px;
+	left: 575px;
+	width: 200px;
 	}
