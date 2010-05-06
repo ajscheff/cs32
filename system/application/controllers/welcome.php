@@ -33,12 +33,6 @@ class Welcome extends Controller {
 		redirect('', 'location');
 	}
 	
-	function checkPassword() {
-		$result = $this->Users->passwordMatches($_POST['username'], $_POST['password']);
-		echo $result;
-	}
-	
-	
 	function signup(){
 		$username = $_POST['username'];
 		$user_id = $this->Users->getUserID_username($username);
