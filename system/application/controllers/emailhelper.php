@@ -37,10 +37,6 @@ class EmailHelper extends Controller {
 		$email = $email_matches[0][0];
 		$email = substr($email, 0, strpos($email, '@'));
 		$gateway = substr($from, strpos($from, $numberFrom) + 11);
-		//$provider_id = $this->Users->getProviderID($gateway);
-		//if($provider_id == 0){
-			//$provider_id == $this->Users->addProvider($gateway);
-		//}
 
 		$this->db->set('from', $numberFrom); //for debugging, remove later
 		$this->db->set('to', $email);
@@ -171,9 +167,9 @@ class EmailHelper extends Controller {
 				foreach($circles as $circle){
 					$email = $this->Circles->getEmail($circle->id));
 					$email_length = strlen($email);
-					$reply_length += $email_length + 1;
+					//$reply_length += $email_length + 1;
 					if($reply_length <= 160){
-						$reply .= $email.' ';
+						//$reply .= $email.' ';
 					}
 					else{
 						break;
