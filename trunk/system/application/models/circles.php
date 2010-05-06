@@ -71,7 +71,7 @@ class Circles extends Model {
 	
 	
 	/**
-	 * Returns an array of members of the circle. These are objects with the 
+	 * Returns an array of members of the circle who are not admins. These are objects with the 
 	 * following fields: 'public_name' (public name of user), 'phone_number', 
 	 * 'gateway' (gateway associated with the user's provider), 'admin' (1 if 
 	 * the user is an admin in this circle, 0 otherwise), 'public_name' (the 
@@ -83,7 +83,7 @@ class Circles extends Model {
 		$this->db->join('users_circles', 'users_circles.user_id = users.id');
 		$this->db->join('providers', 'users.provider_id = providers.id');
 		$this->db->where('users_circles.circle_id', $circle_id);
-		$this->db->where('users_circles.admin', 0);
+		$this->db->where('users_circles.admin', 1);
 		
 		$query = $this->db->get();
 		return $query->result();

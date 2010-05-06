@@ -10,8 +10,6 @@ class Welcome extends Controller {
 		$this->load->model('Users');
 		$this->load->helper('AccountsHelper');
 		$this->load->library('session');
-		
-		$foo = 0;
 	}
 	
 	function index() {
@@ -92,17 +90,15 @@ class Welcome extends Controller {
 	}
 	
 	function quickTest() {
-		$this->Users->addUserToCircle(10, 1);
+		$this->load->model('Circles');
+	
+		$result = $this->Circles->getMembers(1);
+		
+		print_r($result);
 	}
 	
 	function testtt() {
-		$this->load->model('Messages');
-		
-		$this->Messages->send('John_C_Walsh@ombtp.com', '3039290940@vtext.com', 'poop');
-		
-		$GLOBALS['foo'] += 1;
-		
-		echo 'Message #'.$GLOBALS['foo'].' sent successfully.';
+		echo 'Message #1 sent successfully.';
 	}
 }
 
