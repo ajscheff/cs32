@@ -106,6 +106,7 @@ class EmailHelper extends Controller {
 				//phone number belongs to a registered user
 			else{
 				$temp_msg = strtok(' ');
+				echo $email;
 				$circle_id = $this->Circles->getCircleID_email($email);
 				if($circle_id == 0){//circle doesn't exist
 					$reply = "The circle to which you have tried to add yourself does not exist.  To create a circle with this address, text '#newcircle $email' to admin@ombtp.com";
