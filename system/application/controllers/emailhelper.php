@@ -64,7 +64,7 @@ class EmailHelper extends Controller {
 					$temp_password = 'tharsheblows';
 					$this->Users->createFullUser($token, $temp_password, $numberFrom, $token);
 
-					$reply = "Welcome to Mobi!  Your temporary password is $temp_password.  Please visit mobi.com to change your password.";
+					$reply = "Welcome to Mobi, $token!  Your temporary password is $temp_password.  Please visit mobi.com to change your password.";
 				}
 				else{
 
@@ -193,30 +193,35 @@ class EmailHelper extends Controller {
 					$reply = 'The circle to which you have tried to add users does not exist.';
 				}
 				else{
-					$token = strtok(' ');
-						//add all the numbers to the circle
-					$all_success = true;
-					while($token != false){
-						$user_toAdd_id = $this->Users->getUserID_phone($token);
-						if($user_toAdd_id != 0){
-							if($this->Circles->isMember($user_toAdd_id, $circle_id)){
-								$local_reply = "The number $token belongs to a user who is already a member of this circle.";
+					if($this->Circles->isMember($user_id, $circle_id)){
+						$token = strtok(' ');
+							//add all the numbers to the circle
+						$all_success = true;
+						while($token != false){
+							$user_toAdd_id = $this->Users->getUserID_phone($token);
+							if($user_toAdd_id != 0){
+								if($this->Circles->isMember($user_toAdd_id, $circle_id)){
+									$local_reply = "The number $token belongs to a user who is already a member of this circle.";
+									$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $local_reply);
+									$all_success = false;
+								}
+								else{
+									$this->Users->addUserToCircle($user_toAdd_id, $circle_id);
+								}
+							}
+							else{
+								$local_reply = "The number $token does not belong to a registered Mobi user.  Text '#addnewuser $token nameofnewuser' to $email@ombtp.com to invite them!";
 								$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $local_reply);
 								$all_success = false;
 							}
-							else{
-								$this->Users->addUserToCircle($user_toAdd_id, $circle_id);
-							}
+							$token = strtok(' ');
 						}
-						else{
-							$local_reply = "The number $token does not belong to a registered Mobi user.  Text '#addnewuser $token nameofnewuser' to $email@ombtp.com to invite them!";
-							$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $local_reply);
-							$all_success = false;
+						if($all_success){
+							$reply = "All users have been added to $email successfully";
 						}
-						$token = strtok(' ');
 					}
-					if($all_success){
-						$reply = "All users have been added to $email successfully";
+					else{
+						$reply = "You are not a member of circle with address $email.  Text '#addme' to $email@ombtp.com to add yourself to this circle.";
 					}
 				}
 				$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
