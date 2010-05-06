@@ -136,7 +136,7 @@ class Users extends Model {
 		$this->db->set('phone_number', $phone_number);
 		$this->db->set('provider_id', $provider_id);
 		$this->db->set('preferred_name', $preferred_name);
-		$this->db->insert('users');	
+		$this->db->insert('users');
 		
 		return $this->getUserID_username($username);
 	}
