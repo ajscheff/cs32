@@ -7,6 +7,7 @@ class Settings extends Controller {
 		parent::Controller();
 		$this->load->model('Users');
 		$this->load->library('session');
+		$this->load->helper('url');
 	}
 	
 	function loadSettings(){
@@ -19,10 +20,10 @@ class Settings extends Controller {
 				$data['user_id'] = $user_id;
 				echo $this->load->view('settings', $data);
 			} else {
-				$this->load->view('login');
+				redirect('', 'location');
 			}
 		} else {
-			$this->load->view('login');
+			redirect('', 'location');
 		}
 	}
 	

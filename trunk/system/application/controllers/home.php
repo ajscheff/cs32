@@ -10,6 +10,7 @@ class Home extends Controller {
 		$this->load->model('Messages');
 		$this->load->model('Users');
 		$this->load->library('session');
+		$this->load->helper('url');
 	}
 
 	/**
@@ -61,7 +62,8 @@ class Home extends Controller {
 		$email_taken = $this->Circles->getCircleID_email($email);
 		$circle_id = $this->Circles->createCircle($user_id, $circle_name, $email, $_POST['privacy'], $_POST['description']);
 			//add user who created this circle to the new circle as an admin
-			
+		
+		redirect('', 'location');
 		$this->loadHomeView($user_id, $circle_id);
 	}
 	
