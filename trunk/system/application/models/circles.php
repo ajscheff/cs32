@@ -10,7 +10,7 @@ class Circles extends Model {
 		// Call the Model constructor
 		parent::Model();
 		$this->load->database();
-		$this->load->model('Users');
+		//$this->load->model('Users');
 	}
 	
 
