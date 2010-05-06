@@ -33,6 +33,10 @@ class Welcome extends Controller {
 		redirect('', 'location');
 	}
 	
+	function checkPassword() {
+		
+	}
+	
 	
 	function signup(){
 		$username = $_POST['username'];
