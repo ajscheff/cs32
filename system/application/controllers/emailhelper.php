@@ -168,12 +168,19 @@ class EmailHelper extends Controller {
 				$reply_length = 0;
 				$reply = '';
 				$circles = $this->Users->getCircles($user_id);
-				$circle_emails;
-				$index = 0;
 				foreach($circles as $circle){
 					$email = $this->Circles->getEmail($circle->id));
-					
+					$email_length = strlen($email);
+					$reply_length += $email_length + 1;
+					if($reply_length <= 160){
+						$reply .= $email.' ';
+					}
+					else{
+						break;
+					}
 				}
+				$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
+				return;
 			}
 		}
 		
