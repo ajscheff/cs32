@@ -50,6 +50,8 @@ class Messages extends Model {
 		$message = preg_replace($pattern_1, '', $message);
 		$pattern_2 = "/-*Original Message-*(.|\n)*/";
 		$message = preg_replace($pattern_2, '', $message);
+		$pattern_3 = "/(=|\n)*This mobile text message is brought to you by AT&T(.|\n)*/";
+		$message = preg_replace($pattern_3, '', $message);
 
 		// insert message into database
 		$this->db->set('text', $message);
