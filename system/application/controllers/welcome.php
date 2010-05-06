@@ -37,7 +37,7 @@ class Welcome extends Controller {
 		$username = $_POST['username'];
 		$user_id = $this->Users->getUserID_username($username);
 		
-		$stripped_phone = preg_replace("[^0-9]", "", $_POST['phone_number']);
+		$stripped_phone = ereg_replace("[^0-9]", "", $_POST['phone_number']);
 		
 		if($user_id == 0){
 			$user_id = $this->Users->createFullUser($username, $_POST['password'], $stripped_phone, $_POST['public_name']);
