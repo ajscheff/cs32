@@ -34,22 +34,17 @@ class Home extends Controller {
 		$circle_name = $_POST['circle_name'];
 		$email = $_POST['email'];
 		$email_taken = $this->Circles->getCircleID_email($email);
-		if($email_taken == 0){
-			$circle_id = $this->Circles->createCircle($circle_name, $email, $_POST['privacy'], $_POST['description']);
-				//add user who created this circle to the new circle as an admin
-				
-			$preferred_name = $this->Users->getPreferredName($user_id); //get preferred name of user
+		$circle_id = $this->Circles->createCircle($circle_name, $email, $_POST['privacy'], $_POST['description']);
+			//add user who created this circle to the new circle as an admin
 			
-			$this->Users->addUserToCircle($user_id, $circle_id, $preferred_name, 1); //default reply-all
-			$this->loadHomeView($user_id, $circle_id);
-		}
-		else{
-			$this->loadCircle($circle_id);
-		}
+		$preferred_name = $this->Users->getPreferredName($user_id); //get preferred name of user
+		
+		$this->Users->addUserToCircle($user_id, $circle_id, $preferred_name, 1); //default reply-all
+		$this->loadHomeView($user_id, $circle_id);
 	}
 	
 	function emailExists($email) {
-		$id = this->Circles->getCircleID_email($email);
+		$id = $this->Circles->getCircleID_email($email);
 		echo $id;
 	}
 	

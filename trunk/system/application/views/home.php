@@ -9,14 +9,8 @@
 				function submitNewCircle(){
 					var email = $('#email').val();
 					$.post('/index.php/home/emailExists/', { email : email }, function(data) {
-							if(data==0){
-								var circle_name = $('#circle_name').val();
-								var privacy = $('input:radio[name=privacy]:checked').val();
-								var description = $('#description').val();
-								$.post('/index.php/home/createCircle/', {email:email, circle_name:circle_name, privacy:privacy, description:description}, function(newdata) {
-									hideCircleForm();
-									$('#circleinfo').html(newdata);
-								});
+							if(data == '0'){
+								document.forms["newcircleform"].submit();
 							} else {
 								$('#emailtakenpopup').show();
 							}
@@ -72,7 +66,7 @@
 			</div>
 			</div>
 			<div id="bottomshade"></div>
-			<form id="newcircleform" method="post" action="javascript:submitNewCircle()">
+			<form id="newcircleform" method="post" action="/index.php/home/createCircle">
 				<a style="float:right" href="javascript:hideCircleForm()">Close</a>
 				<p>
 					Circle name:
@@ -84,13 +78,13 @@
 				</p>
 				<p>
 					Privacy:
-					<input type="radio" name="privacy" value="public">Public</input>
+					<input type="radio" name="privacy" value="public" checked="checked">Public</input>
 					<input type="radio" name="privacy" value="private">Private</input>
 					<input type="radio" name="privacy" value="secret">Secret</input>
 				</p>
 				<p>
 					<textarea id="description" rows="10" cols="30" name="description">Enter a description for your circle.</textarea>
-					<input class="button" type="submit" value="Done!"/>
+					<a href="javascript:submitNewCircle()">Done!</a>
 				</p>
 			</form>
 			<div id="emailtakenpopup">
