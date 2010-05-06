@@ -29,7 +29,8 @@ class Welcome extends Controller {
 	
 	function logout() {
 		$this->session->sess_destroy();
-		$this->load->view('login');
+		redirect('/welcome/index/', 'location');
+		//$this->load->view('login');
 	}
 	
 	
