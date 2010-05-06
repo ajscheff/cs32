@@ -165,11 +165,11 @@ class EmailHelper extends Controller {
 				$reply = '';
 				$circles = $this->Users->getCircles($user_id);
 				foreach($circles as $circle){
-					//$email = $this->Circles->getEmail($circle->id));
+					$circle_email = $this->Circles->getEmail($circle->id));
 					$email_length = strlen($email);
 					$reply_length += $email_length + 1;
 					if($reply_length <= 160){
-						$reply .= $email.' ';
+						$reply .= $circle_email.' ';
 					}
 					else{
 						break;
