@@ -26,6 +26,27 @@
 					$('#signupform').hide();
 				}
 				
+				function showWrongPassword() {
+					//$('#signupform').hide();
+					$('#wrongpass').show();
+				}
+				
+				function hideWrongPassword() {
+					$('#wrongpass').hide();
+				}
+				
+				function login() {
+					var username = $('#username').val();
+					var password = $('#password').val();
+					$.post('/index.php/welcome/checkPassword', { username : username, password : password }, function(data) {
+							if (data > 0) {
+								document.forms["login"].submit();
+							} else {
+								showWrongPassword();
+							}
+						});
+				}
+				
 				function signUp() {
 					var username = $('#username').val();
 					var password = $('#password').val();
@@ -55,7 +76,8 @@
 							<h4>Sign in:</h4>
 							<input id="logininput" type="text" name="username" value="username" size="25"/>
 							<input id="logininput" type="password" name="password" value="" size="25"/>
-							<input id="loginbutton" class="button" type="submit" value="Login" style="float:right"/>
+							<a href="javascript:login()">Login</a>
+							<!--<input id="loginbutton" class="button" type="submit" value="Login" style="float:right"/> -->
 						</form>
 					</div>
 					<div id="misc">
@@ -74,6 +96,10 @@
 			<div id="learnmore">
 				<a style="float:right;" href="javascript:hideLearnMore()">Close</a>
 				<p> Mobi is a free service that let's people text multiple other people at once with just one text message!</p>
+			</div>
+			<div id="wrongpass">
+				<a style="float:right;" href="javascript:hideWrongPassword()">Close</a>
+				<p> The username and password do not match. Please try again.</p>
 			</div>
 			<form class="popup" id="signupform" method="post" action="/index.php/welcome/signup">
 				<a style="float:right;" href="javascript:hideSignUp()">Close</a>
