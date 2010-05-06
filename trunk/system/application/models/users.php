@@ -105,6 +105,10 @@ class Users extends Model {
 		$this->db->set('provider_id', $provider_id);
 		$this->db->insert('users');
 		
+		$gateway = //TODO
+		$reply = "You have been invited to join Mobi: The Mobile Social Network. Visit mobi.com or text '#upgrademe myusername' to admin@ombtp.com to create a full account.";
+		$this->Messages->send("$circle_email@ombtp.com", $phone_number.'@'.$gateway, $reply);
+		
 		return $this->getUserID_phone($phone_number);
 	}
 	
@@ -203,7 +207,7 @@ class Users extends Model {
 		$numberTo = $this->getPhone($user_id);
 		$gateway = //TODO
 		$reply = "You have been added to this circle.  Reply with #removeme to remove yourself.";
-		$this->Messages->send("$circle_email@ombtp.com", $numberFrom.'@'.$gateway, $reply);	
+		$this->Messages->send("$circle_email@ombtp.com", $numberTo.'@'.$gateway, $reply);	
 	}
 
 	/**
