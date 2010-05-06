@@ -88,10 +88,11 @@ class Messages extends Model {
 	 * message), 'timestamp', 'text'.
 	 */
 	function getMessages_circle($circle_id, $first_message, $number) {
-		$this->db->select('users_circles.user_id, users_circles.public_name, messages.text, messages.timestamp');
-		$this->db->from('users_circles');
-		$this->db->where('users_circles.circle_id', $circle_id);
-		$this->db->join('messages', 'messages.circle_id = users_circles.circle_id');
+		$this->db->select('messages.user_id, users_circles.public_name, messages.text, messages.timestamp');
+		$this->db->from('messages');
+		$this->db->where('messages.circle_id', $circle_id);
+		$this->db->join('users_circles', 'messages.circle_id = users_circles.circle_id AND messages.user_id = users_circles.user_id');
+		$this->db->order_by('timestamp', 'desc');
 		$this->db->limit($number, $first_message);
 		
 		$query = $this->db->get();
@@ -106,10 +107,11 @@ class Messages extends Model {
 	 * message was sent), 'timestamp', 'text'.
 	 */
 	function getMessages_user($user_id, $first_message, $number) {
-		$this->db->select('users_circles.circle_id, users_circles.public_name, messages.text, messages.timestamp');
-		$this->db->from('users_circles');
-		$this->db->where('users_circles.user_id', $user_id);
-		$this->db->join('messages', 'messages.user_id = users_circles.user_id');
+		$this->db->select('messages.circle_id, users_circles.public_name, messages.text, messages.timestamp');
+		$this->db->from('messages');
+		$this->db->where('messages.user_id', $user_id);
+		$this->db->join('users_circles', 'messages.user_id = users_circles.user_id AND messages.circle_id = users_circles.circle_id');
+		$this->db->order_by('timestamp', 'desc');
 		$this->db->limit($number, $first_message);	
 		
 		$query = $this->db->get();

@@ -239,6 +239,19 @@ class Users extends Model {
 		$data = array('admin' => $admin);
 		$this->db->update('users_circles', $data);
 	}
+	
+	
+	function getUserAdmin($user_id, $circle_id) {
+		$this->db->select('admin');
+		$this->db->from('users_circles');
+		$this->db->where('user_id', $user_id);
+		$this->db->where('circle_id', $circle_id);
+		
+		$query = $this->db->get();
+		$result = $query->result();
+		
+		return $result[0]->admin;
+	}
 
 	/**
 	 * This method sets the privileges level for the passed user in the passed

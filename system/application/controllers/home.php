@@ -17,8 +17,10 @@ class Home extends Controller {
 		the circlesinfo view with this data.
 	*/
 	function loadCircle_id($circle_id) {
+		$rawMessageData = $this->Messages->getMessages_circle($circle_id, 0, 10);
+	
 		$data['admins'] = $this->Circles->getAdmins($circle_id);
-		$data['messages'] = $this->Messages->getMessages_circle($circle_id, 0, 10);
+		$data['messages'] = 
 		$info = $this->Circles->getInfo($circle_id);
 		$data['name'] = $info->name;
 		$data['is_admin'] = 1;
