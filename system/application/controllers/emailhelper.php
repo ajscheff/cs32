@@ -160,12 +160,12 @@ class EmailHelper extends Controller {
 				$this->sendNotRegisteredMsg($numberFrom, $gateway);
 				return;
 			}
-			/*else{
+			else{
 				$reply_length = 0;
 				$reply = '';
 				$circles = $this->Users->getCircles($user_id);
 				foreach($circles as $circle){
-					$email = $this->Circles->getEmail($circle->id));
+					//$email = $this->Circles->getEmail($circle->id));
 					$email_length = strlen($email);
 					$reply_length += $email_length + 1;
 					if($reply_length <= 160){
@@ -177,7 +177,7 @@ class EmailHelper extends Controller {
 				}
 				$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
 				return;
-			}*/
+			}
 		}
 		
 		elseif(strncasecmp($token, '#add', 4) == 0){
