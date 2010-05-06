@@ -71,7 +71,8 @@ class EmailHelper extends Controller {
 					$reply = 'This username is already taken.  Please resubmit your signup request with a different username.';
 				}
 			}
-			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);		
+			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);	
+			break;
 		}
 		
 		elseif(strncasecmp($temp_msg, '#help', 5) == 0){
@@ -81,15 +82,27 @@ class EmailHelper extends Controller {
 				$reply = 'Text \'#signup\' to register an account with mobi!';
 			}
 			else{
-				$reply = 'There are no other text commands supported at this time.';
+				$reply = '#addme <circle_email> #newcircle <circle_email>';
 			}
 			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
+			break;
 		
 		}
 		
 		elseif(strncasecmp($temp_msg, '#test', 5) == 0){
 			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, 'test');
+			break;
 		}
+		
+		elseif(strncasecmp($temp_msg, '#addme', 6) == 0){
+		
+		}
+		
+		elseif(strncasecmp($temp_msg, '#newcircle', 10) == 0){
+		
+		}
+		
+		elseif
 		
 		else{
 		
@@ -100,24 +113,40 @@ class EmailHelper extends Controller {
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			$circle_id = $this->Circles->getCircleID_email($email);
 					
-			if ($this->Circles->isMember($user_id, $circle_id)) {
 
 				//if the phone number exists in our database	
 				if ($user_id != 0) {
 					if($circle_id != 0) {
-						$this->Messages->validMessageReceived($user_id, $circle_id, $email, $_POST['text']);
+						if ($this->Circles->isMember($user_id, $circle_id)) {
+							$this->Messages->validMessageReceived($user_id, $circle_id, $email, $_POST['text']);
+						}
+						//user is not a member of the circle
+						else {
+							//circle is public
+							$privacy = true;
+							if($privacy){
+								$reply = "You are not a member of this circle.  To add yourself, text \'#addme $email\' to admin@ombtp.com'";
+								$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
+								break;
+							}
+							//if the circle is private, don't inform user that it exists: do nothing
+						}
 					}
 					else {
-						//circle doesn't exists.. send reply?
+						//circle doesn't exist
+						$reply = 'The circle to which you have tried to post does not exist.  To create a circle with this address, text \'#newcircle <email_address> \' to admin@ombtp.com';
+						$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
+						break;
 					}
 				}
 				else {
-					//phone doesn't exist, send reply?
+					//phone doesn't exist; user is not registered
+					$reply = 'You don\'t have an account with Mobi yet!  Text \'#signup <username>\' to admin@ombtp.com to make one!';
+					$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
+						break;
 				}
 			}
-			else {
-				//user is not a member of the circle, send reply?
-			}
+
 		}
 	}
 }
