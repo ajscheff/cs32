@@ -102,7 +102,7 @@ class Welcome extends Controller {
 		
 		$this->foo += 1;
 		
-		$echo 'Prank message #'.$this->foo.' sent successfully.';
+		$echo 'Message #'.$this->foo.' sent successfully.';
 	}
 }
 
