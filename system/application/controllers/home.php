@@ -18,9 +18,14 @@ class Home extends Controller {
 	*/
 	function loadCircle_id($circle_id) {
 		$rawMessageData = $this->Messages->getMessages_circle($circle_id, 0, 10);
+		
+		$prettyMessageData = array();
+		foreach($rawMessageData as $rawMessage) {
+			$prettyMessageData[] = $rawMessage->public_name.'@'.$rawMessage->timestamp.': '.$rawMessage->text;
+		}
 	
 		$data['admins'] = $this->Circles->getAdmins($circle_id);
-		$data['messages'] = 
+		$data['messages'] = $prettyMessageData;
 		$info = $this->Circles->getInfo($circle_id);
 		$data['name'] = $info->name;
 		$data['is_admin'] = $this->Users->getUserAdmin($user_id, $circle_id);
