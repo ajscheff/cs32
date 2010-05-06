@@ -108,7 +108,7 @@ class EmailHelper extends Controller {
 				$temp_msg = strtok(' ');
 				$circle_id = $this->Circles->getCircleID_email($email);
 				if($circle_id == 0){//circle doesn't exist
-					$reply = "The circle to which you have tried to add yourself does not exist.  To create a circle with this address, text \'#newcircle $email \' to admin@ombtp.com";
+					$reply = "The circle to which you have tried to add yourself does not exist.  To create a circle with this address, text '#newcircle $email' to admin@ombtp.com";
 					$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
 				}
 					//circle exists
@@ -152,7 +152,7 @@ class EmailHelper extends Controller {
 						//circle is public
 						$privacy = $this->Circles->getPrivacy($circle_id);
 						if($privacy == 'public'){
-							$reply = "You are not a member of this circle.  To add yourself, text \'#addme $email\' to admin@ombtp.com'";
+							$reply = "You are not a member of this circle.  To add yourself, text '#addme $email' to admin@ombtp.com'";
 							$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
 							break;
 						}
