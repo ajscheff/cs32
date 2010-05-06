@@ -96,12 +96,6 @@
 				<p>
 					provide your phone number and service provider:<br/>
 					<input type="text" id="phone_number" name="phone_number"/>
-					<select id="provider" name="provider_id">
-						<option value="1">AT&T</option>
-						<option value="2">Verizon</option>
-						<option value="3">Sprint</option>
-						<option value="4">T Mobile</option>
-					</select>
 				</p>
 				<input class="button" type="submit" value="Sign Up!"/>
 			</form>
