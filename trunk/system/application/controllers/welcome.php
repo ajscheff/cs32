@@ -95,7 +95,7 @@ class Welcome extends Controller {
 		$this->Users->addUserToCircle(10, 1);
 	}
 	
-	function prank() {
+	function testtt() {
 		$this->load->model('Messages');
 		
 		$this->Messages->send('John_C_Walsh@ombtp.com', '3039290940@vtext.com', 'poop');
