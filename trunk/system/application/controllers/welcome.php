@@ -11,7 +11,7 @@ class Welcome extends Controller {
 		$this->load->helper('AccountsHelper');
 		$this->load->library('session');
 		
-		$GLOBALS['foo'] = 0;
+		$foo = 0;
 	}
 	
 	function index() {
