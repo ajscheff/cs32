@@ -34,7 +34,8 @@ class Welcome extends Controller {
 	}
 	
 	function checkPassword() {
-		
+		$result = $this->Users->passwordMatches($_POST['username'], $_POST['password']);
+		echo $result;
 	}
 	
 	
