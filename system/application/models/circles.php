@@ -43,9 +43,12 @@ class Circles extends Model {
 		$this->db->set('privacy', $privacy);
 		$this->db->set('description', $description);
 		$this->db->insert('circles');
+		
 		$circle_id = $this->getCircleID_email($email);
 		$preferred_name = $this->Users->getPreferredName($user_id); //get preferred name of user
+		
 		$this->Users->addUserToCircle($user_id, $circle_id, $preferred_name, 1); //default reply-all
+		
 		return $circle_id;	
 	}
 	
@@ -83,7 +86,7 @@ class Circles extends Model {
 		$this->db->join('users_circles', 'users_circles.user_id = users.id');
 		$this->db->join('providers', 'users.provider_id = providers.id');
 		$this->db->where('users_circles.circle_id', $circle_id);
-		$this->db->where('users_circles.admin', 1);
+		$this->db->where('users_circles.admin', 0);
 		
 		$query = $this->db->get();
 		return $query->result();

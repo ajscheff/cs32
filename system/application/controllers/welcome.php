@@ -37,7 +37,13 @@ class Welcome extends Controller {
 		$username = $_POST['username'];
 		$user_id = $this->Users->getUserID_username($username);
 		if($user_id == 0){
-			$user_id = $this->Users->createFullUser($username, $_POST['password'], $_POST['phone_number'], $_POST['provider_id'], $_POST['public_name']);
+			$user_id = $this->Users->createFullUser($username, $_POST['password'], $_POST['phone_number'], _POST['public_name']);
+			$session_data = array(
+				'username' => $username,
+				'password' => $_POST['password'],
+				'user_id' => $user_id
+			);
+			$this->session->set_userdata($session_data);
 			$this->loadHomeView($user_id);
 		}
 		else{
@@ -92,7 +98,7 @@ class Welcome extends Controller {
 	function quickTest() {
 		$this->load->model('Circles');
 	
-		$result = $this->Circles->getMembers(1);
+		$result = $this->Circles->getAllMembers(1);
 		
 		print_r($result);
 	}
