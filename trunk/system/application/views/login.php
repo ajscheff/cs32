@@ -74,8 +74,8 @@
 						<a id="sign" href="javascript:showSignUp()">Sign Up</a>
 						<form id="login" method="post" action="/index.php/welcome/login">
 							<h4>Sign in:</h4>
-							<input id="logininput" type="text" name="username" value="username" size="25"/>
-							<input id="logininput" type="password" name="password" value="" size="25"/>
+							<input id="logininput" type="text" name="username" value="username" onfocus="this.value=''" size="25"/>
+							<input id="logininput" type="password" name="password" value="password" onfocus="this.value=''" size="25"/>
 							<a href="javascript:login()">Login</a>
 							<!--<input id="loginbutton" class="button" type="submit" value="Login" style="float:right"/> -->
 						</form>
