@@ -90,8 +90,9 @@ class Welcome extends Controller {
 	}
 	
 	function quickTest() {
-		$this->load->model('Circles');
-		$this->Users->addUserToCircle(6, 3, 'blah');
+		$this->load->model('Messages');
+		$blah = $this->Messages->getMessages_user(1, 0, 10);
+		print_r($blah);
 	}
 }
 
