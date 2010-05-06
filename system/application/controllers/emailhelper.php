@@ -102,16 +102,14 @@ class EmailHelper extends Controller {
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			if($user_id == 0){
 				$this->sendNotRegisteredMsg($numberFrom, $gateway);
-				break;
 			}
 				//phone number belongs to a registered user
 			else{
 				$temp_msg = strtok(' ');
 				$circle_id = $this->Circles->getCircleID_email($email);
 				if($circle_id == 0){//circle doesn't exist
-					$reply = "The circle to which you have tried to add yourself not exist.  To create a circle with this address, text \'#newcircle $email \' to admin@ombtp.com";
+					$reply = "The circle to which you have tried to add yourself does not exist.  To create a circle with this address, text \'#newcircle $email \' to admin@ombtp.com";
 					$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
-					break;
 				}
 					//circle exists
 				else{
@@ -127,6 +125,7 @@ class EmailHelper extends Controller {
 					$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
 				}
 			}
+			break;
 		}
 		
 		elseif(strncasecmp($temp_msg, '#newcircle', 10) == 0){
