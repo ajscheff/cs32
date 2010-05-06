@@ -46,4 +46,6 @@
 #emailtakenpopup{
 	display:none;
 	position: fixed;
+	top: 150px;
+	width: 50px;
 	}
