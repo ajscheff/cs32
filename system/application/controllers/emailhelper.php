@@ -172,7 +172,11 @@ class EmailHelper extends Controller {
 						$reply .= $circle_email.' ';
 					}
 					else{
-						break;
+						$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
+						$reply = '';
+						$reply_legnth = 0;
+						$reply_length += $email_length + 1;
+						$reply .= $circle_email.' ';
 					}
 				}
 				$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
