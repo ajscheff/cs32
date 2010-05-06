@@ -11,7 +11,7 @@ class Users extends Model {
 		// Call the Model constructor
 		parent::Model();
 		$this->load->database();
-		//$this->load->model('Circles');
+		$this->load->model('Circles');
 	}
 	
 	/**
@@ -216,7 +216,7 @@ class Users extends Model {
 		$this->db->set('public_name', $public_name);
 		$this->db->insert('users_circles');
 		
-		$circle_email = $this->Circles->getEmail($circle_id);		
+		//$circle_email = $this->Circles->getEmail($circle_id);		
 		$numberTo = $this->getPhone($user_id);		
 		$gateway = getProvider($provider_id);		
 		$reply = "You have been added to this circle.  Reply with #removeme to remove yourself.";		
