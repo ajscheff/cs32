@@ -75,7 +75,7 @@
 				<a style="float:right;" href="javascript:hideLearnMore()">Close</a>
 				<p> Mobi is a free service that let's people text multiple other people at once with just one text message!</p>
 			</div>
-			<form id="signupform" method="post" action="/index.php/welcome/signup">
+			<form class="popup" id="signupform" method="post" action="/index.php/welcome/signup">
 				<a style="float:right;" href="javascript:hideSignUp()">Close</a>
 				<p>
 					username:

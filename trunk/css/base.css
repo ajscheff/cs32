@@ -183,3 +183,10 @@ p {
 	width: 265px;
 	margin-top: 5px;
 	}
+	
+.popup {
+	border: 3px solid #39826F;
+	background: white;
+	position: fixed;
+	display:none;
+	}
