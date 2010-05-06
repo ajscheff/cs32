@@ -110,13 +110,16 @@ class EmailHelper extends Controller {
 				if($circle_id == 0){//circle doesn't exist
 					$reply = "The circle to which you have tried to add yourself does not exist.  To create a circle with this address, text '#newcircle $temp_msg' to admin@ombtp.com";
 					$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
+					return;
 				}
 					//circle exists
 				else{
 					$reply = '';
+						//user is already a memeber of this circle
 					if($this->Circles->isMember($user_id, $circle_id)){
 						$reply = "You are already a member of $temp_msg!";
 					}
+						//user is not already a member of this circle
 					else{
 						$privacy = $this->Circles->getPrivacy($circle_id); //find if circle is public or private
 						if($privacy == 'public'){
@@ -128,13 +131,32 @@ class EmailHelper extends Controller {
 						} 
 					}
 					$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
+					return;
 				}
 			}
-			return;
 		}
 		
 		elseif(strncasecmp($temp_msg, '#newcircle', 10) == 0){
-		
+			$user_id = $this->Users->getUserID_phone($numberFrom);
+			if($user_id == 0){
+				$this->sendNotRegisteredMsg($numberFrom, $gateway);
+				return;
+			}
+			else{
+				$temp_msg = strtok(' ');
+				$circle_id = $this->Circles->getCircleID_email($temp_msg);
+				$reply = '';
+				if($circle_id != 0){//circle doesn't exist
+					$reply = "The circle to which you have tried to create already exists.  Please select a different email address for your new circle.";
+				}
+					//circle can be added
+				else{
+					$reply = "Circle $temp_msg has been created successfully!  Go online to change the settings of this circle.";
+					$circle_id = $this->Circles->createCircle($temp_msg, $temp_msg, 'public', 'this circle was created by text message!');
+				}
+				$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
+				return;
+			}
 		}
 		
 		
