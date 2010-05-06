@@ -113,15 +113,20 @@ class EmailHelper extends Controller {
 				}
 					//circle exists
 				else{
-					$privacy = $this->Circles->getPrivacy($circle_id); //find if circle is public or private
 					$reply = '';
-					if($privacy == 'public'){
-						$reply = "You have been successfully added to the circle with address $temp_msg.";
-						$this->Users->addUserToCircle($user_id, $circle_id);
+					if($this->Circles->isMember($user_id, $circle_id)){
+						$reply = "You are already a member of $temp_msg!";
 					}
 					else{
-						$reply = 'You are not authorized to add yourself to this circle.';
-					} 
+						$privacy = $this->Circles->getPrivacy($circle_id); //find if circle is public or private
+						if($privacy == 'public'){
+							$reply = "You have been successfully added to the circle with address $temp_msg.";
+							$this->Users->addUserToCircle($user_id, $circle_id);
+						}
+						else{
+							$reply = 'You are not authorized to add yourself to this circle.';
+						} 
+					}
 					$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
 				}
 			}
