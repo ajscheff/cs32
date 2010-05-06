@@ -146,6 +146,20 @@ class Users extends Model {
 	}
 	
 	/**
+	 * Returns the provider ID associated to a particular user.
+	 */
+	 function getProviderID_user($user_id) {
+	 	$this->db->select('provider_id');
+	 	$this->db->from('users');
+	 	$this->db->where('users.provider_id', $user_id);
+	 	
+	 	$query = $this->db->get();
+		$rows = $query->result();
+		if (empty($rows)) return 0;
+		else return $rows[0]->provider_id;
+	 }
+	
+	/**
 	 * This method creates a full user and returns the id associated with it
 	 */
 	function createFullUser($username, $password, $phone_number, $preferred_name) {
@@ -221,6 +235,7 @@ class Users extends Model {
 		
 		$circle_email = $this->Circles->getEmail($circle_id);
 		$numberTo = $this->getPhone($user_id);
+		$provider_id = getProviderID_user($user_id);
 		$gateway = getProvider($provider_id);
 		$reply = "You have been added to this circle.  Reply with #removeme to remove yourself.";
 		$this->Messages->send("$circle_email@ombtp.com", $numberTo.'@'.$gateway, $reply);	
