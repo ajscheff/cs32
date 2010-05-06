@@ -14,7 +14,7 @@
 	
 #circleinfo {
 	float: right;
-	min-width: 500px;
+	width: 500px;
 	}
 	
 .message {
@@ -76,4 +76,8 @@
 	max-height: 500px;
 	border-right: 3px solid #39826F;
 
+	}
+	
+#deletebutton {
+	float: right;
 	}

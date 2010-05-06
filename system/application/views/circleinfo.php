@@ -1,6 +1,12 @@
 			<div id="circleheader">
 				<?php echo '<h4>'.$name.'</h4>';
-						echo '<p>'.$description.'</p>';?>
+						echo '<p>'.$description.'</p>';
+						
+						if(is_admin>0){
+							echo '<a id="deletebutton" href="javascript:deleteCircle('.$circle_id.')">Delete Circle</a>';
+						}
+						
+						?>
 			</div>
 			<div>
 				<div id="adminslist">
