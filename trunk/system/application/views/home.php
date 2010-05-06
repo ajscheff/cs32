@@ -5,6 +5,8 @@
 		<link rel="stylesheet" type="text/css" href="/css/home.css" />
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.min.js"></script>
 		<script type="text/javascript"><!--
+		
+				var curr_circle;
 
 				function submitNewCircle(){
 					var email = $('#email').val();
@@ -18,11 +20,20 @@
 				}
 					
 				function loadCircle(circle_id) {
+					curr_circle = circle_id;
 					if (circle_id != 0) {
 						$.post('/index.php/home/loadCircle/', { circle_id : circle_id }, function(data) {
 							$('#circleinfo').html(data);
 						});
 					}
+				}
+				
+				function showDeleteCircleOk() {
+					$('#deletecircleok').show();
+				}
+				
+				function hideDeleteCircleOk() {
+					$('#deletecircleok').hide();
 				}
 				
 				function hideEmailTakenPopup(){
@@ -92,5 +103,14 @@
 			<div class="popup" id="emailtakenpopup">
 				<a style="float:right" href="javascript:hideEmailTakenPopup()">Close</a>The email you entered is taken by another circle, please choose a different email address.
 			</div>
+			
+			<form class="popup" id="deletecircleok" action="/index.php/home/deleteCircle">
+				<p style="align:center">
+					<h3>Delete circle?</h3> <br>
+					<a style="margin:5px" href="javascript:deleteCircle()">Ok</a>
+					<a style="margin:5px" href="javascript:hideDeleteCircleOk()">No</a>
+				</p>
+			</form>
+			
 	</body>
 </html>

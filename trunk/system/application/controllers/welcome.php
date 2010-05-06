@@ -111,16 +111,6 @@ class Welcome extends Controller {
 		
 		print_r($result);
 	}
-	
-	function testtt() {
-		$this->load->model('Messages');
-		
-		$this->Messages->send('John_C_Walsh@ombtp.com', '7732554601@vtext.com', 'poop');
-		
-		$GLOBALS['foo'] += 1;
-		
-		echo 'Message #'.$GLOBALS['foo'].' sent successfully.';
-	}
 }
 
 /* End of file welcome.php */
