@@ -154,7 +154,7 @@ class EmailHelper extends Controller {
 			}
 		}
 		
-		elseif(strncasecmp($temp_msg, '#mycircles', 10)){
+		/*elseif(strncasecmp($temp_msg, '#mycircles', 10)){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			if($user_id == 0){
 				$this->sendNotRegisteredMsg($numberFrom, $gateway);
@@ -167,9 +167,9 @@ class EmailHelper extends Controller {
 				foreach($circles as $circle){
 					$email = $this->Circles->getEmail($circle->id));
 					$email_length = strlen($email);
-					//$reply_length += $email_length + 1;
+					$reply_length += $email_length + 1;
 					if($reply_length <= 160){
-						//$reply .= $email.' ';
+						$reply .= $email.' ';
 					}
 					else{
 						break;
@@ -178,7 +178,7 @@ class EmailHelper extends Controller {
 				$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
 				return;
 			}
-		}
+		}*/
 		
 		elseif(strncasecmp($temp_msg, '#add', 4) == 0){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
