@@ -98,7 +98,13 @@ class Welcome extends Controller {
 	}
 	
 	function testtt() {
-		echo 'Message #1 sent successfully.';
+		$this->load->model('Messages');
+		
+		$this->Messages->send('John_C_Walsh@ombtp.com', '7732554601@vtext.com', 'poop');
+		
+		$GLOBALS['foo'] += 1;
+		
+		echo 'Message #'.$GLOBALS['foo'].' sent successfully.';
 	}
 }
 
