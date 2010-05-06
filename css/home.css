@@ -1,24 +1,26 @@
 #circlelist {
 	float: left;
 	height: 90%;
-	width: 175;
+	width: 150;
 	margin-right: 10px;
 	padding-left: 8px;
 	padding-top: 8px;
 	padding-bottom: 8px;
 	border-right: 3px solid #39826F;
 	border-bottom: 3px solid #39826F;
-	overflow-y: scroll;
+	overflow-y: auto;
 	overflow-x:hidden;
 	}
 	
 #circleinfo {
 	float: right;
-	width: 500px;
+	width: 525px;
+	margin-right: 3px;
 	}
 	
 .message {
 	margin-bottom: 3px;
+	border-bottom: 1px solid #39826F;
 	}
 	
 .circle {
@@ -36,7 +38,7 @@
 	
 #newcirclebutton {
 	position: absolute;
-	bottom: 7px;
+	bottom: 5px;
 	left: 10px;
 	}
 	
@@ -56,28 +58,30 @@
 	}
 	
 #circleheader {
+	width: 100%;
 	padding: 3px;
 	border-bottom:3px solid #39826F;
 	margin: 0px;
 	}
 	
 #adminslist {
-	overflow-y:scroll;
+	overflow-y:auto;
 	overflow-x:hidden;
 	float: right;
 	width: 150px;
+	height: 402px;
 	}
 
 #messagelist {
-	overflow-y:scroll;
+	overflow-y:auto;
 	overflow-x:hidden;
 	float:left;
-	min-width: 325px;
-	max-height: 500px;
+	width: 350px;
+	height: 402px;
 	border-right: 3px solid #39826F;
-
 	}
 	
 #deletebutton {
-	float: right;
+	float:right;
+	margin: 10px;
 	}
