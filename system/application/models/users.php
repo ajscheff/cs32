@@ -201,7 +201,7 @@ class Users extends Model {
 		
 		$circle_email = $this->Circles->getEmail($circle_id);
 		$numberTo = $this->getPhone($user_id);
-		$gateway = 
+		$gateway = //TODO
 		$reply = "You have been added to this circle.  Reply with #removeme to remove yourself.";
 		$this->Messages->send("$circle_email@ombtp.com", $numberFrom.'@'.$gateway, $reply);	
 	}
