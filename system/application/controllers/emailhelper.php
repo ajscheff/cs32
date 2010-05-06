@@ -165,8 +165,8 @@ class EmailHelper extends Controller {
 				$reply = '';
 				$circles = $this->Users->getCircles($user_id);
 				foreach($circles as $circle){
-					$circle_email = $this->Circles->getEmail($circle->id));
-					$email_length = strlen($email);
+					//$circle_email = $this->Circles->getEmail($circle->id));
+					$email_length = strlen($circle_email);
 					$reply_length += $email_length + 1;
 					if($reply_length <= 160){
 						$reply .= $circle_email.' ';
