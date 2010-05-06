@@ -62,7 +62,7 @@ class Messages extends Model {
 		$userPermissions = $this->Circles->getPermissions($user_id, $circle_id);
 
 		if ($userPermissions == 'reply_all') {
-			$emailList = $this->Circles->getMembers($circle_id);
+			$emailList = $this->Circles->getAllMembers($circle_id);
 		}
 		else if ($userPermissions == 'reply_admins') {
 			$emailList = $this->Circles->getAdmins($circle_id);
