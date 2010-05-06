@@ -152,7 +152,7 @@ class EmailHelper extends Controller {
 					//circle can be added
 				else{
 					$reply = "Circle $temp_msg has been created successfully!  Go online to change the settings of this circle.";
-					$circle_id = $this->Circles->createCircle($temp_msg, $temp_msg, 'public', 'this circle was created by text message!');
+					$circle_id = $this->Circles->createCircle($user_id, $temp_msg, $temp_msg, 'public', 'this circle was created by text message!');
 				}
 				$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
 				return;
