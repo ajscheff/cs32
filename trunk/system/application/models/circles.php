@@ -10,7 +10,6 @@ class Circles extends Model {
 		// Call the Model constructor
 		parent::Model();
 		$this->load->database();
-		//$this->load->model('Users');
 	}
 	
 
@@ -37,6 +36,9 @@ class Circles extends Model {
 	 * of the circle to the new circle as an admin
 	 */
 	function createCircle($user_id, $circle_name, $email, $privacy, $description) {
+	
+	//////////////////////////////////////////////////////////////////////////////////////////
+		$this->load->model('Users');
 	
 		$this->db->set('name', $circle_name);
 		$this->db->set('email', $email);
