@@ -2,7 +2,8 @@
 				<?php
 					if($is_admin != '0')
 						echo '<a id="deletebutton" href="javascript:deleteCircle('.$circle_id.')">Delete Circle</a>';	
-					echo '<h3>'.$name.'</h3>'.$email;
+					echo '<h3>'.$name.'</h3>';
+					echo '<p>'.$email.'@ombtp.com</p>';
 					echo '<p>'.$description.'</p>';	
 
 				?>
