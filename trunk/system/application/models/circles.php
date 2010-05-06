@@ -10,6 +10,7 @@ class Circles extends Model {
 		// Call the Model constructor
 		parent::Model();
 		$this->load->database();
+		$this->load->model('Users');
 	}
 	
 
@@ -32,17 +33,20 @@ class Circles extends Model {
 	
 	/**
 	 * This function creates a cirlce with the passed parameters.  Assumes
-	 * that the email address is not already taken
+	 * that the email address is not already taken.  Also adds the creator
+	 * of the circle to the new circle as an admin
 	 */
-	function createCircle($circle_name, $email, $privacy, $description) {
+	function createCircle($user_id, $circle_name, $email, $privacy, $description) {
 	
 		$this->db->set('name', $circle_name);
 		$this->db->set('email', $email);
 		$this->db->set('privacy', $privacy);
 		$this->db->set('description', $description);
 		$this->db->insert('circles');
-		
-		return $this->getCircleID_email($email);	
+		$circle_id = $this->getCircleID_email($email);
+		$preferred_name = $this->Users->getPreferredName($user_id); //get preferred name of user
+		$this->Users->$this->Users->addUserToCircle($user_id, $circle_id, $preferred_name, 1); //default reply-all
+		return $circle_id;	
 	}
 	
 	/**

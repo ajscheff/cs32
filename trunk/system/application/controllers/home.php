@@ -61,9 +61,6 @@ class Home extends Controller {
 		$circle_id = $this->Circles->createCircle($circle_name, $email, $_POST['privacy'], $_POST['description']);
 			//add user who created this circle to the new circle as an admin
 			
-		$preferred_name = $this->Users->getPreferredName($user_id); //get preferred name of user
-		
-		$this->Users->addUserToCircle($user_id, $circle_id, $preferred_name, 1); //default reply-all
 		$this->loadHomeView($user_id, $circle_id);
 	}
 	
