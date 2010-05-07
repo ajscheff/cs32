@@ -38,15 +38,15 @@ class Home extends Controller {
 		foreach($rawMemberData as $rawMember) {
 			$prettyMemberData[] = $rawMember->public_name;
 		}
-	
-		$userAdmin = $this->Users->getUserAdmin($user_id, $circle_id);
+		
+		$user_id = $this->session->userdata('user_id');
 	
 		$data['admins'] = $prettyAdminData;
 		$data['members'] = $prettyMemberData;
 		$data['messages'] = $prettyMessageData;
 		$info = $this->Circles->getInfo($circle_id);
 		$data['name'] = $info->name;
-		$data['is_admin'] = $userAdmin;
+		$data['is_admin'] = $this->Users->getUserAdmin($user_id, $circle_id);
 		$data['circle_id'] = $circle_id;
 		$data['description'] = $info->description;
 		$data['email'] = $this->Circles->getEmail($circle_id);
