@@ -36,7 +36,7 @@ class Home extends Controller {
 		
 		$prettyMemberData = array();
 		foreach($rawMemberData as $rawMember) {
-			$prettyMemberData[] = $rawMember->public_name;
+			$prettyMemberData[] = array('public_name' => $rawMember->public_name, 'user_id' => $rawMember->user_id);
 		}
 		
 		$user_id = $this->session->userdata('user_id');
