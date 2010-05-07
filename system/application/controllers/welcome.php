@@ -101,10 +101,8 @@ class Welcome extends Controller {
 	}
 	
 	function quickTest() {
-		$result = $this->Users->getUserAdmin(1, 1);
-		
-		if ($result == 1) echo 'the user is an admin';
-		else echo 'no';
+		$this->load->model('Messages');
+		$this->Messages->validMessageReceived(1, 2, 'andymarcus', 'messages test');
 	}
 }
 
