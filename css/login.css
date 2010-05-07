@@ -47,14 +47,16 @@
 	width: 60px;
 	}
 	
-#learnmore, #signupform, #wrongpass {
+#learnmore, #signupform {
 	padding: 5px;
-	margin-top:-125px;
-	margin-left: -200px;
-	width: 400px;
-	height: 250px;
+	width: 500px;
+	height: 300px;
 	border: 3px solid #327262;
 	background: white;
+	position: fixed;
+	margin: auto;
+	top: 100px;
+	left: 475px;
 	display: none;
 	}
 	
