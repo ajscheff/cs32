@@ -73,6 +73,10 @@
 				function hideCircleForm() {
 					$('#newcircleform').hide();
 				}
+				
+				function getCurrCircle() {
+					document.write(curr_circle);
+				}
 					
 			--></script>
 	</head>
@@ -131,14 +135,15 @@
 				<a class="closebutton" href="javascript:hideAddUserForm()">Close</a>
 				<p>
 					Phone number:
-					<input id="circle_name" type="text" name="circle_name"/>
+					<input id="phone_number" type="text" name="phone_number"/>
 				</p>
 				<p>
 					Name:
-					<input id="email" type="text" name="email"/>
+					<input id="name" type="text" name="name"/>
+					<input id="circle_id" type="text" name="circle_id" value='<script>document.write(curr_circle)</script>'/>
 				</p>
 				<p>
-					<input class="button" type="submit" value="Add User">
+					<input class="button" type="submit" value="Add User"/>
 				</p>
 			</form>
 			
