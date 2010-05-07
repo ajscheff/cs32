@@ -86,7 +86,7 @@
         margin: 5px;
         }
         
-#deletecircleok, #leavecircleok, #adduserform  {
+#deletecircleok, #leavecircleok  {
         width: 200px;
         height: 100px;
         padding: 5px;
@@ -94,3 +94,14 @@
         top: 100px;
         left: 550px;
         }
+      
+#adduserform {
+        width: 200px;
+        height: 150px;
+        padding: 5px;
+        margin: auto;
+        top: 100px;
+        left: 550px;
+        }
+
+
