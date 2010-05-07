@@ -10,13 +10,6 @@ class Circles extends Model {
 		// Call the Model constructor
 		parent::Model();
 		$this->load->database();
-<<<<<<< .mine
-<<<<<<< .mine
-=======
-		//$this->load->model('Users');
-=======
->>>>>>> .r373
->>>>>>> .r370
 	}
 	
 
