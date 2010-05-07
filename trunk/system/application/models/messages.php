@@ -73,7 +73,7 @@ class Messages extends Model {
 			//user has invalid permissions.  send notification?
 		}
 		
-		//$this->load->model('Users');
+		$this->load->model('Users');
 
 		foreach ($emailList as $contact) {
 			if ($user_id != $contact->user_id) {				
