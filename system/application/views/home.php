@@ -40,7 +40,7 @@
 				
 				function leaveCircle() {
 					$.post('/index.php/home/leaveCircle/', { circle_id: curr_circle }, function(data) {});
-					document.location = 'ombtp.com/index.php/home/loadHomeView/0';
+					document.location = '';
 				}
 				
 				function showLeaveCircleOk() {
@@ -53,7 +53,7 @@
 				
 				function deleteCircle() {
 					$.post('/index.php/home/deleteCircle/', { circle_id: curr_circle }, function(data) {});
-					document.location = 'ombtp.com/index.php/home/loadHomeView/0';
+					document.location = '';
 				}
 				
 				function showDeleteCircleOk() {
