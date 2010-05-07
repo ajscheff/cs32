@@ -13,9 +13,7 @@ class Messages extends Model {
 		// Call the Model constructor
 		parent::Model();
 		$this->load->database();
-		$this->load->library('email');
-		
-		$this->load->model('Users', 'real_users');
+		$this->load->library('email');		
 	}
 
 	/**
