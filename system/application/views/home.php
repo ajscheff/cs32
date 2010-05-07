@@ -87,15 +87,6 @@
 			--></script>
 	</head>
 	<body onload="loadCircle(<?php echo $first_circle ?>)">
-	<body onload="loadCircle(<?php
-					
-			if ($_GET['c_id']) {
-				echo $_GET['c_id'];
-			} else {
-				echo '0';
-			}
-								
-			 ?>)">
 			<div id="backshade">
 			<div id="panel">
 					<div id="masthead">
