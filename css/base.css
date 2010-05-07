@@ -76,7 +76,7 @@ p {
 	}
 	
 #panel {
-	border: 8px solid #39826F;
+	border: 8px solid #327262;
 	border-top-width: 0px;
 	background: #def4ea;
 	position: relative;
@@ -99,7 +99,7 @@ p {
 	}
 	
 .divider {
-	background: #39826F;
+	background: #327262;
 	}
 	
 #masthead {
@@ -186,7 +186,7 @@ p {
 	}
 	
 .popup {
-	border: 3px solid #39826F;
+	border: 3px solid #327262;
 	background: white;
 	position: fixed;
 	top: 25%;
