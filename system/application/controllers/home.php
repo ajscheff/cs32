@@ -79,13 +79,13 @@ class Home extends Controller {
 	
 	function deleteCircle() {
 		$this->Circles->deleteCircle($_POST['circle_id']);
-		redirect('');
+		redirect('/home/loadHomeView/0');
 	}
 	
 	function leaveCircle() {
 		$user_id = $this->session->userdata('user_id');
 		$this->Users->removeUserFromCircle($user_id, $_POST['circle_id']);
-		redirect('');
+		redirect('/home/loadHomeView/0');
 	}
 	
 
@@ -108,7 +108,7 @@ class Home extends Controller {
 			
 		}
 		else {
-			redirect('');
+			redirect('/home/loadHomeView/0');
 		}
 		
 		
