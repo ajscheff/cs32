@@ -14,7 +14,7 @@
 						<a id="logoutbutton" href="/index.php/welcome/logout/">logout</a>
 					</div>
 					<div class="divider" style="height: 3px; width: 100%;"/>
-					<table id="interactions">
+					<div id="interactions">
 					<tr>
 					<td>
 					<?php echo '<form method="post" action="/index.php/settings/changePassword/'.$user_id.'">'; ?>
@@ -26,9 +26,7 @@
 						<input type="password" name="new_password"/>
 						<input class="button" type="submit" value="Go!"/>
 					</form>
-					</td>
-					</tr>
-					</table>
+					</div>
 					<div id="whaleback"></div>
 			</div>
 			</div>

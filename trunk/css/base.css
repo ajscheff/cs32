@@ -135,8 +135,9 @@ p {
 	
 #userstatus {
 	position: absolute;
+	text-align: right:
 	top: 52px;
-	left: 500px;
+	left: 550px;
 	}
 	
 #circlesbutton {
