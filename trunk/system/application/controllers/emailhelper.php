@@ -102,7 +102,7 @@ class EmailHelper extends Controller {
 				$reply = 'Text \'#signup myusername\' to register an account with mobi!';
 			}
 			else{
-				$reply = 'to admin: #mycircles; to a circle:#addme #add #makecircle #removeme';
+				$reply = 'to admin@ombtp.com: #mycircles; to a circle address:#addme #add #makecircle #removeme';
 			}
 			$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
 			return;
