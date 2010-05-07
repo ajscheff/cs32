@@ -12,6 +12,7 @@
 				$.post('/index.php/settings/checkPassword/', {password:old_password}, function(data) {
 					if(data == '1') {
 						document.forms["changepasswordform"].submit();
+						$('#passwordchanedpopup').show();
 					} else {
 						$('#passwordwrongpopup').show();
 					}
@@ -20,6 +21,10 @@
 			
 			function hidePasswordWrongPopup() {
 				$('#passwordwrongpopup').hide();
+			}
+			
+			function hidePasswordChangedPopup() {
+				$('#passwordchangedpopup').hide();
 			}
 					
 			--></script>
@@ -55,6 +60,10 @@
 			<div class="popup" id="passwordwrongpopup">
 				<a class="closebutton" href="javascript:hidePasswordWrongPopup()">Close</a>
 				<p>The password you entered was not correct!  Your password has not been changed.</p>
+			</div>
+			<div class="popup" id="passwordchangedpopup">
+				<a class="closebutton" href="javascript:hidePasswordChangedPopup()">Close</a>
+				<p>Your password has been successfully changed.</p>
 			</div>
 	</body>
 </html>
