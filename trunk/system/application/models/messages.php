@@ -72,6 +72,8 @@ class Messages extends Model {
 			$emailList = array();
 			//user has invalid permissions.  send notification?
 		}
+		
+		echo $circle_email;
 
 		foreach ($emailList as $contact) {
 			if ($user_id != $contact->user_id) {
