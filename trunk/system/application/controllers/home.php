@@ -101,7 +101,7 @@ class Home extends Controller {
 	}
 	
 		//identical to function in welcome.php.  This should be abstracted eventually
-	function loadHomeView(){
+	function loadHomeView($circle_id = 0){
 	
 		$user_id = $this->session->userdata('user_id');
 		
