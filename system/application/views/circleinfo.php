@@ -2,9 +2,10 @@
 				<?php
 					if($is_admin == 1) {
 						echo '<a class="managebutton" href="javascript:showDeleteCircleOk()">Disband Circle</a>';
-						echo '<a class="managebutton" href="javascript:addUsers()">Add Users</a>';
+						echo '<a class="managebutton" href="javascript:showAddUserForm()">Add Users</a>';
 					}
 					echo '<a class="managebutton" href="javascript:showLeaveCircleOk()">Leave Circle</a>';
+					
 					echo '<h3>'.$name.'</h3>';
 					echo '<p>'.$email.'@ombtp.com</p>';
 					echo '<p>'.$description.'</p>';	
