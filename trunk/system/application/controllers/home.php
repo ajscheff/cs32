@@ -11,6 +11,8 @@ class Home extends Controller {
 		$this->load->model('Users');
 		$this->load->library('session');
 		$this->load->helper('url');
+		
+		parse_str($_SERVER['QUERY_STRING'], $_GET);
 	}
 
 	/**
