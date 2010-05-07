@@ -19,7 +19,7 @@ class Welcome extends Controller {
 		$password = $this->session->userdata('password');
 		if ($user_id != false && $username != false && $password != false) {
 			if ($this->Users->passwordMatches($user_id, $password)) {
-				$this->loadHomeView($user_id);
+				$this->loadHomeView();
 			} else {
 				$this->load->view('login');
 			}
@@ -47,7 +47,7 @@ class Welcome extends Controller {
 				'user_id' => $user_id
 			);
 			$this->session->set_userdata($session_data);
-			$this->loadHomeView($user_id);
+			$this->loadHomeView();
 		}
 		else{
 			echo 'Please choose another username'; //this should never be reached if the view never requests a taken username
@@ -90,10 +90,9 @@ class Welcome extends Controller {
 		echo 'id'.$id;
 	}
 	
-		//identical to function in home.php.  This should be abstracted eventually
-	function loadHomeView($user_id, $circle_id){
+	function loadHomeView($circle_id = 0){
 	
-		
+		$user_id = $this->session->userdata('user_id');
 		
 		$data['username'] =$this->Users->getUsername($user_id);
 		$data['circles'] = $this->Users->getCircles($user_id);
