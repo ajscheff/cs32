@@ -86,16 +86,9 @@
         margin: 0px;
         }
         
-#deletecircleok {
+#deletecircleok, #leavecircleok  {
         width: 200px;
         height: 100px;
         top: 300px;
         left: 400px;
         }
-
-#leavecircleok {
-	width: 200px;
-	height: 100px;
-	top: 300px;
-	left: 400px;
-	}
