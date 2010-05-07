@@ -3,6 +3,7 @@
     <head>        
     	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<link rel="stylesheet" type="text/css" href="/css/base.css" />
+		<link rel="stylesheet" type="text/css" href="/css/settings.css" />
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.min.js"></script>
 		<script type="text/javascript"><!--
 		
@@ -15,6 +16,10 @@
 						$('#passwordwrongpopup').show();
 					}
 				});
+			}
+			
+			function hidePasswordWrongPopup() {
+				$('#passwordwrongpopup').hide();
 			}
 					
 			--></script>
