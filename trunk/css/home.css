@@ -90,6 +90,8 @@
 #deletecircleok, #leavecircleok  {
         width: 200px;
         height: 100px;
+        padding: 5px;
+        margin: auto;
         top: 100px;
-        left: 600px;
+        left: 550px;
         }
