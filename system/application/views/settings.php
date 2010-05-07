@@ -8,7 +8,7 @@
 		
 			function changePassword() {
 				var old_password = $('#old_password').val();
-				$.post('/index.php/settings/checkPassword', {password:old_password}, function(data) {
+				$.post('/index.php/settings/checkPassword/', {password:old_password}, function(data) {
 					if(data == '1') {
 						document.forms["changepasswordform"].submit();
 					} else {
