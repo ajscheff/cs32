@@ -300,7 +300,7 @@ class EmailHelper extends Controller {
 									$this->Users->addUserToCircle($user_id_toAdd, $circle_id, $token);
 									$reply = "$number_to_add has been successfully added to $email will name $token, and will be invited to join Mobi!";
 									$pub_name = $this->Users->getPublicName($user_id, $circle_id);
-									$local_reply = "$pub_name with number $numberFrom has invited you to Mobi. Go to mobi.com to learn more."; 
+									$local_reply = "$pub_name with number $numberFrom has invited you to Mobi. Go to mobi.com to learn more, or reply with '#upgrademe <myusername>' to make a full account.";
 									$temp_prov_id = $this->Users->internetLookupProvider($token);
 									if($temp_prov_id != 0){
 										$temp_gateway = $this->Users->getProvider($temp_prov_id);
