@@ -99,8 +99,8 @@ class Home extends Controller {
 	
 		$user_id = $this->session->userdata('user_id');
 		
-		if ($this->Circles->isMember($user_id, $circle_id)) {
-			$data['first_circle'] = $circle_id;
+		if ($this->Circles->isMember($user_id, $circle_id) && $circle_id == 0) {
+			$data['first_circle'] = $circle_id;	
 		}
 		else {
 			$data['first_circle'] = 0;
