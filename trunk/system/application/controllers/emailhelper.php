@@ -253,7 +253,7 @@ class EmailHelper extends Controller {
 								}
 							}
 							else{
-								$local_reply = "The number $token does not belong to a registered Mobi user.  Text '#addnewuser $token nameofnewuser' to $email@ombtp.com to invite them!";
+								$local_reply = "The number $token does not belong to a registered Mobi user.  Text '#newuser $token nameofnewuser' to $email@ombtp.com to invite them!";
 								$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $local_reply);
 								$all_success = false;
 							}
