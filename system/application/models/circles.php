@@ -10,6 +10,13 @@ class Circles extends Model {
 		// Call the Model constructor
 		parent::Model();
 		$this->load->database();
+<<<<<<< .mine
+<<<<<<< .mine
+=======
+		//$this->load->model('Users');
+=======
+>>>>>>> .r373
+>>>>>>> .r370
 	}
 	
 
@@ -37,9 +44,8 @@ class Circles extends Model {
 	 */
 	function createCircle($user_id, $circle_name, $email, $privacy, $description) {
 	
-	//////////////////////////////////////////////////////////////////////////////////////////
 		$this->load->model('Users');
-	
+
 		$this->db->set('name', $circle_name);
 		$this->db->set('email', $email);
 		$this->db->set('privacy', $privacy);
@@ -51,7 +57,7 @@ class Circles extends Model {
 		
 		$this->Users->addUserToCircle($user_id, $circle_id, $preferred_name, 1); //default reply-all
 		
-		return $circle_id;	
+		return $circle_id;
 	}
 	
 	/**
