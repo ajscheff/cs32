@@ -53,7 +53,8 @@
 			</div>
 			<div id="bottomshade"></div>
 			<div class="popup" id="passwordwrongpopup">
-				<a class="closebutton" href="javascript:hidePasswordWrongPopup()">Close</a>The password you entered was not correct!  Your password has not been changed.
+				<a class="closebutton" href="javascript:hidePasswordWrongPopup()">Close</a>
+				<p>The password you entered was not correct!  Your password has not been changed.</p>
 			</div>
 	</body>
 </html>
