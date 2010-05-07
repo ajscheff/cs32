@@ -72,11 +72,12 @@ class Messages extends Model {
 			$emailList = array();
 			//user has invalid permissions.  send notification?
 		}
+		
+		$this->load->model('Users');
 
 		foreach ($emailList as $contact) {
 			if ($user_id != $contact->user_id) {
-				//$publicname = $this->Users->getPublicName($user_id, $circle_id);
-				$publicname = 'andy';
+				$publicname = $this->Users->getPublicName($user_id, $circle_id);
 				$message = ' ' . $publicname . ': ' . $message;
 				$from = $circle_email . '@ombtp.com';
 				$this->send($from, $contact->phone_number.'@'.$contact->gateway, $message);
