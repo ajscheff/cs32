@@ -50,22 +50,15 @@ class Messages extends Model {
 		$pattern_2 = "/-*Original Message-*(.|\n)*/";
 		$message = preg_replace($pattern_2, '', $message);
 		$pattern_3 = "/(-|=|\n)*This mobile text message is brought to you by AT&T(.|\n)*/";
-		$message = preg_replace($pattern_3, '', $message);
+		$message = preg_replace($pattern_3, '', $message);	
 		
-		// insert message into database
-		$this->db->set('message', $message);
-		$this->db->set('from', $user_id);
-		$this->db->set('to', $circle_email);
-		$this->db->insert('email_test');	
-		
+		$this->load->model('Circles');
 
 		// insert message into database
 		$this->db->set('text', $message);
 		$this->db->set('user_id', $user_id);
 		$this->db->set('circle_id', $circle_id);
 		$this->db->insert('messages');
-
-		$this->load->model('Circles');
 
 		$userPermissions = $this->Circles->getPermissions($user_id, $circle_id);
 
@@ -79,12 +72,11 @@ class Messages extends Model {
 			$emailList = array();
 			//user has invalid permissions.  send notification?
 		}
-		
-		echo $circle_email;
 
 		foreach ($emailList as $contact) {
 			if ($user_id != $contact->user_id) {
-				$publicname = $this->Users->getPublicName($user_id, $circle_id);
+				//$publicname = $this->Users->getPublicName($user_id, $circle_id);
+				$publicname = 'andy';
 				$message = ' ' . $publicname . ': ' . $message;
 				$from = $circle_email . '@ombtp.com';
 				$this->send($from, $contact->phone_number.'@'.$contact->gateway, $message);

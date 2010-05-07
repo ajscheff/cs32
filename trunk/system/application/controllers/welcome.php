@@ -102,7 +102,7 @@ class Welcome extends Controller {
 	
 	function quickTest() {
 		$this->load->model('Messages');
-		$this->Messages->validMessageReceived(1, 2, 'andymarcus', 'messages test');
+		$this->Messages->validMessageReceived(1, 1, 'mobiteam', 'messages test');
 	}
 }
 
