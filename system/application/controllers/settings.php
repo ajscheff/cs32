@@ -27,19 +27,23 @@ class Settings extends Controller {
 		}
 	}
 	
-	function changePassword($user_id){
-		$oldPassword = $_POST['old_password'];
-		if($this->Users->passwordMatches($user_id, $oldPassword)){
-			$newPassword = $_POST['new_password'];
-			
-			$this->Users->changePassword($user_id, $newPassword);
-			$session_data = array('password' => $newPassword);
-			$this->session->set_userdata($session_data);
-			$this->loadSettings();
-		}
-		else{
-			echo "password does not match. Please retry entering your password.";
-		}
+	//this function returns '1' if the password provided by post matches the one on the database
+	function checkPassword() {
+		$user_id = $this->session->userdata('user_id');
+		if($this->Users->passwordMatches($user_id, $_POST['password'])
+			echo '1';
+		else echo '0';
+	}
+	
+	//this function will change a users password to the password provided by post
+	//THIS FUNCTION ASSUMES THAT THE OLD PASSWORD HAS ALREADY BEEN CHECKED!!!
+	function changePassword(){
+		$user_id = $this->session->userdata('user_id');
+		$newPassword = $_POST['password'];	
+		$this->Users->changePassword($user_id, $newPassword);
+		$session_data = array('password' => $newPassword);
+		$this->session->set_userdata($session_data);
+		$this->loadSettings();
 	}
 	
 
