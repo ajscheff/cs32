@@ -69,7 +69,9 @@ class Home extends Controller {
 	}
 	
 	function deleteCircle($circle_id) {
-		redirect('', 'location');
+	
+		$this->Circles->deleteCircle($circle_id);
+		redirect('', 'refresh');
 	}
 	
 	function newCircle($user_id, $circle_id) {
