@@ -11,9 +11,6 @@ class Users extends Model {
 		// Call the Model constructor
 		parent::Model();
 		$this->load->database();
-
-		$this->load->model('Circles');
-		$this->load->model('Messages');
 	}
 	
 	/**
@@ -93,21 +90,6 @@ class Users extends Model {
 			return ($this->pwEncode($password) == $rows[0]->password);
 		else return false;
 	}
-	
-	/**
-	 * Returns the gateway associated with the provider id.
-	 */
-	function getProvider($provider_id) {
-		$this->db->select('gateway');
-		$this->db->from('providers');
-		$this->db->where('id', $provider_id);
-		
-		$query = $this->db->get();
-		
-		$rows = $query->result();
-		if (empty($rows)) return NULL;
-		else return $rows[0]->gateway;
-	}
 
 	/**
 	 * This method creates a stub user (a user with only a phone number and a provider)
@@ -143,20 +125,6 @@ class Users extends Model {
 	}
 	
 	/**
-	 * Returns the provider ID associated to a particular user.
-	 */
-	 function getProviderID_user($user_id) {
-	 	$this->db->select('provider_id');
-	 	$this->db->from('users');
-	 	$this->db->where('users.provider_id', $user_id);
-	 	
-	 	$query = $this->db->get();
-		$rows = $query->result();
-		if (empty($rows)) return 0;
-		else return $rows[0]->provider_id;
-	 }
-	
-	/**
 	 * This method creates a full user and returns the id associated with it
 	 */
 	function createFullUser($username, $password, $phone_number, $preferred_name) {
@@ -168,7 +136,7 @@ class Users extends Model {
 		$this->db->set('phone_number', $phone_number);
 		$this->db->set('provider_id', $provider_id);
 		$this->db->set('preferred_name', $preferred_name);
-		$this->db->insert('users');
+		$this->db->insert('users');	
 		
 		return $this->getUserID_username($username);
 	}
@@ -199,37 +167,23 @@ class Users extends Model {
 	}
 	
 	/**
-	 * Returns the phone number associated with the given user id.
-	 */
-	 function getPhone($user_id) {
-	 	$this->db->select('phone_number');
-	 	$this->db->from('users');
-	 	$this->db->where('users.id', $user_id);
-	 	$query = $this->db->get();
-	 	$rows = $query->result();
-		if (empty($rows)) return NULL;
-		else return $rows[0]->phone_number;
-	 }
-	
-	/**
 	 * This method adds a user to a circle.  This method accepts a user id and a circle id
 	 * and can accept an admin (1 or 0) or privledges ('reply_all, reply_admins, no_reply)
 	 * it adds a line to the users_circle table to reflect the new group membership
 	 */
 	function addUserToCircle($user_id, $circle_id, $public_name = NULL, $admin = 0, $privledges = 'reply_all') {
 		
-		$this->load->model('Circles');
-
 		$userPreferredName = $this->getPreferredName($user_id);
 		if ($userPreferredName != NULL) {
 			$public_name = $userPreferredName;
 		}
+	
 		$this->db->set('user_id', $user_id);
 		$this->db->set('circle_id', $circle_id);
 		$this->db->set('admin', $admin);
 		$this->db->set('privileges', $privledges);
 		$this->db->set('public_name', $public_name);
-		$this->db->insert('users_circles');	
+		$this->db->insert('users_circles');
 	}
 
 	/**
