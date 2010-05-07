@@ -102,7 +102,8 @@
 						<div id="circlelist">
 							<h4 style="margin-bottom: 10px;">Your circles:</h4>
 								<?php foreach($circles as $circle) {
-									echo '<a href="javascript:loadCircle('.$circle->id.')">'.$circle->name.'</a><br/><br/>';
+									//echo '<a href="javascript:loadCircle('.$circle->id.')">'.$circle->name.'</a><br/><br/>';
+									echo '<a href="/index.php/home/loadHomeView/'.$circle->id.'">'.$circle->name.'</a><br/><br/>';
 									}
 								?>
 						</div>
