@@ -100,17 +100,15 @@ class Home extends Controller {
 		$user_id = $this->session->userdata('user_id');
 		
 		if ($this->Circles->isMember($user_id, $circle_id)) {
-		
-			$data['username'] =$this->Users->getUsername($user_id);
-			$data['circles'] = $this->Users->getCircles($user_id);
 			$data['first_circle'] = $circle_id;
-			echo $this->load->view('home', $data);
-			
 		}
 		else {
-			redirect('/home/loadHomeView/0');
+			$data['first_circle'] = 0;
 		}
 		
+		$data['username'] =$this->Users->getUsername($user_id);
+		$data['circles'] = $this->Users->getCircles($user_id);
+		echo $this->load->view('home', $data);
 		
 	}
 	
