@@ -104,5 +104,6 @@
         }
 
 .userdeletebutton {
-	float: right;
+	float: left;
+	height: 90%;
 	}
