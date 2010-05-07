@@ -30,6 +30,12 @@
 					}
 				}
 				
+				function addUser() {
+					var number = $('#phone_number').val();
+					var name = $('#name').val();
+					alert(number+name+curr_circle);
+				}
+				
 				function leaveCircle() {
 					$.post('/index.php/home/leaveCircle/', { circle_id: curr_circle }, function(data) {});
 					location.reload(true);
@@ -74,10 +80,6 @@
 				
 				function hideCircleForm() {
 					$('#newcircleform').hide();
-				}
-				
-				function getCurrCircle() {
-					document.write(curr_circle);
 				}
 					
 			--></script>
@@ -133,7 +135,7 @@
 				</p>
 			</form>
 			
-			<form class="popup" id="adduserform" method="post" action="/index.php/home/addUser">
+			<form class="popup" id="adduserform" method="post" action="javascript:addUser()">
 				<a class="closebutton" href="javascript:hideAddUserForm()">Close</a>
 				<p>
 					Phone number:
@@ -142,8 +144,6 @@
 				<p>
 					Name:
 					<input id="name" type="text" name="name"/>
-					<script>document.write('<input id="circle_id" type="text" name="circle_id" value="'+getCurrCircle()+'">')</script>
-					<input id="circle_id" type="text" name="circle_id" value='<script>document.write(curr_circle);</script>'/>
 				</p>
 				<p>
 					<input class="button" type="submit" value="Add User"/>
