@@ -76,6 +76,9 @@ class Messages extends Model {
 		foreach ($emailList as $contact) {
 			if ($user_id != $contact->user_id) {
 			
+				echo $user_id;
+				echo $circle_id;
+				
 				$this->load->model('Users');
 				
 				$publicname = $this->Users->getPublicName($user_id, $circle_id);
