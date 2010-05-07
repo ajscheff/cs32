@@ -14,6 +14,7 @@ class Messages extends Model {
 		parent::Model();
 		$this->load->database();
 		$this->load->library('email');
+		$this->load->model('Users');
 	}
 
 	/**
@@ -74,13 +75,7 @@ class Messages extends Model {
 		}
 
 		foreach ($emailList as $contact) {
-			if ($user_id != $contact->user_id) {
-			
-				echo $user_id;
-				echo $circle_id;
-				
-				$this->load->model('Users');
-				
+			if ($user_id != $contact->user_id) {				
 				$publicname = $this->Users->getPublicName($user_id, $circle_id);
 				$message = ' ' . $publicname . ': ' . $message;
 				$from = $circle_email . '@ombtp.com';
