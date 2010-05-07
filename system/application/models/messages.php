@@ -75,8 +75,8 @@ class Messages extends Model {
 		
 		//$this->load->model('Users');
 		
-		$message = ' ' . $publicname . ': ' . $message;
 		$publicname = $this->Users->getPublicName($user_id, $circle_id);
+		$message = ' ' . $publicname . ': ' . $message;
 		$from = $circle_email . '@ombtp.com';
 		
 		foreach ($emailList as $contact) {
