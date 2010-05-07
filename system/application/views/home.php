@@ -135,7 +135,7 @@
 				</p>
 				<p>
 					Name:
-					<input id="email" type="text" name="email"/>@ombtp.com
+					<input id="email" type="text" name="email"/>
 				</p>
 				<p>
 					<input class="button" type="submit" value="Add User">
