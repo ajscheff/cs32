@@ -1,6 +1,5 @@
 			<div id="circleheader">
 				<?php
-					echo $is_admin;
 					if($is_admin == 1) {
 						echo '<a class="managebutton" href="javascript:showDeleteCircleOk()">Delete Circle</a>';
 						echo '<a class="managebutton" href="javascript:addUsers()">Add Users</a>';
@@ -8,6 +7,7 @@
 					echo '<h3>'.$name.'</h3>';
 					echo '<p>'.$email.'@ombtp.com</p>';
 					echo '<p>'.$description.'</p>';	
+					echo $is_admin;
 				?>
 			</div>
 			<div>
