@@ -169,6 +169,14 @@ class Circles extends Model {
 		return $result[0]->email;
 	}
 
+	function deleteCircle($circle_id) {
+		$this->db->where('circles.id', $circle_id);
+		$this->db->delete('circles');
+		
+		$this->db->where('users_circles.circle_id', $circle_id);
+		$this->db->delete('users_circles');
+	}
+
 	/**
 	 * Sets searchability of the group, expects 'public', 'private', 'secret'.
 	 */
