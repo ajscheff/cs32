@@ -33,7 +33,8 @@
 				function addUser() {
 					var number = $('#phone_number').val();
 					var name = $('#name').val();
-					alert(number+name+curr_circle);
+					$.post('/index.php/home/addUser/', { circle_id: curr_circle, phone_number: number, public_name: name }, function(data) {});
+					
 				}
 				
 				function leaveCircle() {
