@@ -410,6 +410,7 @@ class EmailHelper extends Controller {
 			}
 		}
 	}
+	}
 	
 	function sendNotRegisteredMsg($numberFrom, $gateway){
 		$reply = 'You don\'t have an account with Mobi yet!  Text \'#signup yourusername\' to admin@ombtp.com to make one!';
