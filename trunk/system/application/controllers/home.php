@@ -107,15 +107,11 @@ class Home extends Controller {
 	
 		$user_id = $this->session->userdata('user_id');
 		
-		if ($_GET['c_id']) {
-			$first_circle = $_GET['c_id'];
-		} else {
-			$first_circle = 0;
-		}
+
 	
 		$data['username'] =$this->Users->getUsername($user_id);
 		$data['circles'] = $this->Users->getCircles($user_id);
-		$data['first_circle'] = $first_circle;
+		$data['first_circle'] = $circle_id;
 		echo $this->load->view('home', $data);
 	}
 	
