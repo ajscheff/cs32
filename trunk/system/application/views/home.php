@@ -142,6 +142,7 @@
 				<p>
 					Name:
 					<input id="name" type="text" name="name"/>
+					<script>document.write('<input id="circle_id" type="text" name="circle_id" value="'+curr_circle+'">')</script>
 					<input id="circle_id" type="text" name="circle_id" value='<script>document.write(curr_circle);</script>'/>
 				</p>
 				<p>
