@@ -58,7 +58,7 @@ class EmailHelper extends Controller {
 		* MAY BE SENT ONLY TO VALID CIRCLES:
 		* #addme 
 		* #add <number1> <number2> ...
-		* #addnewuser <number> <public_name>
+		* #newuser <number> <public_name>
 		* #makecircle <circle_name>
 		* #removeme
 		* 
@@ -243,7 +243,7 @@ class EmailHelper extends Controller {
 								else{
 									$this->Users->addUserToCircle($user_toAdd_id, $circle_id);
 									$pub_name = $this->Users->getPublicName($user_id, $circle_id);
-									$local_reply = "$pub_name with number $numberFrom has added you to circle $email."; 
+									$local_reply = "User $pub_name, with number $numberFrom, has added you to circle $email."; 
 									$temp_prov_id = $this->Users->internetLookupProvider($token);
 									if($temp_prov_id != 0){
 										$temp_gateway = $this->Users->getProvider($temp_prov_id);
