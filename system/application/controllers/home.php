@@ -73,9 +73,8 @@ class Home extends Controller {
 		$email = $_POST['email'];
 		$email_taken = $this->Circles->getCircleID_email($email);
 		$circle_id = $this->Circles->createCircle($user_id, $circle_name, $email, $_POST['privacy'], $_POST['description']);
-		//add user who created this circle to the new circle as an admin
 		
-		redirect('/index.php/home/loadHomeView/'.$circle_id);
+		redirect('/home/loadHomeView/'.$circle_id);
 	}
 	
 	function deleteCircle() {
