@@ -85,6 +85,11 @@
 				function hideCircleForm() {
 					$('#newcircleform').hide();
 				}
+				
+				function deleteUserFromCircle(user_id, circle_id) {
+					$.post('/index.php/home/removeUserFromCircle/',{user_id:user_id,circle_id:circle_id}, function(data) {});
+					document.location = '0';
+				}
 					
 			--></script>
 	</head>
