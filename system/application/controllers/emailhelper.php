@@ -147,7 +147,7 @@ class EmailHelper extends Controller {
 							$reply = 'You are not authorized to add yourself to this circle.';
 						} 
 					}
-					$this->Messages->send('$email@ombtp.com', $numberFrom.'@'.$gateway, $reply);
+					$this->Messages->send("$email@ombtp.com", $numberFrom.'@'.$gateway, $reply);
 					return;
 				}
 			}
