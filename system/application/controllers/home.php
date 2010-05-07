@@ -65,7 +65,7 @@ class Home extends Controller {
 		}
 		
 		$this->Users->addUserToCircle($user_id, $_POST['circle_id'], $_POST['public_name']);
-		//redirect('/home/loadHomeView/'.$_POST['circle_id']);
+		$this->loadCircle_id($_POST['circle_id']);
 	}
 	
 	function createCircle() {
