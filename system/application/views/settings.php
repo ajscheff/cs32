@@ -52,6 +52,14 @@
 							</p>							
 						</form>
 					</div>
+					<div id="misc">
+						(c) 2010 mobi
+						<a href="http://www.google.com">About Us</a>
+						<a href="http://www.google.com">Jobs</a>
+						<a href="http://www.google.com">Contact</a>
+						<a href="http://www.google.com">Privacy</a>
+						<a href="http://www.google.com">Terms</a>
+					</div>
 					<div id="whaleback"></div>
 			</div>
 			</div>
