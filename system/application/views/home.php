@@ -111,7 +111,7 @@
 			
 			<form class="popup" id="deletecircleok" action="/index.php/home/deleteCircle/">
 				<p style="align:center">
-					<h3>Delete circle?</h3> <br>
+					<h3>Disband circle?</h3> <br>
 					<p>This action cannot be undone</p>
 					<a style="margin:5px" href="javascript:deleteCircle()">Yes</a>
 					<a style="margin:5px" href="javascript:hideDeleteCircleOk()">No</a>

@@ -99,11 +99,10 @@ class Welcome extends Controller {
 	}
 	
 	function quickTest() {
-		$this->load->model('Circles');
-	
-		$result = $this->Circles->getAllMembers(1);
+		$result = $this->Users->getUserAdmin(1, 1);
 		
-		print_r($result);
+		if ($result == 1) echo 'the user is an admin';
+		else echo 'no';
 	}
 }
 
