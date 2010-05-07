@@ -54,6 +54,14 @@
 					$('#deletecircleok').hide();
 				}
 				
+				function showAddUserForm() {
+					$('#adduserform').show();
+				}
+				
+				function hideAddUserForm() {
+					$('#adduserform').hide();
+				}
+				
 				function hideEmailTakenPopup(){
 					$('#emailtakenpopup').hide();
 				}
@@ -118,6 +126,22 @@
 					<a href="javascript:submitNewCircle()">Done!</a>
 				</p>
 			</form>
+			
+			<form class="popup" id="adduserform" method="post" action="/index.php/home/addUser">
+				<a class="closebutton" href="javascript:hideAddUserForm()">Close</a>
+				<p>
+					Phone number:
+					<input id="circle_name" type="text" name="circle_name"/>
+				</p>
+				<p>
+					Name:
+					<input id="email" type="text" name="email"/>@ombtp.com
+				</p>
+				<p>
+					<input class="button" type="submit" value="Add User">
+				</p>
+			</form>
+			
 			<div class="popup" id="emailtakenpopup">
 				<a class="closebutton" href="javascript:hideEmailTakenPopup()">Close</a>The email you entered is taken by another circle, please choose a different email address.
 			</div>
