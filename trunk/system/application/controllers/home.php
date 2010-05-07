@@ -79,12 +79,13 @@ class Home extends Controller {
 	
 	function deleteCircle() {
 		$this->Circles->deleteCircle($_POST['circle_id']);
+		redirect('/home/loadHomeView/');
 	}
 	
 	function leaveCircle() {
 		$user_id = $this->session->userdata('user_id');
-		
 		$this->Users->removeUserFromCircle($user_id, $_POST['circle_id']);
+		redirect('/home/loadHomeView/');
 	}
 	
 
@@ -98,10 +99,14 @@ class Home extends Controller {
 	
 		$user_id = $this->session->userdata('user_id');
 		
-		$data['username'] =$this->Users->getUsername($user_id);
-		$data['circles'] = $this->Users->getCircles($user_id);
-		$data['first_circle'] = $circle_id;
-		echo $this->load->view('home', $data);
+		if ($circle_id > 0) {
+		
+			$data['username'] =$this->Users->getUsername($user_id);
+			$data['circles'] = $this->Users->getCircles($user_id);
+			$data['first_circle'] = $circle_id;
+			echo $this->load->view('home', $data);
+		}
+		
 	}
 	
 }
