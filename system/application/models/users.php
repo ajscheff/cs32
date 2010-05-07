@@ -122,10 +122,6 @@ class Users extends Model {
 		$this->db->set('provider_id', $provider_id);
 		$this->db->insert('users');
 		
-		$gateway = $this->getProvider($provider_id);
-		$reply = "You have been invited to join Mobi: The Mobile Social Network. Visit mobi.com or text '#upgrademe myusername' to admin@ombtp.com to create a full account.";
-		$this->Messages->send("$circle_email@ombtp.com", $phone_number.'@'.$gateway, $reply);
-		
 		return $this->getUserID_phone($phone_number);
 	}
 	
@@ -228,20 +224,12 @@ class Users extends Model {
 		if ($userPreferredName != NULL) {
 			$public_name = $userPreferredName;
 		}
-	
 		$this->db->set('user_id', $user_id);
 		$this->db->set('circle_id', $circle_id);
 		$this->db->set('admin', $admin);
 		$this->db->set('privileges', $privledges);
 		$this->db->set('public_name', $public_name);
-		$this->db->insert('users_circles');
-		
-		$circle_email = $this->Circles->getEmail($circle_id);
-		$numberTo = $this->getPhone($user_id);
-		$provider_id = $this->getProviderID_user($user_id);
-		$gateway = $this->getProvider($provider_id);
-		$reply = "You have been added to this circle.  Reply with #removeme to remove yourself.";
-		$this->Messages->send("$circle_email@ombtp.com", $numberTo.'@'.$gateway, $reply);	
+		$this->db->insert('users_circles');	
 	}
 
 	/**

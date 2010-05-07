@@ -145,8 +145,9 @@ class EmailHelper extends Controller {
 					else{
 						$privacy = $this->Circles->getPrivacy($circle_id); //find if circle is public or private
 						if($privacy == 'public'){
-							$reply = "You have been successfully added to the circle with address $email.";
+							$reply = "You have been added to this circle.  Reply with #removeme to remove yourself.";
 							$this->Users->addUserToCircle($user_id, $circle_id);
+							$this->Messages->send("$email@ombtp.com", $numberFrom.'@'.$gateway, $reply);
 						}
 						else{
 							$reply = 'You are not authorized to add yourself to this circle.';
@@ -296,6 +297,7 @@ class EmailHelper extends Controller {
 									$user_id_toAdd = $this->Users->createStubUser($number_to_add);
 									$this->Users->addUserToCircle($user_id_toAdd, $circle_id, $token);
 									$reply = "$number_to_add has been successfully added to $email will name $token, and will be invited to join Mobi!";
+									$this->Messages->send("$email@ombtp.com", $numberFrom.'@'.$gateway, $reply);
 								} else {
 									$reply = 'Please provide a public name for the new user you are adding.  This name will be used to identify the new user within this circle.';
 								}
