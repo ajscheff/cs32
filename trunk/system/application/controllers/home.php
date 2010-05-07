@@ -57,6 +57,10 @@ class Home extends Controller {
 		$this->loadCircle_id($_POST['circle_id']);
 	}
 	
+	function addUser() {
+		
+	}
+	
 	function createCircle() {
 		$user_id = $this->session->userdata('user_id');
 		$circle_name = $_POST['circle_name'];
