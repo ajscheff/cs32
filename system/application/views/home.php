@@ -29,7 +29,7 @@
 				}
 				
 				function deleteCircle() {
-					$.post('/index.php/home/deleteCircle/', { circle_id : curr_circle });
+					$.post('/index.php/home/deleteCircle/', { circle_id : curr_circle }, function(data) {});
 				}
 				
 				function showDeleteCircleOk() {
