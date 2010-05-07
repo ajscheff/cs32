@@ -28,9 +28,11 @@
 					}
 				}
 				
-				//function deleteCircle() {
-					//$.post('/index.php/home/deleteCircle/', { circle_id : curr_circle });
-				//}
+				function deleteCircle() {
+					alert(curr_circle);
+				
+					$.post('/index.php/home/deleteCircle/', { circle_id : curr_circle });
+				}
 				
 				function showDeleteCircleOk() {
 					$('#deletecircleok').show();
