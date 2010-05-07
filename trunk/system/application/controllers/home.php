@@ -11,8 +11,6 @@ class Home extends Controller {
 		$this->load->model('Users');
 		$this->load->library('session');
 		$this->load->helper('url');
-		
-		parse_str($_SERVER['QUERY_STRING'], $_GET);
 	}
 
 	/**
@@ -77,9 +75,7 @@ class Home extends Controller {
 		$circle_id = $this->Circles->createCircle($user_id, $circle_name, $email, $_POST['privacy'], $_POST['description']);
 		//add user who created this circle to the new circle as an admin
 		
-		redirect('', 'location');
-		//redirect('/home/newCircle', 'location');
-		//$this->loadHomeView($user_id, $circle_id);
+		$this->loadHomeView($circle_id);
 	}
 	
 	function deleteCircle() {
@@ -90,10 +86,6 @@ class Home extends Controller {
 		$user_id = $this->session->userdata('user_id');
 		
 		$this->Users->removeUserFromCircle($user_id, $_POST['circle_id']);
-	}
-	
-	function newCircle($user_id, $circle_id) {
-		$this->loadHomeView($user_id, $circle_id);
 	}
 	
 
@@ -107,8 +99,6 @@ class Home extends Controller {
 	
 		$user_id = $this->session->userdata('user_id');
 		
-
-	
 		$data['username'] =$this->Users->getUsername($user_id);
 		$data['circles'] = $this->Users->getCircles($user_id);
 		$data['first_circle'] = $circle_id;
