@@ -11,9 +11,6 @@ class Users extends Model {
 		// Call the Model constructor
 		parent::Model();
 		$this->load->database();
-
-		$this->load->model('Circles');
-		$this->load->model('Messages');
 	}
 	
 	/**
@@ -218,8 +215,6 @@ class Users extends Model {
 	 */
 	function addUserToCircle($user_id, $circle_id, $public_name = NULL, $admin = 0, $privledges = 'reply_all') {
 		
-		$this->load->model('Circles');
-
 		$userPreferredName = $this->getPreferredName($user_id);
 		if ($userPreferredName != NULL) {
 			$public_name = $userPreferredName;
