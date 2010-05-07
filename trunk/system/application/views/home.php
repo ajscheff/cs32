@@ -34,6 +34,8 @@
 					var number = $('#phone_number').val();
 					var name = $('#name').val();
 					$.post('/index.php/home/addUser/', { circle_id: curr_circle, phone_number: number, public_name: name }, function(data) {});
+					$('#phone_number').clear();
+					$('#name').clear();
 				}
 				
 				function leaveCircle() {
