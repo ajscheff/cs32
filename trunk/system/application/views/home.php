@@ -40,7 +40,6 @@
 				
 				function leaveCircle() {
 					$.post('/index.php/home/leaveCircle/', { circle_id: curr_circle }, function(data) {});
-					location.reload(true);
 				}
 				
 				function showLeaveCircleOk() {
@@ -53,7 +52,6 @@
 				
 				function deleteCircle() {
 					$.post('/index.php/home/deleteCircle/', { circle_id: curr_circle }, function(data) {});
-					location.reload(true);
 				}
 				
 				function showDeleteCircleOk() {
