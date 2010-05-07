@@ -30,6 +30,8 @@
 				
 				function deleteCircle() {
 					$.post('/index.php/home/deleteCircle/', { circle_id: curr_circle }, function(data) {});
+					hideDeleteCircleOk();
+					
 				}
 				
 				function showDeleteCircleOk() {
