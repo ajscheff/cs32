@@ -1,6 +1,7 @@
 			<div id="circleheader">
 				<?php
-					if($is_admin == 0) {
+					echo $is_admin;
+					if($is_admin == 1) {
 						echo '<a class="managebutton" href="javascript:showDeleteCircleOk()">Delete Circle</a>';
 						echo '<a class="managebutton" href="javascript:addUsers()">Add Users</a>';
 					}
