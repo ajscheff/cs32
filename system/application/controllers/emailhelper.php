@@ -273,7 +273,7 @@ class EmailHelper extends Controller {
 		}
 		
 		//#addnewuser <number> <public_name> (must be sent to the email address of circle)
-		elseif(strncasecmp($token, '#addnewuser', 11) == 0){
+		elseif(strncasecmp($token, '#newuser', 8) == 0){
 			$user_id = $this->Users->getUserID_phone($numberFrom);
 			if($user_id == 0){
 				$this->sendNotRegisteredMsg($numberFrom, $gateway);
