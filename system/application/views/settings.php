@@ -12,7 +12,6 @@
 				$.post('/index.php/settings/checkPassword/', {password:old_password}, function(data) {
 					if(data == '1') {
 						document.forms["changepasswordform"].submit();
-						$('#passwordchanedpopup').show();
 					} else {
 						$('#passwordwrongpopup').show();
 					}
