@@ -1,10 +1,14 @@
-<html>
-	<head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+    <head>        
+    	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<?php echo '<title>mobi: '.$username.'</title>'; ?>
 		<link rel="stylesheet" type="text/css" href="/css/base.css" />
 		<link rel="stylesheet" type="text/css" href="/css/home.css" />
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.min.js"></script>
 		<script type="text/javascript"><!--
+		
+				var curr_circle;
 
 				function submitNewCircle(){
 					var email = $('#email').val();
@@ -18,11 +22,56 @@
 				}
 					
 				function loadCircle(circle_id) {
+					curr_circle = circle_id;
 					if (circle_id != 0) {
 						$.post('/index.php/home/loadCircle/', { circle_id : circle_id }, function(data) {
 							$('#circleinfo').html(data);
 						});
 					}
+				}
+				
+				function addUser() {
+					var number = $('#phone_number').val();
+					var name = $('#name').val();
+					$.post('/index.php/home/addUser/', { circle_id: curr_circle, phone_number: number, public_name: name }, function(data) {});
+					$('#adduserform').show();
+					$('#phone_number').clear();
+					$('#name').clear();
+					//loadCircle(curr_circle);
+				}
+				
+				function leaveCircle() {
+					$.post('/index.php/home/leaveCircle/', { circle_id: curr_circle }, function(data) {});
+					document.location = '0';
+				}
+				
+				function showLeaveCircleOk() {
+					$('#leavecircleok').show();				
+				}
+				
+				function hideLeaveCircleOk() {
+					$('#leavecircleok').hide();
+				}
+				
+				function deleteCircle() {
+					$.post('/index.php/home/deleteCircle/', { circle_id: curr_circle }, function(data) {});
+					document.location = '0';
+				}
+				
+				function showDeleteCircleOk() {
+					$('#deletecircleok').show();
+				}
+				
+				function hideDeleteCircleOk() {
+					$('#deletecircleok').hide();
+				}
+				
+				function showAddUserForm() {
+					$('#adduserform').show();
+				}
+				
+				function hideAddUserForm() {
+					$('#adduserform').hide();
 				}
 				
 				function hideEmailTakenPopup(){
@@ -75,7 +124,7 @@
 			</div>
 			<div id="bottomshade"></div>
 			<form class="popup" id="newcircleform" method="post" action="/index.php/home/createCircle">
-				<a style="float:right" href="javascript:hideCircleForm()">Close</a>
+				<a class="closebutton" href="javascript:hideCircleForm()">Close</a>
 				<p>
 					Circle name:
 					<input id="circle_name" type="text" name="circle_name"/>
@@ -95,8 +144,43 @@
 					<a href="javascript:submitNewCircle()">Done!</a>
 				</p>
 			</form>
+			
+			<form class="popup" id="adduserform" method="post" action="javascript:addUser()">
+				<a class="closebutton" href="javascript:hideAddUserForm()">Close</a>
+				<p>
+					Phone number:
+					<input id="phone_number" type="text" name="phone_number"/>
+				</p>
+				<p>
+					Name:
+					<input id="name" type="text" name="name"/>
+				</p>
+				<p>
+					<input class="button" type="submit" value="Add User"/>
+				</p>
+			</form>
+			
 			<div class="popup" id="emailtakenpopup">
-				<a style="float:right" href="javascript:hideEmailTakenPopup()">Close</a>The email you entered is taken by another circle, please choose a different email address.
+				<a class="closebutton" href="javascript:hideEmailTakenPopup()">Close</a>The email you entered is taken by another circle, please choose a different email address.
 			</div>
+			
+			<form class="popup" id="deletecircleok">
+				<p style="align:center">
+					<h3>Disband circle?</h3> <br>
+					<p>This action cannot be undone</p>
+					<a style="margin:5px" href="javascript:deleteCircle()">Yes</a>
+					<a style="margin:5px" href="javascript:hideDeleteCircleOk()">No</a>
+				</p>
+			</form>
+			
+			<form class="popup" id="leavecircleok">
+				<p style="align:center">
+					<h3>Leave circle?</h3> <br>
+					<p>This action cannot be undone</p>
+					<a style="margin:5px" href="javascript:leaveCircle()">Yes</a>
+					<a style="margin:5px" href="javascript:hideLeaveCircleOk()">No</a>
+				</p>
+			</form>
+			
 	</body>
 </html>

@@ -10,7 +10,6 @@ class Circles extends Model {
 		// Call the Model constructor
 		parent::Model();
 		$this->load->database();
-		$this->load->model('Users');
 	}
 	
 
@@ -38,15 +37,20 @@ class Circles extends Model {
 	 */
 	function createCircle($user_id, $circle_name, $email, $privacy, $description) {
 	
+		$this->load->model('Users');
+
 		$this->db->set('name', $circle_name);
 		$this->db->set('email', $email);
 		$this->db->set('privacy', $privacy);
 		$this->db->set('description', $description);
 		$this->db->insert('circles');
+		
 		$circle_id = $this->getCircleID_email($email);
 		$preferred_name = $this->Users->getPreferredName($user_id); //get preferred name of user
+		
 		$this->Users->addUserToCircle($user_id, $circle_id, $preferred_name, 1); //default reply-all
-		return $circle_id;	
+		
+		return $circle_id;
 	}
 	
 	/**
@@ -83,7 +87,7 @@ class Circles extends Model {
 		$this->db->join('users_circles', 'users_circles.user_id = users.id');
 		$this->db->join('providers', 'users.provider_id = providers.id');
 		$this->db->where('users_circles.circle_id', $circle_id);
-		$this->db->where('users_circles.admin', 1);
+		$this->db->where('users_circles.admin', 0);
 		
 		$query = $this->db->get();
 		return $query->result();
@@ -150,6 +154,27 @@ class Circles extends Model {
 
 		if (empty($results)) return NULL;
 		else return $results[0];
+	}
+	
+	/**
+	* Returns the email address of the circle with id $circle_id
+	*/
+	function getEmail($circle_id) {
+		$this->db->select('email');
+		$this->db->from('circles');
+		$this->db->where('circles.id', $circle_id);
+		$query = $this->db->get();
+		$result = $query->result();
+		
+		return $result[0]->email;
+	}
+
+	function deleteCircle($circle_id) {
+		$this->db->where('circles.id', $circle_id);
+		$this->db->delete('circles');
+		
+		$this->db->where('users_circles.circle_id', $circle_id);
+		$this->db->delete('users_circles');
 	}
 
 	/**

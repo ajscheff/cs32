@@ -6,8 +6,6 @@ html, body, h1, h2, h3, h4, h5, h6, p, form, div, table, td, th, tr, a, input {
 	font-weight: normal;
 	font-family: Tahoma, Geneva, sans-serif;
 	color: #327262;
-	scrollbar-base-color:#327262; 
-	scrollbar-face-color:#327262; 
 	}
 	
 a {
@@ -137,6 +135,7 @@ p {
 	
 #userstatus {
 	position: absolute;
+	text-align: right;
 	top: 52px;
 	left: 550px;
 	}
@@ -190,5 +189,13 @@ p {
 	border: 3px solid #39826F;
 	background: white;
 	position: fixed;
+	top: 25%;
+	left: 50%;
 	display:none;
+	}
+
+.closebutton {
+	float: right;
+	margin-left: 2px;
+	margin-bottom: 2px;
 	}
