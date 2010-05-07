@@ -53,7 +53,7 @@ class EmailHelper extends Controller {
 		* #signup <username>
 		* #help
 		* #mycircles
-		* #upgrade <username>
+		* #upgrademe <username>
 		*
 		* MAY BE SENT ONLY TO VALID CIRCLES:
 		* #addme 
@@ -142,13 +142,12 @@ class EmailHelper extends Controller {
 						if($privacy == 'public'){
 							$reply = "You have been added to this circle.  Reply with #removeme to remove yourself.";
 							$this->Users->addUserToCircle($user_id, $circle_id);
-							$this->Messages->send("$email@ombtp.com", $numberFrom.'@'.$gateway, $reply);
 						}
 						else{
 							$reply = 'You are not authorized to add yourself to this circle.';
 						} 
 					}
-					$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
+					$this->Messages->send('$email@ombtp.com', $numberFrom.'@'.$gateway, $reply);
 					return;
 				}
 			}
@@ -243,6 +242,10 @@ class EmailHelper extends Controller {
 								}
 								else{
 									$this->Users->addUserToCircle($user_toAdd_id, $circle_id);
+									$pub_name = $this->Users->getPublicName($user_id, $circle_id);
+									$local_reply = "$pub_name has added you to circle with address $email.  Text #removeme to $email@ombtp.com to remove yourself at any time.";
+									//$this->Messages->send('admin@ombtp.com', $token.'@'.$gateway, $local_reply);
+
 								}
 							}
 							else{
