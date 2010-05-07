@@ -75,8 +75,9 @@
 #messagelist {
         overflow-y:auto;
         overflow-x:hidden;
+        padding: 2px;
         float:left;
-        width: 350px;
+        width: 360px;
         height: 387px;
         border-right: 3px solid #39826F;
         }
