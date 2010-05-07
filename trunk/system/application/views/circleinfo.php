@@ -21,7 +21,10 @@
 					<br/>
 					<h4 style="padding-bottom: 3px;">members:</h4>
 					<?php foreach($members as $member) {
-						echo '<p class="admin">'.$member['public_name'].'<a class="userdeletebutton" href="javascript:deleteUserFromCircle('.$member['user_id'].','.$circle_id.')">x</a></p>';
+						echo '<p class="admin">'.$member['public_name'];
+						if($is_admin == 1) 
+							echo '<a class="userdeletebutton" href="javascript:deleteUserFromCircle('.$member['user_id'].','.$circle_id.')">x</a>';
+						echo '</p>';
 						}
 					?>
 				</div>
