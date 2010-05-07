@@ -93,12 +93,10 @@
 	height: 387px;
 	border-right: 3px solid #39826F;
 	}
-	
 
 .managebutton {
-
 	float:right;
-	margin: 0px;
+	margin: 5px;
 	}
 	
 #deletecircleok {
