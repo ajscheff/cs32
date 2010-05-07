@@ -111,4 +111,8 @@ class Home extends Controller {
 		
 	}
 	
+	function removeUserFromCircle($user_id, $circle_id) {
+		$this->Users->removeUserFromCircle($user_id, $circle_id);
+	}
+	
 }
