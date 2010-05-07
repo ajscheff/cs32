@@ -57,6 +57,19 @@
 	width: 200px;
 	}
 	
+	
+#deletecircleok{
+	top: 150px;
+	left: 575px;
+	width: 200px;
+	}
+	
+#leavecircleok{
+	top: 150px;
+	left: 575px;
+	width: 200px;
+	}
+	
 #circleheader {
 	width: 100%;
 	padding: 3px;
@@ -77,16 +90,25 @@
 	overflow-x:hidden;
 	float:left;
 	width: 350px;
-	height: 402px;
+	height: 387px;
 	border-right: 3px solid #39826F;
 	}
 	
+
 .managebutton {
+
 	float:right;
 	margin: 0px;
 	}
 	
 #deletecircleok {
+	width: 200px;
+	height: 100px;
+	top: 300px;
+	left: 400px;
+	}
+
+#leavecircleok {
 	width: 200px;
 	height: 100px;
 	top: 300px;
