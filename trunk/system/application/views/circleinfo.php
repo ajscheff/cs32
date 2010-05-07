@@ -7,7 +7,6 @@
 					echo '<h3>'.$name.'</h3>';
 					echo '<p>'.$email.'@ombtp.com</p>';
 					echo '<p>'.$description.'</p>';	
-
 				?>
 			</div>
 			<div>

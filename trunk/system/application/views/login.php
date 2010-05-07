@@ -73,7 +73,13 @@
 			<div id="bottomshade"></div>
 			<div id="learnmore">
 				<a class="closebutton" href="javascript:hideLearnMore()">Close</a>
-				<p> Mobi is a free service that let's people text multiple other people at once with just one text message!</p>
+				<p> 
+				
+				Mobi is a free service that let's you text multiple people at once with just one text message!
+				
+				
+				
+				</p>
 			</div>
 			<form class="popup" id="signupform" method="post" action="/index.php/welcome/signup">
 				<a class="closebutton" href="javascript:hideSignUp()">Close</a>
