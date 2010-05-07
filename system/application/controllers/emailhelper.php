@@ -411,7 +411,7 @@ class EmailHelper extends Controller {
 		}
 	}
 	
-	private function sendNotRegisteredMsg($numberFrom, $gateway){
+	function sendNotRegisteredMsg($numberFrom, $gateway){
 		$reply = 'You don\'t have an account with Mobi yet!  Text \'#signup yourusername\' to admin@ombtp.com to make one!';
 		$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
 	}
