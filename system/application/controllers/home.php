@@ -108,8 +108,7 @@ class Home extends Controller {
 			
 		}
 		else {
-			$this->session->sess_destroy();
-			redirect('', 'location');
+			redirect('/home/loadHomeView/');
 		}
 		
 		
