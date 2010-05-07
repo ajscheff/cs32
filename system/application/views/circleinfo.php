@@ -4,6 +4,7 @@
 						echo '<a class="managebutton" href="javascript:showDeleteCircleOk()">Delete Circle</a>';
 						echo '<a class="managebutton" href="javascript:addUsers()">Add Users</a>';
 					}
+					echo '<a class="managebutton" href="javascript:addUsers()">Leave Circle</a>';
 					echo '<h3>'.$name.'</h3>';
 					echo '<p>'.$email.'@ombtp.com</p>';
 					echo '<p>'.$description.'</p>';	
