@@ -20,11 +20,6 @@ class EmailHelper extends Controller {
 		$from = $_POST['from'];
 		$to = $_POST['to'];
 		$message = $_POST['text'];
-		
-		$this->db->set('from', $from); //for debugging, remove later
-		$this->db->set('to', $to);
-		$this->db->set('message', $message);
-		$this->db->insert('email_test');
 
 		//get the phone number that the email was sent from
 		$regex_pattern_num = "/[0-9]{10}@/";
@@ -375,10 +370,10 @@ class EmailHelper extends Controller {
 		*
 		*  The user is probably trying to send a message to a circle...
 		*/
-		else{
-		//get the user and circle id's, will be 0 if they dont exist
-		$user_id = $this->Users->getUserID_phone($numberFrom);
-		$circle_id = $this->Circles->getCircleID_email($email);
+		else {
+			//get the user and circle id's, will be 0 if they dont exist
+			$user_id = $this->Users->getUserID_phone($numberFrom);
+			$circle_id = $this->Circles->getCircleID_email($email);
 					
 			//if the phone number exists in our database	
 			if ($user_id != 0) {
