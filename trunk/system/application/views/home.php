@@ -28,6 +28,19 @@
 					}
 				}
 				
+				function leaveCircle() {
+					$.post('/index.php/home/leaveCircle/', { circle_id: curr_circle }, function(data) {});
+					location.reload(true);
+				}
+				
+				function showLeaveCircleOk() {
+					$('#leavecircleok').show();				
+				}
+				
+				function hideLeaveCircleOk() {
+					$('#leavecircleok').hide();
+				}
+				
 				function deleteCircle() {
 					$.post('/index.php/home/deleteCircle/', { circle_id: curr_circle }, function(data) {});
 					location.reload(true);
@@ -109,12 +122,21 @@
 				<a class="closebutton" href="javascript:hideEmailTakenPopup()">Close</a>The email you entered is taken by another circle, please choose a different email address.
 			</div>
 			
-			<form class="popup" id="deletecircleok" action="/index.php/home/deleteCircle/">
+			<form class="popup" id="deletecircleok">
 				<p style="align:center">
 					<h3>Disband circle?</h3> <br>
 					<p>This action cannot be undone</p>
 					<a style="margin:5px" href="javascript:deleteCircle()">Yes</a>
 					<a style="margin:5px" href="javascript:hideDeleteCircleOk()">No</a>
+				</p>
+			</form>
+			
+			<form class="popup" id="leavecircleok">
+				<p style="align:center">
+					<h3>Leave circle?</h3> <br>
+					<p>This action cannot be undone</p>
+					<a style="margin:5px" href="javascript:leaveCircle()">Yes</a>
+					<a style="margin:5px" href="javascript:hideLeaveCircleOk()">No</a>
 				</p>
 			</form>
 			

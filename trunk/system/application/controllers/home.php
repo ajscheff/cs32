@@ -74,6 +74,12 @@ class Home extends Controller {
 		$this->Circles->deleteCircle($_POST['circle_id']);
 	}
 	
+	function leaveCircle() {
+		$user_id = $this->session->userdata('user_id');
+		
+		$this->Users->removeUserFromCircle($user_id, $_POST['circle_id']);
+	}
+	
 	function newCircle($user_id, $circle_id) {
 		$this->loadHomeView($user_id, $circle_id);
 	}
