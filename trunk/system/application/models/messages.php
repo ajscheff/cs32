@@ -14,7 +14,6 @@ class Messages extends Model {
 		parent::Model();
 		$this->load->database();
 		$this->load->library('email');
-		$this->load->model('Users');
 	}
 
 	/**
@@ -73,6 +72,8 @@ class Messages extends Model {
 			$emailList = array();
 			//user has invalid permissions.  send notification?
 		}
+		
+		$this->load->model('Users');
 
 		foreach ($emailList as $contact) {
 			if ($user_id != $contact->user_id) {				
