@@ -59,13 +59,14 @@ class Home extends Controller {
 	
 	function addUser() {
 		$user_id = $this->Users->getUserID_phone($_POST['phone_number']);
+		$circle_id = $_POST['circle_id'];
 				
 		if ($user_id == 0) {
 			$user_id = $this->Users->createStubUser($_POST['phone_number']);
 		}
 		
-		$this->Users->addUserToCircle($user_id, $_POST['circle_id'], $_POST['public_name']);
-		$this->loadCircle_id($_POST['circle_id']);
+		$this->Users->addUserToCircle($user_id, $circle_id, $_POST['public_name']);
+		$this->loadCircle_id($circle_id);
 	}
 	
 	function createCircle() {
