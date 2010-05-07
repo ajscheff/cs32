@@ -1,110 +1,97 @@
 #circlelist {
-	float: left;
-	height: 90%;
-	width: 150;
-	margin-right: 10px;
-	padding-left: 8px;
-	padding-top: 8px;
-	padding-bottom: 8px;
-	border-right: 3px solid #39826F;
-	border-bottom: 3px solid #39826F;
-	overflow-y: auto;
-	overflow-x:hidden;
-	}
-	
+        float: left;
+        height: 90%;
+        width: 150;
+        margin-right: 10px;
+        padding-left: 8px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        border-right: 3px solid #39826F;
+        border-bottom: 3px solid #39826F;
+        overflow-y: auto;
+        overflow-x:hidden;
+        }
+        
 #circleinfo {
-	float: right;
-	width: 525px;
-	margin-right: 3px;
-	}
-	
+        float: right;
+        width: 525px;
+        margin-right: 3px;
+        }
+        
 .message {
-	margin-bottom: 3px;
-	border-bottom: 1px solid #39826F;
-	}
-	
+        margin-bottom: 3px;
+        border-bottom: 1px solid #39826F;
+        }
+        
 .circle {
-	position: relative;
-	left: 3px;
-	padding-left: 5px;
-	padding-top: 3px;
-	padding-bottom: 3px;
-	}
-	
+        position: relative;
+        left: 3px;
+        padding-left: 5px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        }
+        
 #selectedcircle {
-	border: 3px solid #39826F;
-	border-right-width: 0px;
-	}
-	
+        border: 3px solid #39826F;
+        border-right-width: 0px;
+        }
+        
 #newcirclebutton {
-	position: absolute;
-	bottom: 5px;
-	left: 10px;
-	}
-	
+        position: absolute;
+        bottom: 5px;
+        left: 10px;
+        }
+        
 #newcircleform {
-	padding: 5px;
-	width: 330px;
-	height: 250px;
-	margin: auto;
-	top: 100px;
-	left: 550px;
-	}
-	
+        padding: 5px;
+        width: 330px;
+        height: 250px;
+        margin: auto;
+        top: 100px;
+        left: 550px;
+        }
+        
 #emailtakenpopup{
-	top: 150px;
-	left: 575px;
-	width: 200px;
-	}
-	
-	
-#deletecircleok{
-	top: 150px;
-	left: 575px;
-	width: 200px;
-	}
-	
-#leavecircleok{
-	top: 150px;
-	left: 575px;
-	width: 200px;
-	}
-	
+        top: 150px;
+        left: 575px;
+        width: 200px;
+        }
+        
 #circleheader {
-	width: 100%;
-	padding: 3px;
-	border-bottom:3px solid #39826F;
-	margin: 0px;
-	}
-	
+        width: 100%;
+        padding: 3px;
+        border-bottom:3px solid #39826F;
+        margin: 0px;
+        }
+        
 #adminslist {
-	overflow-y:auto;
-	overflow-x:hidden;
-	float: right;
-	width: 150px;
-	height: 402px;
-	}
+        overflow-y:auto;
+        overflow-x:hidden;
+        float: right;
+        width: 150px;
+        height: 402px;
+        }
 
 #messagelist {
-	overflow-y:auto;
-	overflow-x:hidden;
-	float:left;
-	width: 350px;
-	height: 387px;
-	border-right: 3px solid #39826F;
-	}
-
+        overflow-y:auto;
+        overflow-x:hidden;
+        float:left;
+        width: 350px;
+        height: 402px;
+        border-right: 3px solid #39826F;
+        }
+        
 .managebutton {
-	float:right;
-	margin: 5px;
-	}
-	
+        float:right;
+        margin: 0px;
+        }
+        
 #deletecircleok {
-	width: 200px;
-	height: 100px;
-	top: 300px;
-	left: 400px;
-	}
+        width: 200px;
+        height: 100px;
+        top: 300px;
+        left: 400px;
+        }
 
 #leavecircleok {
 	width: 200px;
