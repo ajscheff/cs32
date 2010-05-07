@@ -243,8 +243,12 @@ class EmailHelper extends Controller {
 								else{
 									$this->Users->addUserToCircle($user_toAdd_id, $circle_id);
 									$pub_name = $this->Users->getPublicName($user_id, $circle_id);
-									$local_reply = "$pub_name has added you to circle with address $email.  Text #removeme to $email@ombtp.com to remove yourself at any time.";
-									//$this->Messages->send('admin@ombtp.com', $token.'@'.$gateway, $local_reply);
+									$local_reply = "$pub_name with number $numberFrom has added you to circle $email."; 
+									$temp_prov_id = $this->Users->internetLookupProvider($token);
+									if($temp_prov_id != 0){
+										$temp_gateway = $this->Users->getProvider($temp_prov_id);
+										$this->Messages->send("admin@ombtp.com", $token.'@'.$temp_gateway, $local_reply);
+									}
 
 								}
 							}
@@ -295,7 +299,13 @@ class EmailHelper extends Controller {
 									$user_id_toAdd = $this->Users->createStubUser($number_to_add);
 									$this->Users->addUserToCircle($user_id_toAdd, $circle_id, $token);
 									$reply = "$number_to_add has been successfully added to $email will name $token, and will be invited to join Mobi!";
-									$this->Messages->send("$email@ombtp.com", $numberFrom.'@'.$gateway, $reply);
+									$pub_name = $this->Users->getPublicName($user_id, $circle_id);
+									$local_reply = "$pub_name with number $numberFrom has invited you to Mobi. Go to mobi.com to learn more."; 
+									$temp_prov_id = $this->Users->internetLookupProvider($token);
+									if($temp_prov_id != 0){
+										$temp_gateway = $this->Users->getProvider($temp_prov_id);
+										$this->Messages->send("admin@ombtp.com", $token.'@'.$temp_gateway, $local_reply);
+									}
 								} else {
 									$reply = 'Please provide a public name for the new user you are adding.  This name will be used to identify the new user within this circle.';
 								}
