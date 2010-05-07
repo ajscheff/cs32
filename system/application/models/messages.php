@@ -21,7 +21,6 @@ class Messages extends Model {
 	 * permissions, circles, or validity of the email.
 	 */
 	function send($from, $to, $message){
-		echo 'message sent: '.$message.' to '.$to.' from '.$from;
 		$this->email->from($from);
 		$this->email->to($to); 
 		$this->email->message($message);	
@@ -53,17 +52,11 @@ class Messages extends Model {
 		$pattern_3 = "/(-|=|\n)*This mobile text message is brought to you by AT&T(.|\n)*/";
 		$message = preg_replace($pattern_3, '', $message);
 
-		echo '1';
-		echo $message;
-
 		// insert message into database
 		$this->db->set('text', $message);
 		$this->db->set('user_id', $user_id);
 		$this->db->set('circle_id', $circle_id);
 		$this->db->insert('messages');
-
-		echo '2';
-		echo $message;
 
 		$this->load->model('Circles');
 
@@ -79,13 +72,9 @@ class Messages extends Model {
 			$emailList = array();
 			//user has invalid permissions.  send notification?
 		}
-		
-		echo '3';
-		echo $message;
 
 		foreach ($emailList as $contact) {
 			if ($user_id != $contact->user_id) {
-				echo '4';
 				$publicname = $this->Users->getPublicName($user_id, $circle_id);
 				$message = ' ' . $publicname . ': ' . $message;
 				$from = $circle_email . '@ombtp.com';
