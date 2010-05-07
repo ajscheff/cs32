@@ -79,8 +79,6 @@ class Messages extends Model {
 			if ($user_id != $contact->user_id) {
 				$publicname = $this->Users->getPublicName($user_id, $circle_id);
 				
-				echo $publicname;
-				
 				$message = ' ' . $publicname . ': ' . $message;
 				$from = $circle_email . '@ombtp.com';
 				$this->send($from, $contact->phone_number.'@'.$contact->gateway, $message);
