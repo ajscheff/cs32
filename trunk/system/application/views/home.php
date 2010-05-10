@@ -38,7 +38,7 @@
 					else admin = 0;
 					var priv = $('input[name=priv]:checked').val();
 					
-					$.post('/index.php/home/addUser/', { circle_id: curr_circle, phone_number: number, public_name: name }, function(data) {
+					$.post('/index.php/home/addUser/', { circle_id: curr_circle, phone_number: number, public_name: name, admin: admin, privileges: priv }, function(data) {
 						if (data == 0) {
 							showAlreadyAdded();
 						}
@@ -200,7 +200,7 @@
 			</div>
 			
 			<div class="popup" id="alreadyadded">
-				<a class="closebutton" href="javascript:hideEmailTakenPopup()">Close</a>The email you entered is taken by another circle, please choose a different email address.
+				<a class="closebutton" href="javascript:hideAlreadyAdded()">Close</a>A user with that phone number is already in this circle!
 			</div>
 			
 			<form class="popup" id="deletecircleok">

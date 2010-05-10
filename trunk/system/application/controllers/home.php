@@ -69,7 +69,7 @@ class Home extends Controller {
 				echo '0';
 			}
 			else {
-				$this->Users->addUserToCircle($user_id, $circle_id, $_POST['public_name']);
+				$this->Users->addUserToCircle($user_id, $circle_id, $_POST['public_name'], $_POST['admin'], $_POST['privileges']);
 				$this->loadCircle_id($circle_id);
 				echo '1';
 			}
