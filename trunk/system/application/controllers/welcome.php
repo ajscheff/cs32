@@ -76,12 +76,12 @@ class Welcome extends Controller {
 			}
 			else{
 				$data['loginfailed']='true';
-				$this-load->view('login', $data);
+				$this->load->view('login', $data);
 			}
 		}
 		else {
 			$data['loginfailed']='true';
-			$this-load->view('login', $data);
+			$this->load->view('login', $data);
 		}
 	}
 	
