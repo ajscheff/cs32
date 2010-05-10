@@ -30,7 +30,7 @@ class Settings extends Controller {
 	//this function returns '1' if the password provided by post matches the one on the database
 	function checkPassword() {
 		$user_id = $this->session->userdata('user_id');
-		if($this->Users->passwordMatches($user_id, $_POST['password']))
+		if($this->Users->passwordMatches($user_id, $_POST['password'])
 			echo '1';
 		else echo '0';
 	}

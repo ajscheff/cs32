@@ -34,11 +34,16 @@
 					var provider = $('#provider').val();
 					$.post('/index.php/welcome/signup', { username : username, password : password, public_name : public_name, phone_number : phone_number, provider : provider });
 				}
-					
+				
+				function loginFailed(failed) {
+					if(failed == "true") {
+						$('#wrongpasswordmessage"').show();
+					}
+				}
 	
 			--></script>
 	</head>
-	<body>
+	<?php echo '<body onload="javascript:loginFailed('.$loginfailed.')">';?>
 			<div id="backshade">
 			<div id="panel">
 					<div id="masthead">
@@ -51,11 +56,14 @@
 						<p id="summary"> Mobi is a free new service that keeps people in touch on the go.  Learn more or sign up today!</p>
 						<a id="learn" href="javascript:showLearnMore()">Learn More</a>
 						<a id="sign" href="javascript:showSignUp()">Sign Up</a>
-						<form id="login" method="post" action="/index.php/welcome/login">
+						<form id="login" method="post" action="/index.php/home/login/">
 							<h4>Sign in:</h4>
-							<input id="logininput" type="text" name="username" value="username" onfocus="this.value=''" size="25"/>
-							<input id="logininput" type="text" name="password" value="password" onfocus="this.value='';this.type='password'" size="25"/>
-							<input id="loginbutton" class="button" type="submit" value="Login" style="float:right"/>
+							<p>
+								<p id="wrongpasswordmessage">The username and password you entered did not match.</p>
+								<input id="loginusername" class="logininput" type="text" name="username" value="username" onfocus="this.value=''" size="25"/>
+								<input id="loginpassword" class="logininput" type="text" name="password" value="password" onfocus="this.value='';this.type='password'" size="25"/>
+								<input id="loginbutton" class="button" type="submit" value="Login" style="float:right"/>
+							</p>
 						</form>
 					</div>
 					<div id="misc">

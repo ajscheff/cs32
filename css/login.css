@@ -35,10 +35,15 @@
 	left: 140px;
 	}
 	
-#logininput {
+.logininput {
 	margin: 10px;
 	font-size: 16px;
 	height: 24px;
+	}
+	
+#wrongpasswordmessage {
+	color:red;
+	display:hidden;
 	}
 	
 #loginbutton {
@@ -49,7 +54,6 @@
 	
 #learnmore, #signupform, #wrongpass {
 	padding: 5px;
-	margin-top:-125px;
 	margin-left: -200px;
 	width: 400px;
 	height: 250px;

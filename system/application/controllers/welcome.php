@@ -75,11 +75,13 @@ class Welcome extends Controller {
 				redirect('', 'location');
 			}
 			else{
-				echo 'You\'re username did not match that password!';
+				$data['loginfailed']='true';
+				$this-load->view('login', $data);
 			}
 		}
 		else {
-			echo 'You\'re username did not match that password!';
+			$data['loginfailed']='true';
+			$this-load->view('login', $data);
 		}
 	}
 	
