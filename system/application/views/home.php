@@ -37,8 +37,7 @@
 					if ($('#admin').is(':checked')) admin = 1;
 					else admin = 0;
 					var priv = $('input[name=priv]:checked').val();
-					alert(admin);
-					alert(priv);
+					
 					$.post('/index.php/home/addUser/', { circle_id: curr_circle, phone_number: number, public_name: name }, function(data) {
 						//$('#circleinfo').html(data);
 						$('#phone_number').val("");
@@ -175,7 +174,7 @@
 				</p>
 				<p>
 					Reply to: <br />
-					All<input id="reply_all" type="radio" name="priv" value="reply_all" />
+					All<input id="reply_all" type="radio" name="priv" value="reply_all" checked="checked"/>
 					Admins Only<input id="reply_admins" type="radio" name="priv" value="reply_admins" />
 					None<input id="no_reply" type="radio" name="priv" value="no_reply" />	
 				</p>
