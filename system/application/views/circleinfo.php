@@ -15,10 +15,11 @@
 				<div id="adminslist">
 					<h4 style="padding-bottom: 3px;">admins:</h4>	
 					<?php foreach($admins as $admin) {
-						echo '<p class="admin">'.$admin['public_name'].'</p>';
+						echo '<p class="admin">'.$admin['public_name'];
 						if($is_admin == 1) {
-							echo '<a class="useradminbutton" href="javascript:setUserAdmin('.$admin['user_id'].','.$circle_id.', 0)">^</a>';
+							echo '<a class="useradminbutton" href="javascript:setUserAdmin('.$admin['user_id'].','.$circle_id.', 0)">v</a>';
 						}
+						echo '</p>';
 					}
 					?>
 					<br/>
