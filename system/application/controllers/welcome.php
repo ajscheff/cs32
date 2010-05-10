@@ -22,11 +22,11 @@ class Welcome extends Controller {
 				$this->loadHomeView();
 			} else {
 				$data['loginfailed']='';
-				$this->load->view('login');
+				$this->load->view('login', $data);
 			}
 		} else {
 			$data['loginfailed']='';
-			$this->load->view('login');
+			$this->load->view('login', $data);
 		}
 	}
 	
