@@ -17,7 +17,7 @@
 					<?php foreach($admins as $admin) {
 						echo '<p class="admin">'.$admin['public_name'].'</p>';
 						if($is_admin == 1) {
-							echo '<a class="useradminbutton" href="javascript:setUserAdmin('.$member['user_id'].','.$circle_id.', 0)">^</a>';
+							echo '<a class="useradminbutton" href="javascript:setUserAdmin('.$admin['user_id'].','.$circle_id.', 0)">^</a>';
 						}
 					}
 					?>
