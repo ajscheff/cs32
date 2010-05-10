@@ -33,10 +33,15 @@
 				function addUser() {
 					var number = $('#phone_number').val();
 					var name = $('#name').val();
+					var admin = $('#admin').val();
+					var priv = $('#priv').val();
+					alert(admin);
+					alert(priv);
 					$.post('/index.php/home/addUser/', { circle_id: curr_circle, phone_number: number, public_name: name }, function(data) {
-						$('#circleinfo').html(data);
+						//$('#circleinfo').html(data);
 						$('#phone_number').val("");
 						$('#name').val("");
+						loadCircle(curr_circle);
 					});
 				}
 				
@@ -167,7 +172,7 @@
 					Admin <input id="admin" type="checkbox" value="admin" />
 				</p>
 				<p>
-					Reply privileges: <br />
+					Reply to: <br />
 					All<input id="reply_all" type="radio" name="priv" value="reply_all" />
 					Admins Only<input id="reply_admins" type="radio" name="priv" value="reply_admins" />
 					None<input id="no_reply" type="radio" name="priv" value="no_reply" />	
