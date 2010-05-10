@@ -168,9 +168,9 @@
 				</p>
 				<p>
 					Reply privileges: <br />
-					Reply All<input id="reply_all" type="radio" name="priv" value="reply_all" />
-					Reply Admins<input id="reply_admins" type="radio" name="priv" value="reply_admins" />
-					No Reply<input id="no_reply" type="radio" name="priv" value="no_reply" />	
+					All<input id="reply_all" type="radio" name="priv" value="reply_all" />
+					Admins Only<input id="reply_admins" type="radio" name="priv" value="reply_admins" />
+					None<input id="no_reply" type="radio" name="priv" value="no_reply" />	
 				</p>
 				<p>
 					<input class="button" type="submit" value="Add User"/>
