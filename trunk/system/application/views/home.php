@@ -39,16 +39,28 @@
 					var priv = $('input[name=priv]:checked').val();
 					
 					$.post('/index.php/home/addUser/', { circle_id: curr_circle, phone_number: number, public_name: name }, function(data) {
-						alert(data);
-						$('#phone_number').val("");
-						$('#name').val("");
-						loadCircle(curr_circle);
+						if (data == 0) {
+							showAlreadyAdded();
+						}
+						else {
+							$('#phone_number').val("");
+							$('#name').val("");
+							loadCircle(curr_circle);
+						}
 					});
 				}
 				
 				function leaveCircle() {
 					$.post('/index.php/home/leaveCircle/', { circle_id: curr_circle }, function(data) {});
 					document.location = '0';
+				}
+				
+				function showAlreadyAdded() {
+					$('#alreadyadded').show();				
+				}
+				
+				function hideAlreadyAdded() {
+					$('#alreadyadded').hide();
 				}
 				
 				function showLeaveCircleOk() {
@@ -184,6 +196,10 @@
 			</form>
 			
 			<div class="popup" id="emailtakenpopup">
+				<a class="closebutton" href="javascript:hideEmailTakenPopup()">Close</a>The email you entered is taken by another circle, please choose a different email address.
+			</div>
+			
+			<div class="popup" id="alreadyadded">
 				<a class="closebutton" href="javascript:hideEmailTakenPopup()">Close</a>The email you entered is taken by another circle, please choose a different email address.
 			</div>
 			
