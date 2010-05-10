@@ -39,7 +39,7 @@
 					var priv = $('input[name=priv]:checked').val();
 					
 					$.post('/index.php/home/addUser/', { circle_id: curr_circle, phone_number: number, public_name: name }, function(data) {
-						//$('#circleinfo').html(data);
+						alert(data);
 						$('#phone_number').val("");
 						$('#name').val("");
 						loadCircle(curr_circle);
