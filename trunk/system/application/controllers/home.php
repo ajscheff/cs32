@@ -101,6 +101,10 @@ class Home extends Controller {
 		echo $id;
 	}
 	
+	function setUserAdmin() {
+		$this->Users->setUserAdmin($_POST['user_id'], $_POST['circle_id'], $_POST['admin']);
+	}
+	
 		//identical to function in welcome.php.  This should be abstracted eventually
 	function loadHomeView($circle_id = 0){
 	
