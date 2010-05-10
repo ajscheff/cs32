@@ -56,7 +56,7 @@
 						<p id="summary"> Mobi is a free new service that keeps people in touch on the go.  Learn more or sign up today!</p>
 						<a id="learn" href="javascript:showLearnMore()">Learn More</a>
 						<a id="sign" href="javascript:showSignUp()">Sign Up</a>
-						<form id="login" method="post" action="/index.php/home/login/">
+						<form id="login" method="post" action="/index.php/welcome/login/">
 							<h4>Sign in:</h4>
 							<p>
 								<p id="wrongpasswordmessage">The username and password you entered did not match.</p>
