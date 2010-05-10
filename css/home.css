@@ -56,6 +56,12 @@
         left: 575px;
         width: 200px;
         }
+
+#alreadyadded{
+        top: 150px;
+        left: 575px;
+        width: 200px;
+        }
         
 #circleheader {
         width: 100%;
@@ -97,7 +103,7 @@
       
 #adduserform {
         width: 200px;
-        height: 200px;
+        height: 195px;
         padding: 5px;
         margin-top: -82px;
         margin-left:-100px;
