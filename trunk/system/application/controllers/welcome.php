@@ -21,9 +21,11 @@ class Welcome extends Controller {
 			if ($this->Users->passwordMatches($user_id, $password)) {
 				$this->loadHomeView();
 			} else {
+				$data['loginfailed']='';
 				$this->load->view('login');
 			}
 		} else {
+			$data['loginfailed']='';
 			$this->load->view('login');
 		}
 	}
