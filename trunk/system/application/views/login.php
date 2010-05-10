@@ -71,7 +71,7 @@
 			</div>
 			</div>
 			<div id="bottomshade"></div>
-			<div id="learnmore">
+			<div class="popup" id="learnmore">
 				<a class="closebutton" href="javascript:hideLearnMore()">Close</a>
 				<p> 
 				Mobi is a new kind of social networking platform that is centered around the phone rather than the internet. Users create groups of their friends (called circles) on the website. The user can then communicate with their circles via unique email addresses that receive SMS messages, and automatically relay them out to other circle members. Mobi is ideal for social groups, school clubs, and larger organizations that want to communicate via SMS.
