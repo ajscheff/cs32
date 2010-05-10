@@ -50,6 +50,11 @@
 					});
 				}
 				
+				function setUserAdmin(user_id, circle_id, admin) {
+					$.post('/index.php/home/setUserAdmin/', {user_id: user_id, circle_id: circle_id, admin: admin}, function(data) {});
+					loadCircle(curr_circle);
+				}
+				
 				function leaveCircle() {
 					$.post('/index.php/home/leaveCircle/', { circle_id: curr_circle }, function(data) {});
 					document.location = '0';
