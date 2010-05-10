@@ -164,6 +164,15 @@
 					<input id="name" type="text" name="name"/>
 				</p>
 				<p>
+					Admin <input id="admin" type="checkbox" value="admin" />
+				</p>
+				<p>
+					Reply privileges:
+					<input id="reply_all" type="radio" name="priv" value="reply_all" />
+					<input id="reply_admins" type="radio" name="priv" value="reply_admins" />
+					<input id="no_reply" type="radio" name="priv" value="no_reply" />	
+				</p>
+				<p>
 					<input class="button" type="submit" value="Add User"/>
 				</p>
 			</form>
