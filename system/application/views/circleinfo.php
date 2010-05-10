@@ -24,6 +24,7 @@
 						echo '<p class="admin">'.$member['public_name'];
 						if($is_admin == 1) 
 							echo '<a class="userdeletebutton" href="javascript:deleteUserFromCircle('.$member['user_id'].','.$circle_id.')">x</a>';
+							echo '<a class="useradminbutton" href="javascript:makeUserAdmin('.$member['user_id'].','.$circle_id.')">^</a>';
 						echo '</p>';
 						}
 					?>
