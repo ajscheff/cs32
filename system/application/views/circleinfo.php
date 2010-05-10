@@ -15,18 +15,22 @@
 				<div id="adminslist">
 					<h4 style="padding-bottom: 3px;">admins:</h4>	
 					<?php foreach($admins as $admin) {
-						echo '<p class="admin">'.$admin.'</p>';
+						echo '<p class="admin">'.$admin['public_name'].'</p>';
+						if($is_admin == 1) {
+							echo '<a class="useradminbutton" href="javascript:setUserAdmin('.$member['user_id'].','.$circle_id.', 0)">^</a>';
 						}
+					}
 					?>
 					<br/>
 					<h4 style="padding-bottom: 3px;">members:</h4>
 					<?php foreach($members as $member) {
 						echo '<p class="admin">'.$member['public_name'];
-						if($is_admin == 1) 
+						if($is_admin == 1) {
 							echo '<a class="userdeletebutton" href="javascript:deleteUserFromCircle('.$member['user_id'].','.$circle_id.')">x</a>';
 							echo '<a class="useradminbutton" href="javascript:setUserAdmin('.$member['user_id'].','.$circle_id.', 1)">^</a>';
-						echo '</p>';
 						}
+						echo '</p>';
+					}
 					?>
 				</div>
 				<div id="messagelist">
