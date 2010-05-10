@@ -36,7 +36,7 @@
 					var admin;
 					if ($('#admin').is(':checked')) admin = 1;
 					else admin = 0;
-					var priv = $('[name=priv]').fieldValue();
+					var $('input[name=priv]:checked').val() 
 					alert(admin);
 					alert(priv);
 					$.post('/index.php/home/addUser/', { circle_id: curr_circle, phone_number: number, public_name: name }, function(data) {
