@@ -33,11 +33,9 @@
 				}
 				
 				function signUp() {
-					var password1 = ('#password').val();
-					var password2 = ('#password2').val();
+					var password1 = $('#password').val();
+					var password2 = $('#password2').val();
 					if(password1==password2) {
-									alert('hi');
-
 						$.post('index.php/welcome/signup/', $('#signupform').serialize(), function(data) {
 							if(data != "0") {
 								$('#usernametaken').show();
@@ -46,8 +44,6 @@
 							}
 						});
 					} else {
-									alert('ho');
-
 						$('#passwordsdontmatch').show();
 					}
 				}
