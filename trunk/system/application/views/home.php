@@ -191,13 +191,13 @@
 				</p>
 			</form>
 			
-			<form class="popup" id="usersettingspanel" action="javascript:setUserSettings()">
+			<form class="popup" id="usersettingspanel">
 				<a class="closebutton" href="javascript:hideUserSettings()">Close</a>
 					User can reply to: <br />
 					All<input id="reply_all" type="radio" name="priv" value="reply_all" />
 					Admins Only<input id="reply_admins" type="radio" name="priv" value="reply_admins" />
 					None<input id="no_reply" type="radio" name="priv" value="no_reply" />		
-					<input type="submit" value="Done" />
+					<a href="javascript:setUserSettings()">Done!</a>
 				</p>
 			</form>
 			
