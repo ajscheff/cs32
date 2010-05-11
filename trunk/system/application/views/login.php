@@ -36,7 +36,7 @@
 				}
 				
 				function loginFailed(failed) {
-					if(failed == "true") {
+					if(failed === 'true') {
 						$('#wrongpasswordmessage"').show();
 					}
 				}
