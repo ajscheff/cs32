@@ -96,7 +96,7 @@
 				</p>
 			</div>
 			<form class="popup" id="signupform" method="post" action="javascript:signUp()">
-				<a class="closebutton" href="javascript:hideSignUp()">Close</a>
+				<p><a class="closebutton" href="javascript:hideSignUp()">Close</a></p>
 				<p>
 					<p id="usernametaken" class="error">This username is already in use.</p>
 					username:
