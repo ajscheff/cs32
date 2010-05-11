@@ -197,9 +197,9 @@
 			<form class="popup" id="usersettingspanel">
 				<a class="closebutton" href="javascript:hideUserSettings()">Close</a>
 					User can reply to: <br />
-					All<input id="reply_all" type="radio" name="privSet" value="reply_all" />
-					Admins Only<input id="reply_admins" type="radio" name="privSet" value="reply_admins" />
-					None<input id="no_reply" type="radio" name="privSet" value="no_reply" />		
+					All<input id="reply_all" type="radio" name="privSet" value="reply_all" /><br />
+					Admins Only<input id="reply_admins" type="radio" name="privSet" value="reply_admins" /><br />
+					None<input id="no_reply" type="radio" name="privSet" value="no_reply" /><br />
 					<a href="javascript:setUserSettings()">Done!</a>
 				</p>
 			</form>
