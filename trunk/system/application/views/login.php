@@ -39,11 +39,12 @@
 					var password2 = $('#password2').val();
 					if(password1==password2) {
 						$.post('index.php/welcome/signup/', $('#signupform').serialize(), function(data) {
-							if(data == "0") {
-								$('#successfulsignup').show();
-							} else {
-								$('#usernametaken').show();
-							}
+							alert(data);
+//							if(data == "0") {
+//								$('#successfulsignup').show();
+//							} else {
+//								$('#usernametaken').show();
+//							}
 						});
 					} else {
 						$('#passwordsdontmatch').show();
