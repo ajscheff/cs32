@@ -72,7 +72,7 @@
 				
 				function setUserSettings() {
 					var priv = $('input[name=privSet]:checked').val();
-					alert(priv);
+					if (priv == undefined) alert(1);
 				}
 				
 				function showAlreadyAdded() {
