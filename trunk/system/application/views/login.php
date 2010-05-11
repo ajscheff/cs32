@@ -41,7 +41,8 @@
 								$('#usernametaken').show();
 							} else {
 								$('#successfulsignup').show();
-							});
+							}
+						});
 					} else {
 						$('#passwordsdontmatch').show();
 					}
