@@ -65,9 +65,23 @@ class Home extends Controller {
 	function addUser() {
 		$user_id = $this->Users->getUserID_phone($_POST['phone_number']);
 		$circle_id = $_POST['circle_id'];
-				
+	
 		if ($user_id == 0) {
-			$user_id = $this->Users->createStubUser($_POST['phone_number']);
+			$phone_number = $_POST['phone_number'];
+			$user_id = $this->Users->createStubUser($phone_number);
+			
+				//gather data about the user who added the new user
+			$adders_id = $this->session->userdata('user_id');
+			$adders_pub_name = $this->Users->getPublicName($adders_id);
+			$adders_phone = $this->Users->getPhone($adders_id);
+			
+				//inform new user that they have been invited to mobi
+			$local_reply = "$adders_pub_name with number $adders_phone has invited you to Mobi. Reply with '#upgrademe <myusername>' to make a full account.  Go to mobi.com to learn more.";
+			$temp_prov_id = $this->Users->internetLookupProvider($phone_number);
+			if($temp_prov_id != 0){
+				$temp_gateway = $this->Users->getProvider($temp_prov_id);
+				$this->Messages->send("admin@ombtp.com", $phone_number.'@'.$temp_gateway, $local_reply);
+			}
 		}
 		else {
 			if ($this->Circles->isMember($user_id, $circle_id)){
@@ -75,6 +89,17 @@ class Home extends Controller {
 			}
 			else {
 				$this->Users->addUserToCircle($user_id, $circle_id, $_POST['public_name'], $_POST['admin'], $_POST['privileges']);
+				$adders_id = $this->session->userdata('user_id');
+				$adders_pub_name = $this->Users->getPublicName($adders_id);
+				$adders_phone = $this->Users->getPhone($adders_id);
+				$circle_email = $this->Circles->getEmail($circle_id);
+				$local_reply = "$adders_pub_name, with number $adders_phone, has added you to circle $circle_email.";
+				$phone_number = $this->Users->getPhone($user_id);
+				$temp_prov_id = $this->Users->internetLookupProvider($phone_number);
+				if($temp_prov_id != 0){
+					$temp_gateway = $this->Users->getProvider($temp_prov_id);
+					$this->Messages->send("admin@ombtp.com", $phone_number.'@'.$temp_gateway, $local_reply);
+				}
 				$this->loadCircle_id($circle_id);
 				echo '1';
 			}
