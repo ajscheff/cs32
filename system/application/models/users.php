@@ -260,7 +260,8 @@ class Users extends Model {
 		$query = $this->db->get();
 		$results = $query->result();
 		
-		return $results[0]->preferred_name;
+		if (empty($results)) return NULL;
+		else return $results[0]->preferred_name;
 	}
 	
 	/**
