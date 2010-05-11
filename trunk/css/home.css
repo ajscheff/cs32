@@ -50,6 +50,13 @@
         margin-left:-165px;
         }
         
+#usersettingspanel {
+        width: 200px;
+        padding: 5px;
+        margin-left:-100px;
+        }
+
+        
 #emailtakenpopup{
         top: 150px;
         left: 575px;

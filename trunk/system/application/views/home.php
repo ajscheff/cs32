@@ -9,6 +9,7 @@
 		<script type="text/javascript"><!--
 		
 				var curr_circle;
+				var curr_user_selected;
 
 				function submitNewCircle(){
 					var email = $('#email').val();
@@ -58,6 +59,19 @@
 				function leaveCircle() {
 					$.post('/index.php/home/leaveCircle/', { circle_id: curr_circle }, function(data) {});
 					document.location = '0';
+				}
+				
+				function showUserSettings(user_id) {
+					curr_user_selected = user_id;
+					$('#usersettingspanel').show();
+				}
+				
+				function hideUserSettings() {
+					$('#usersettingspanel').hide();
+				}
+				
+				function setUserSettings() {
+					
 				}
 				
 				function showAlreadyAdded() {
@@ -173,6 +187,16 @@
 				<p>
 					<textarea id="description" rows="10" cols="30" name="description">Enter a description for your circle.</textarea>
 					<a href="javascript:submitNewCircle()">Done!</a>
+				</p>
+			</form>
+			
+			<form class="popup" id="usersettingspanel" action="javascript:setUserSettings()">
+				<a class="closebutton" href="javascript:hideUserSettings()">Close</a>
+					User can reply to: <br />
+					All<input id="reply_all" type="radio" name="priv" value="reply_all" />
+					Admins Only<input id="reply_admins" type="radio" name="priv" value="reply_admins" />
+					None<input id="no_reply" type="radio" name="priv" value="no_reply" />		
+					<input type="submit" value="Done" />
 				</p>
 			</form>
 			
