@@ -62,7 +62,6 @@
 				}
 				
 				function showUserSettings(user_id) {
-					alert(0);
 					curr_user_selected = user_id;
 					$('#usersettingspanel').show();
 				}
@@ -72,7 +71,8 @@
 				}
 				
 				function setUserSettings() {
-					
+					var priv = $('input[name=privSet]:checked').val();
+					alert(priv);
 				}
 				
 				function showAlreadyAdded() {
@@ -194,9 +194,9 @@
 			<form class="popup" id="usersettingspanel">
 				<a class="closebutton" href="javascript:hideUserSettings()">Close</a>
 					User can reply to: <br />
-					All<input id="reply_all" type="radio" name="priv" value="reply_all" />
-					Admins Only<input id="reply_admins" type="radio" name="priv" value="reply_admins" />
-					None<input id="no_reply" type="radio" name="priv" value="no_reply" />		
+					All<input id="reply_all" type="radio" name="privSet" value="reply_all" />
+					Admins Only<input id="reply_admins" type="radio" name="privSet" value="reply_admins" />
+					None<input id="no_reply" type="radio" name="privSet" value="no_reply" />		
 					<a href="javascript:setUserSettings()">Done!</a>
 				</p>
 			</form>
