@@ -72,7 +72,7 @@ class Home extends Controller {
 			
 				//gather data about the user who added the new user
 			$adders_id = $this->session->userdata('user_id');
-			$adders_pub_name = $this->Users->getPublicName($adders_id);
+			$adders_pub_name = $this->Users->getPublicName($adders_id, $user_id);
 			$adders_phone = $this->Users->getPhone($adders_id);
 			
 				//inform new user that they have been invited to mobi
