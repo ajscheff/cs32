@@ -33,6 +33,7 @@
 				}
 				
 				function signUp() {
+				alert('hi');
 					var password1 = ('#password').val();
 					var password2 = ('#password2').val();
 					if(password1==password2) {
