@@ -90,7 +90,7 @@ class Home extends Controller {
 			else {
 				$this->Users->addUserToCircle($user_id, $circle_id, $_POST['public_name'], $_POST['admin'], $_POST['privileges']);
 				$adders_id = $this->session->userdata('user_id');
-				$adders_pub_name = $this->Users->getPublicName($adders_id);
+				$adders_pub_name = $this->Users->getPublicName($adders_id, $circle_id);
 				$adders_phone = $this->Users->getPhone($adders_id);
 				$circle_email = $this->Circles->getEmail($circle_id);
 				$local_reply = "$adders_pub_name, with number $adders_phone, has added you to circle $circle_email.";
