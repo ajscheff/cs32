@@ -28,9 +28,9 @@
 					<?php foreach($members as $member) {
 						echo '<p class="admin">'.$member['public_name'];
 						if($is_admin == 1) {
-							echo '<a class="userdeletebutton" href="javascript:deleteUserFromCircle('.$member['user_id'].','.$circle_id.')">x</a>';
-							echo '<a class="useradminbutton" href="javascript:setUserAdmin('.$member['user_id'].','.$circle_id.', 1)">^</a>';
-							echo '<a class="usersettingsbutton" href="javascript:showUserSettings('.$member['user_id'].')">o</a>';
+							echo '<a class="managebutton" href="javascript:deleteUserFromCircle('.$member['user_id'].','.$circle_id.')">x</a>';
+							echo '<a class="managebutton" href="javascript:setUserAdmin('.$member['user_id'].','.$circle_id.', 1)">^</a>';
+							echo '<a class="managebutton" href="javascript:showUserSettings('.$member['user_id'].')">o</a>';
 						}
 						echo '</p>';
 					}
