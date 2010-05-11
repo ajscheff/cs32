@@ -62,6 +62,7 @@
 				}
 				
 				function showUserSettings(user_id) {
+					alert(0);
 					curr_user_selected = user_id;
 					$('#usersettingspanel').show();
 				}
