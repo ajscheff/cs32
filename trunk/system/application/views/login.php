@@ -119,7 +119,9 @@
 					provide your phone number:<br/>
 					<input type="text" id="phone_number" name="phone_number"/>
 				</p>
-				<input class="button" type="submit" value="Sign Up!"/>
+				<p>
+					<input class="button" type="submit" value="Sign Up!"/>
+				</p>
 			</form>
 			<div class="popup" id="succesfulsignup">
 				<a class="closebutton" href="/index.php/home/loadHomeView/">Go.</a>
