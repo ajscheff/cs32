@@ -34,9 +34,8 @@
 				function addUser() {
 					var number = $('#phone_number').val();
 					var name = $('#name').val();
-					var admin;
+					var admin = 0;
 					if ($('#admin').is(':checked')) admin = 1;
-					else admin = 0;
 					var priv = $('input[name=priv]:checked').val();
 					
 					$.post('/index.php/home/addUser/', { circle_id: curr_circle, phone_number: number, public_name: name, admin: admin, privileges: priv }, function(data) {
