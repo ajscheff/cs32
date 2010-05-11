@@ -18,6 +18,7 @@
 						echo '<p class="admin">'.$admin['public_name'];
 						if($is_admin == 1) {
 							echo '<a class="useradminbutton" href="javascript:setUserAdmin('.$admin['user_id'].','.$circle_id.', 0)">v</a>';
+							echo '<a class="usersettingsbutton" href="javascript:showUserSettings('.$admin['user_id'].')">o</a>';
 						}
 						echo '</p>';
 					}

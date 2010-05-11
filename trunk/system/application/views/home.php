@@ -72,7 +72,10 @@
 				
 				function setUserSettings() {
 					var priv = $('input[name=privSet]:checked').val();
-					if (priv == undefined) alert(1);
+					if (priv != undefined) {
+						$.post('/index.php/home/setUserSettings/', { circle_id: curr_circle, user_id: curr_user_selected, privileges: priv }, function(data) {});
+					}
+					hideUserSettings();
 				}
 				
 				function showAlreadyAdded() {

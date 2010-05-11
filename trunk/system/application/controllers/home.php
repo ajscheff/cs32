@@ -54,6 +54,10 @@ class Home extends Controller {
 		echo $this->load->view('circleinfo', $data);
 	}
 	
+	function setUserSettings() {
+		$this->Users->setUserPrivileges($_POST['user_id'], $_POST['circle_id'], $_POST['privileges']);
+	}
+	
 	function loadCircle() {
 		$this->loadCircle_id($_POST['circle_id']);
 	}
