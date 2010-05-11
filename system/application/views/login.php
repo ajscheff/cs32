@@ -27,7 +27,7 @@
 				}
 				
 				function loginFailed(failed) {
-					if(failed === "true") {
+					if(failed == "true") {
 						$('#wrongpasswordmessage"').show();
 					}
 				}
@@ -35,7 +35,7 @@
 				function signUp() {
 					var password1 = ('#password').val();
 					var password2 = ('#password2').val();
-					if(password1===password2) {
+					if(password1==password2) {
 						$.post('index.php/welcome/signup/', $('#signupform').serialize(), function(data) {
 							if(data != "0") {
 								$('#usernametaken').show();
@@ -68,8 +68,8 @@
 						<a id="sign" href="javascript:showSignUp()">Sign Up</a>
 						<form id="login" method="post" action="/index.php/welcome/login/">
 							<h4>Sign in:</h4>
+							<p id ="wrongpasswordmessage" class="error">The username and password you entered did not match.</p>
 							<p>
-								<p id ="wrongpasswordmessage" class="error">The username and password you entered did not match.</p>
 								<input id="loginusername" class="logininput" type="text" name="username" value="username" onfocus="this.value=''" size="25"/>
 								<input id="loginpassword" class="logininput" type="text" name="password" value="password" onfocus="this.value='';this.type='password'" size="25"/>
 								<input id="loginbutton" class="button" type="submit" value="Login" style="float:right"/>
@@ -123,7 +123,7 @@
 			</form>
 			<div class="popup" id="succesfulsignup">
 				<a class="closebutton" href="/index.php/home/loadHomeView/">Go.</a>
-				You have been successfully signed up for mobi.  Welcome.
+				<p>You have been successfully signed up for mobi.  Welcome.</p>
 			</div>
 	</body>
 </html>
