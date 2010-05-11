@@ -97,13 +97,13 @@
 			</div>
 			<form class="popup" id="signupform" method="post" action="javascript:signUp()">
 				<p><a class="closebutton" href="javascript:hideSignUp()">Close</a></p>
+				<p id="usernametaken" class="error">This username is already in use.</p>
 				<p>
-					<p id="usernametaken" class="error">This username is already in use.</p>
 					username:
 					<input type="text" id="username" name="username"/>
 				</p>
-				<p>
-					<p id="passwordsdontmatch" class="error">These passwords did not match</p>
+				<p id="passwordsdontmatch" class="error">These passwords did not match</p>
+				<p>	
 					password:
 					<input type="password" id="password" name="password"/>
 				</p>
