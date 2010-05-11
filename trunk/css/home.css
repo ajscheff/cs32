@@ -94,14 +94,12 @@
         
 #deletecircleok, #leavecircleok  {
         width: 200px;
-        height: 100px;
         padding: 5px;
         margin-left: -100px;
         }
       
 #adduserform {
         width: 200px;
-        height: 195px;
         padding: 5px;
         margin-left:-100px;
         }
