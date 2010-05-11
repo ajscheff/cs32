@@ -58,15 +58,13 @@
 
         
 #emailtakenpopup{
-        top: 150px;
-        left: 575px;
         width: 200px;
+        margin-left: -100px;
         }
 
 #alreadyadded{
-        top: 150px;
-        left: 575px;
         width: 200px;
+        margin-left: -100px;
         }
         
 #circleheader {
@@ -96,7 +94,8 @@
         
 .managebutton {
         float:right;
-        margin: 5px;
+        margin: 2px;
+        height: 9px;
         }
         
 #deletecircleok, #leavecircleok  {
@@ -110,18 +109,3 @@
         padding: 5px;
         margin-left:-100px;
         }
-
-.userdeletebutton {
-	float: right;
-	height: 9px;
-	}
-	
-.useradminbutton {
-	float: right;
-	height: 9px;
-	}
-	
-.usersettingsbutton {
-	float: right;
-	height: 9px;
-	}
