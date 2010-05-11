@@ -41,7 +41,7 @@
 	height: 24px;
 	}
 	
-#wrongpasswordmessage {
+.error {
 	color:red;
 	display:none;
 	}

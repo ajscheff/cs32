@@ -36,14 +36,33 @@
 				}
 				
 				function loginFailed(failed) {
-					if(failed === 'true') {
+					if(failed === "true") {
 						$('#wrongpasswordmessage"').show();
 					}
+				}
+				
+				function signUp() {
+					var password1 = ('#password').val();
+					var password2 = ('#password2').val();
+					if(password1===password2) {
+						$.post('index.php/welcome/signup/', $('#signupform').serialize(), function(data) {
+							if(data != "0") {
+								$('#usernametaken').show();
+							} else {
+								$('#successfulsignup').show();
+							}
+					} else {
+						$('#passwordsdontmatch').show();
+					}
+				}
+				
+				function hidePasswordsDontMatch() {
+					$('#passwordsdontmatch').hide();
 				}
 	
 			--></script>
 	</head>
-	<?php echo '<body onload="javascript:loginFailed('.$loginfailed.')">';?>
+	<?php echo '<body onload="javascript:loginFailed(\''.$loginfailed.'\')">';?>
 			<div id="backshade">
 			<div id="panel">
 					<div id="masthead">
@@ -59,7 +78,7 @@
 						<form id="login" method="post" action="/index.php/welcome/login/">
 							<h4>Sign in:</h4>
 							<p>
-								<p id="wrongpasswordmessage">The username and password you entered did not match.</p>
+								<p id ="wrongpasswordmessage" class="error">The username and password you entered did not match.</p>
 								<input id="loginusername" class="logininput" type="text" name="username" value="username" onfocus="this.value=''" size="25"/>
 								<input id="loginpassword" class="logininput" type="text" name="password" value="password" onfocus="this.value='';this.type='password'" size="25"/>
 								<input id="loginbutton" class="button" type="submit" value="Login" style="float:right"/>
@@ -88,10 +107,12 @@
 			<form class="popup" id="signupform" method="post" action="/index.php/welcome/signup">
 				<a class="closebutton" href="javascript:hideSignUp()">Close</a>
 				<p>
+					<p id="usernametaken" class="error">This username is already in use.</p>
 					username:
 					<input type="text" id="username" name="username"/>
 				</p>
 				<p>
+					<p id="passwordsdontmatch" class="error">These passwords did not match</p>
 					password:
 					<input type="password" id="password" name="password"/>
 				</p>
@@ -109,5 +130,9 @@
 				</p>
 				<input class="button" type="submit" value="Sign Up!"/>
 			</form>
+			<div class="popup" id="succesfulsignup">
+				<a class="closebutton" href="/index.php/home/loadHomeView/">Go.</a>
+				You have been successfully signed up for mobi.  Welcome.
+			</div>
 	</body>
 </html>

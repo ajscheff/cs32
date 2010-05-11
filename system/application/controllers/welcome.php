@@ -49,12 +49,9 @@ class Welcome extends Controller {
 				'user_id' => $user_id
 			);
 			$this->session->set_userdata($session_data);
-			$this->loadHomeView();
 		}
-		else{
-			echo 'Please choose another username'; //this should never be reached if the view never requests a taken username
-		
-		}
+
+		echo $user_id;
 		
 	}
 	
