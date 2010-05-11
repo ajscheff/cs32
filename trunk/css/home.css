@@ -104,6 +104,7 @@
 .micromanagebutton {
 		float: right;
 		margin-right: 2px;
+		height: 100%;
 		}
         
 #deletecircleok, #leavecircleok  {
