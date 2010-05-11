@@ -126,7 +126,7 @@
 					<input class="button" type="submit" value="Sign Up!"/>
 				</p>
 			</form>
-			<div class="popup" id="succesfulsignup">
+			<div class="popup" id="successfulsignup">
 				<a class="closebutton" href="/index.php/home/loadHomeView/">Go.</a>
 				<p>You have been successfully signed up for mobi.  Welcome.</p>
 			</div>
