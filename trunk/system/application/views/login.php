@@ -26,15 +26,6 @@
 					$('#signupform').hide();
 				}
 				
-				function signUp() {
-					var username = $('#username').val();
-					var password = $('#password').val();
-					var public_name = $('#public_name').val();
-					var phone_number = $('#phone_number').val();
-					var provider = $('#provider').val();
-					$.post('/index.php/welcome/signup', { username : username, password : password, public_name : public_name, phone_number : phone_number, provider : provider });
-				}
-				
 				function loginFailed(failed) {
 					if(failed === "true") {
 						$('#wrongpasswordmessage"').show();
@@ -50,7 +41,7 @@
 								$('#usernametaken').show();
 							} else {
 								$('#successfulsignup').show();
-							}
+							});
 					} else {
 						$('#passwordsdontmatch').show();
 					}
@@ -104,7 +95,7 @@
 				Mobi is a new kind of social networking platform that is centered around the phone rather than the internet. Users create groups of their friends (called circles) on the website. The user can then communicate with their circles via unique email addresses that receive SMS messages, and automatically relay them out to other circle members. Mobi is ideal for social groups, school clubs, and larger organizations that want to communicate via SMS.
 				</p>
 			</div>
-			<form class="popup" id="signupform" method="post" action="/index.php/welcome/signup">
+			<form class="popup" id="signupform" method="post" action="javascript:signUp()">
 				<a class="closebutton" href="javascript:hideSignUp()">Close</a>
 				<p>
 					<p id="usernametaken" class="error">This username is already in use.</p>
