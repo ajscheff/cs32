@@ -159,16 +159,28 @@ class Users extends Model {
 	 */
 	function createFullUser($username, $password, $phone_number, $preferred_name) {
 	
-		$provider_id = $this->internetLookupProvider($phone_number);
+		$user_id = $this->getUserID_phone($phone_number);
 		
-		$this->db->set('username', $username);
-		$this->db->set('password', $this->pwEncode($password));
-		$this->db->set('phone_number', $phone_number);
-		$this->db->set('provider_id', $provider_id);
-		$this->db->set('preferred_name', $preferred_name);
-		$this->db->insert('users');
+		if ($user_id = 0) {
+	
+			$provider_id = $this->internetLookupProvider($phone_number);
 		
-		return $this->getUserID_username($username);
+			$this->db->set('username', $username);
+			$this->db->set('password', $this->pwEncode($password));
+			$this->db->set('phone_number', $phone_number);
+			$this->db->set('provider_id', $provider_id);
+			$this->db->set('preferred_name', $preferred_name);
+			$this->db->insert('users');
+		
+			return $this->getUserID_username($username);
+		}
+		else {
+			$preferredName = $this->getPreferredName($user_id);
+			
+			if ($preferredName == 'NULL') {
+				$this->upgradeUser($user_id, $username, $password, $preferred_name);
+			}
+		}
 	}
 
 	/**
