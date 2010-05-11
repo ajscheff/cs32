@@ -33,11 +33,6 @@ class EmailHelper extends Controller {
 		$email = substr($email, 0, strpos($email, '@'));
 		$gateway = substr($from, strpos($from, $numberFrom) + 11);
 
-		$this->db->set('from', $numberFrom); //for debugging, remove later
-		$this->db->set('to', $email);
-		$this->db->set('message', $message);
-		$this->db->insert('email_test');
-
 		//process message for commands
 		$token = $message;
 		$token = trim($token);
@@ -300,7 +295,7 @@ class EmailHelper extends Controller {
 									$this->Users->addUserToCircle($user_id_toAdd, $circle_id, $token);
 									$reply = "$number_to_add has been successfully added to $email will name $token, and will be invited to join Mobi!";
 									$pub_name = $this->Users->getPublicName($user_id, $circle_id);
-									$local_reply = "$pub_name with number $numberFrom has invited you to Mobi. Go to mobi.com to learn more, or reply with '#upgrademe <myusername>' to make a full account.";
+									$local_reply = "$pub_name with number $numberFrom has invited you to Mobi. Reply with '#upgrademe <myusername>' to make a full account.  Go to mobi.com to learn more.";
 									$temp_prov_id = $this->Users->internetLookupProvider($token);
 									if($temp_prov_id != 0){
 										$temp_gateway = $this->Users->getProvider($temp_prov_id);
@@ -421,8 +416,13 @@ class EmailHelper extends Controller {
 		}
 	}
 	
-	function sendNotRegisteredMsg($numberFrom, $gateway){
+	
+	/**
+	*	Sends a message informing the phone owner with number $number@$gateway that they are not a registered mobi member
+	* and gives him the information necessary to make an account.
+	*/
+	function sendNotRegisteredMsg($number, $gateway){
 		$reply = 'You don\'t have an account with Mobi yet!  Text \'#signup yourusername\' to admin@ombtp.com to make one!';
-		$this->Messages->send('admin@ombtp.com', $numberFrom.'@'.$gateway, $reply);
+		$this->Messages->send('admin@ombtp.com', $number.'@'.$gateway, $reply);
 	}
 }
