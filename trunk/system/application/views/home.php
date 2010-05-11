@@ -232,7 +232,7 @@
 			</div>
 			
 			<div class="popup" id="alreadyadded">
-				<a class="closebutton" href="javascript:hideAlreadyAdded()">Close</a>A user with that phone number is already in this circle!
+				<a class="closebutton" href="javascript:hideAlreadyAdded()">Close</a>A user with that phone number is already in this circle or the phone number is invalid!
 			</div>
 			
 			<form class="popup" id="deletecircleok">
