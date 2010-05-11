@@ -15,7 +15,7 @@
 				<div id="adminslist">
 					<h4 style="padding-bottom: 3px;">admins:</h4>	
 					<?php foreach($admins as $admin) {
-						echo '<p class="admin">'.$admin['public_name'];
+						echo '<p class="member">'.$admin['public_name'];
 						if($is_admin == 1) {
 							echo '<a class="micromanagebutton" href="javascript:setUserAdmin('.$admin['user_id'].','.$circle_id.', 0)">v</a>';
 							echo '<a class="micromanagebutton" href="javascript:showUserSettings('.$admin['user_id'].')">o</a>';
@@ -26,7 +26,7 @@
 					<br/>
 					<h4 style="padding-bottom: 3px;">members:</h4>
 					<?php foreach($members as $member) {
-						echo '<p class="admin">'.$member['public_name'];
+						echo '<p class="member">'.$member['public_name'];
 						if($is_admin == 1) {
 							echo '<a class="micromanagebutton" href="javascript:deleteUserFromCircle('.$member['user_id'].','.$circle_id.')">x</a>';
 							echo '<a class="micromanagebutton" href="javascript:setUserAdmin('.$member['user_id'].','.$circle_id.', 1)">^</a>';
