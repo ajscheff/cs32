@@ -281,7 +281,7 @@ class Users extends Model {
 		$this->db->where('user_id', $user_id);
 		$this->db->where('circle_id', $circle_id);
 		$data = array('public_name' => $public_name);
-		$this->db->update('users_circles', $dsata);
+		$this->db->update('users_circles', $data);
 	}
 	
 	/**
