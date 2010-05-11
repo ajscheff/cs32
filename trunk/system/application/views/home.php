@@ -181,12 +181,12 @@
 					Circle email:
 					<input id="email" type="text" name="email"/>@ombtp.com
 				</p>
-				<p>
+				<!--<p>
 					Privacy:
 					<input type="radio" name="privacy" value="public" checked="checked">Public</input>
 					<input type="radio" name="privacy" value="private">Private</input>
 					<input type="radio" name="privacy" value="secret">Secret</input>
-				</p>
+				</p>-->
 				<p>
 					<textarea id="description" rows="10" cols="30" name="description">Enter a description for your circle.</textarea>
 					<a href="javascript:submitNewCircle()">Done!</a>
