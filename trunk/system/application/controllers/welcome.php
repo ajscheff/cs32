@@ -49,10 +49,10 @@ class Welcome extends Controller {
 				'user_id' => $user_id
 			);
 			$this->session->set_userdata($session_data);
+			echo 0;
+		} else {
+			echo $user_id;
 		}
-
-		echo $user_id;
-		
 	}
 	
 	/**
