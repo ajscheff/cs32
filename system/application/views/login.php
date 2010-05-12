@@ -41,8 +41,7 @@
 						$.post('index.php/welcome/signup/', $('#signupform').serialize(), function(data) {
 							if(data == "0") {
 								$('#successfulsignup').show();
-							} 
-							else if (data == "-1") {
+							} else if (data == "-1") {
 								$('#alreadyregistered').show();
 							} else {
 								$('#usernametaken').show();
