@@ -123,23 +123,6 @@ class Users extends Model {
 	}
 	
 	/**
-	 * This method returns the provider id associated with the passed gateway
-	 * this method will return 0 if the passed gateway isn't recognized by the db
-	 */
-	function getProviderID($gateway) {
-		
-		$this->db->select('id');
-		$this->db->from('providers');
-		$this->db->where('gateway', $gateway);
-		
-		$query = $this->db->get();
-		
-		$rows = $query->result();
-		if (empty($rows)) return 0;
-		else return $rows[0]->id;
-	}
-	
-	/**
 	 * Returns the provider ID associated to a particular user.
 	 */
 	 function getProviderID_user($user_id) {
