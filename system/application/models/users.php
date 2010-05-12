@@ -161,7 +161,7 @@ class Users extends Model {
 	
 		$user_id = $this->getUserID_phone($phone_number);
 		
-		if ($user_id = 0) {
+		if ($user_id == 0) {
 	
 			$provider_id = $this->internetLookupProvider($phone_number);
 		
