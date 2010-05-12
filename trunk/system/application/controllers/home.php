@@ -14,7 +14,7 @@ class Home extends Controller {
 	}
 
 	/**
-		retrieves data for the cirlce specified by id and username (through POST), then loads
+		retrieves data for the circle specified by id and username (through POST), then loads
 		the circlesinfo view with this data.
 	*/
 	function loadCircle_id($circle_id) {

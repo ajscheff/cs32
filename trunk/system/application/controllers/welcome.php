@@ -86,7 +86,7 @@ class Welcome extends Controller {
 		}
 	}
 	
-	/**returns 0 if the username does not alraedy exist.  non-zero (user_id) otherwise.*/
+	/**returns 0 if the username does not already exist.  non-zero (user_id) otherwise.*/
 	function usernameExists(){
 		$username = $_POST['username'];
 		$id = $this->Users->getUserID_username($username);
