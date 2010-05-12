@@ -25,8 +25,7 @@ class Users extends Model {
 		
 		$rows = $query->result();
 		if (empty($rows)) return 0;
-		else 
-		return $rows[0]->id;
+		else return $rows[0]->id;
 	}
 
 	/**
