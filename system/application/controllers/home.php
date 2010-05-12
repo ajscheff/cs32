@@ -111,7 +111,7 @@ class Home extends Controller {
 		$circle_name = $_POST['circle_name'];
 		$email = $_POST['email'];
 		$email_taken = $this->Circles->getCircleID_email($email);
-		$circle_id = $this->Circles->createCircle($user_id, $circle_name, $email, $_POST['privacy'], $_POST['description']);
+		$circle_id = $this->Circles->createCircle($user_id, $circle_name, $email, $_POST['description']);
 		
 		redirect('/home/loadHomeView/'.$circle_id);
 	}
