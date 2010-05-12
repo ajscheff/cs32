@@ -163,7 +163,7 @@ class Users extends Model {
 				$this->upgradeUser($user_id, $username, $password, $preferred_name);
 				return $user_id;
 			}
-			else return 0;
+			else return -1;
 		}
 	}
 
