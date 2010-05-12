@@ -32,7 +32,8 @@ class Settings extends Controller {
 		$user_id = $this->session->userdata('user_id');
 		if($this->Users->passwordMatches($user_id, $_POST['password'])
 			echo '1';
-		else echo '0';
+		else
+			echo '0';
 	}
 	
 	//this function will change a users password to the password provided by post
