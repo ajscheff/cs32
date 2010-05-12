@@ -116,10 +116,12 @@
 				}
 
 				function showCircleForm() {
+					$('#emailtaken').hide();
 					$('#newcircleform').show();
 				}
 				
 				function hideCircleForm() {
+					$('#emailtaken').hide();
 					$('#newcircleform').hide();
 				}
 				
