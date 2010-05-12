@@ -159,11 +159,11 @@ class Users extends Model {
 		else {
 			$oldusername = $this->getUsername($user_id);
 			
-			//if ($oldusername == 'NULL') {
+			if (!$oldusername) {
 				$this->upgradeUser($user_id, $username, $password, $preferred_name);
 				return $user_id;
-			//}
-			//else return -1;
+			}
+			else return -1;
 		}
 	}
 
@@ -173,7 +173,7 @@ class Users extends Model {
 	function upgradeUser($user_id, $username, $password, $preferred_name) {
 		$data = array(
 				'username' => $username,
-				'password' => $password,
+				'password' => $this->pwEncode($password),
 				'preferred_name' => $preferred_name);
 		$this->db->where('users.id', $user_id);
 		$this->db->update('users', $data);
