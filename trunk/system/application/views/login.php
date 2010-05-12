@@ -38,7 +38,6 @@
 					var password1 = $('#password').val();
 					var password2 = $('#password2').val();
 					if(password1==password2) {
-						alert(10);
 						$.post('index.php/welcome/signup/', $('#signupform').serialize(), function(data) {
 							alert('hi');
 							alert(data);
