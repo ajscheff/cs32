@@ -48,7 +48,10 @@ class Welcome extends Controller {
 				'user_id' => $user_id
 			);
 			$this->session->set_userdata($session_data);
-			echo 0;
+			if ($user_id == -1) {
+				echo -1;
+			}
+			else echo 0;
 		} else {
 			echo $user_id;
 		}
