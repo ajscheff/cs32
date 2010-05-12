@@ -12,12 +12,13 @@
 				var curr_user_selected;
 
 				function submitNewCircle(){
+					$('#emailtaken').hide();
 					var email = $('#email').val();
 					$.post('/index.php/home/emailExists/', { email : email }, function(data) {
 							if(data == "0"){
 								document.forms["newcircleform"].submit();
 							} else {
-								$('#emailtakenpopup').show();
+								$('#emailtaken').show();
 							}
 						});
 				}
@@ -113,11 +114,7 @@
 				function hideAddUserForm() {
 					$('#adduserform').hide();
 				}
-				
-				function hideEmailTakenPopup(){
-					$('#emailtakenpopup').hide();
-				}
-				
+
 				function showCircleForm() {
 					$('#newcircleform').show();
 				}
@@ -177,6 +174,7 @@
 					Circle name:
 					<input id="circle_name" type="text" name="circle_name"/>
 				</p>
+				<p id="emailtaken" class="error">The email you entered is taken by another circle, please choose a different email address.</p>
 				<p>
 					Circle email:
 					<input id="email" type="text" name="email"/>@ombtp.com
@@ -226,10 +224,6 @@
 					<input class="button" type="submit" value="Add User"/>
 				</p>
 			</form>
-			
-			<div class="popup" id="emailtakenpopup">
-				<a class="closebutton" href="javascript:hideEmailTakenPopup()">Close</a>The email you entered is taken by another circle, please choose a different email address.
-			</div>
 			
 			<div class="popup" id="alreadyadded">
 				<a class="closebutton" href="javascript:hideAlreadyAdded()">Close</a>A user with that phone number is already in this circle or the phone number is invalid!
