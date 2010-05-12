@@ -127,7 +127,7 @@
 				</p>
 			</form>
 			<div class="popup" id="successfulsignup">
-				<a class="closebutton" href="/index.php/home/loadHomeView/">Go.</a>
+				<a class="closebutton" href="/index.php/home/loadHomeView/">Take me home!</a>
 				<p>You have been successfully signed up for mobi.  Welcome.</p>
 			</div>
 	</body>
