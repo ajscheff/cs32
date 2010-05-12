@@ -124,7 +124,8 @@
 				<p>
 				give a public name, this name will be viewable by the public:
 					<input type="text" id="public_name" name="public_name"/>
-					</p>
+				</p>
+				<p class="error" id="alreadyregistered">Someone is already registered with that phone number!</p>
 				<p>
 					provide your phone number:<br/>
 					<input type="text" id="phone_number" name="phone_number"/>
@@ -136,11 +137,6 @@
 			<div class="popup" id="successfulsignup">
 				<a class="closebutton" href="/index.php/home/loadHomeView/">Take me home!</a>
 				<p>You have been successfully signed up for mobi.  Welcome.</p>
-			</div>
-			
-			<div class="popup" id="alreadyregistered">
-				<a class="closebutton" href="javascript:hideAlreadyRegistered()">Close</a>
-				<p>Someone is already registered with that phone number!</p>
 			</div>
 	</body>
 </html>
