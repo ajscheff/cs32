@@ -161,6 +161,7 @@ class Users extends Model {
 			
 			if ($oldusername == 'NULL') {
 				$this->upgradeUser($user_id, $username, $password, $preferred_name);
+				return $user_id;
 			}
 		}
 	}
