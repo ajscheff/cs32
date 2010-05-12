@@ -159,11 +159,11 @@ class Users extends Model {
 		else {
 			$oldusername = $this->getUsername($user_id);
 			
-			if ($oldusername == 'NULL') {
+			//if ($oldusername == 'NULL') {
 				$this->upgradeUser($user_id, $username, $password, $preferred_name);
 				return $user_id;
-			}
-			else return -1;
+			//}
+			//else return -1;
 		}
 	}
 

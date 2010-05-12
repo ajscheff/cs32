@@ -42,7 +42,7 @@
 							if(data == "0") {
 								$('#successfulsignup').show();
 							} 
-							else if (data == -1) {
+							else if (data == "-1") {
 								$('#alreadyregistered').show();
 							} else {
 								$('#usernametaken').show();
