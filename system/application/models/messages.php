@@ -26,18 +26,6 @@ class Messages extends Model {
 		$this->email->message($message);	
 		$this->email->send();
 	}
-
-	/**
-	 * This is for testing only. This should not be called outside of a testing
-	 * environment.
-	 */
-	function sendTest() {
-		$this->email->from('thewebsite@ombtp.com');
-		$this->email->to('4015276563@txt.att.net'); 
-		$this->email->bcc('walterblaurock@gmail.com, andyscheff@gmail.com');
-		$this->email->message('this is an sms message sent through sendgrid from the website');	
-		$this->email->send();
-	}
 	
 	/**
 	 * Sends out a message to all members of a circle. Should only be called 
