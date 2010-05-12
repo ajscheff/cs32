@@ -35,13 +35,13 @@ class Circles extends Model {
 	 * that the email address is not already taken.  Also adds the creator
 	 * of the circle to the new circle as an admin
 	 */
-	function createCircle($user_id, $circle_name, $email, $privacy, $description) {
+	function createCircle($user_id, $circle_name, $email, $description) {
 	
 		$this->load->model('Users');
 
 		$this->db->set('name', $circle_name);
 		$this->db->set('email', $email);
-		$this->db->set('privacy', $privacy);
+		$this->db->set('privacy', 'public');
 		$this->db->set('description', $description);
 		$this->db->insert('circles');
 		
