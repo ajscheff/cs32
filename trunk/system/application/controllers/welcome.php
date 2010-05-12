@@ -49,7 +49,7 @@ class Welcome extends Controller {
 			);
 			$this->session->set_userdata($session_data);
 			if ($user_id == -1) {
-				echo -1;
+				echo $user_id;
 			}
 			else echo 0;
 		} else {
